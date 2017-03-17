@@ -105,6 +105,7 @@ export const restaurant = {
   imgURL: ''
 };
 
+export const cardArray = [farmersMarket, river, bakery, cafe, convenienceStore, museum, businessCenter, stadium, tvStation, powerPlant, touristBus, theater, bodega, wineShop, restaurant]
 
 
 //UNLOCKABLE CARDS BELOW
@@ -125,3 +126,5 @@ export const subwayStation = {
   cost: 4,
   cardDescription: 'You may roll 1 or 2 dice'
 };
+
+export const unlockableArray = [radioTower, shoppingMall, coneyIsland, subwayStation]

@@ -11,6 +11,7 @@ import WhoAmI from './components/WhoAmI'
 import {ref} from './firebase'
 import {settingGame} from './reducers/game'
 import TotalCards from './components/TotalCards'
+import CardGrid from './components/CardGrid'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -42,8 +43,8 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
-        <IndexRedirect to="/jokes" />
-        <Route path="/jokes" component={TotalCards} />
+        <IndexRedirect to="/game" />
+        <Route path="/game" component={CardGrid} />
       </Route>
     </Router>
   </Provider>,
