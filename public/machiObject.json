@@ -16,71 +16,71 @@
       "bodega": 6,
       "wineShop": 6,
       "restaurant": 6
-    }
-  },
-  "players" : {
-    "playerOne": {
-      "isPlayingGame": false,
-      "turn": false,
-      "name": null,
-      "cards": {
-        "farmersMarket": 1,
-        "bakery": 1,
-      },
-      "money": 0,
-      "activatedCards": {
-        "radioTower": false,
-        "shoppingMall": false,
-        "coneyIsland": false,
-        "subwayStation": false
-      }
     },
-    "playerTwo": {
-      "isPlayingGame": false,
-      "turn": false,
-      "name": null,
-      "cards": {
-        "farmersMarket": 1,
-        "bakery": 1,
+    "players" : {
+      "playerOne": {
+        "isPlayingGame": false,
+        "turn": false,
+        "name": null,
+        "cards": {
+          "farmersMarket": 1,
+          "bakery": 1
+        },
+        "money": 0,
+        "activatedCards": {
+          "radioTower": false,
+          "shoppingMall": false,
+          "coneyIsland": false,
+          "subwayStation": false
+        }
       },
-      "money": 0,
-      "activatedCards": {
-        "radioTower": false,
-        "shoppingMall": false,
-        "coneyIsland": false,
-        "subwayStation": false
-      }
-    },
-    "playerThree": {
-      "isPlayingGame": false,
-      "turn": false,
-      "name": null,
-      "cards": {
-        "farmersMarket": 1,
-        "bakery": 1,
+      "playerTwo": {
+        "isPlayingGame": false,
+        "turn": false,
+        "name": null,
+        "cards": {
+          "farmersMarket": 1,
+          "bakery": 1
+        },
+        "money": 0,
+        "activatedCards": {
+          "radioTower": false,
+          "shoppingMall": false,
+          "coneyIsland": false,
+          "subwayStation": false
+        }
       },
-      "money": 0,
-      "activatedCards": {
-        "radioTower": false,
-        "shoppingMall": false,
-        "coneyIsland": false,
-        "subwayStation": false
-      }
-    },
-    "playerFour": {
-      "isPlayingGame": false,
-      "turn": false,
-      "name": null,
-      "cards": {
-        "farmersMarket": 1,
-        "bakery": 1,
+      "playerThree": {
+        "isPlayingGame": false,
+        "turn": false,
+        "name": null,
+        "cards": {
+          "farmersMarket": 1,
+          "bakery": 1
+        },
+        "money": 0,
+        "activatedCards": {
+          "radioTower": false,
+          "shoppingMall": false,
+          "coneyIsland": false,
+          "subwayStation": false
+        }
       },
-      "money": 0,
-      "activatedCards": {
-        "radioTower": false,
-        "shoppingMall": false,
-        "coneyIsland": false,
-        "subwayStation": false
+      "playerFour": {
+        "isPlayingGame": false,
+        "turn": false,
+        "name": null,
+        "cards": {
+          "farmersMarket": 1,
+          "bakery": 1
+        },
+        "money": 0,
+        "activatedCards": {
+          "radioTower": false,
+          "shoppingMall": false,
+          "coneyIsland": false,
+          "subwayStation": false
+        }
       }
     }
   }
