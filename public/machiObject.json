@@ -1,0 +1,56 @@
+{
+  "game": {
+    "cards": {
+      "farmersMarket": 10,
+      "river": 6,
+      "bakery": 10,
+      "cafe": 6,
+      "convenienceStore": 6,
+      "museum": 6,
+      "businessCenter": 4,
+      "stadium": 4,
+      "tvStation": 4,
+      "powerPlant": 6,
+      "touristBus": 6,
+      "theatre": 6,
+      "bodega": 6,
+      "wineShop": 6,
+      "restaurant": 6
+    },
+    "turn": "playerOne",
+    "turnOrder":{
+      "first": "playerOne",
+      "second": "playerTwo"
+    },
+    "players" : {
+      "playerOne": {
+        "name": null,
+        "cards": {
+          "farmersMarket": 1,
+          "bakery": 1
+        },
+        "money": 0,
+        "activatedCards": {
+          "radioTower": false,
+          "shoppingMall": false,
+          "coneyIsland": false,
+          "subwayStation": false
+        }
+      },
+      "playerTwo": {
+        "name": null,
+        "cards": {
+          "farmersMarket": 1,
+          "bakery": 1
+        },
+        "money": 0,
+        "activatedCards": {
+          "radioTower": false,
+          "shoppingMall": false,
+          "coneyIsland": false,
+          "subwayStation": false
+        }
+      }
+    }
+  }
+}
