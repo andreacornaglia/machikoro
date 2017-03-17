@@ -11,18 +11,21 @@ import WhoAmI from './components/WhoAmI'
 import {ref} from './firebase'
 import {settingGame} from './reducers/game'
 import TotalCards from './components/TotalCards'
+import selfCarousel from './components/selfCarousel'
 
-const ExampleApp = connect(
-  ({ auth }) => ({ user: auth })
-) (
-  ({ user, children }) =>
-    <div>
-      <nav>
-        {user ? <WhoAmI/> : <Login/>}
-      </nav>
-      {children}
-    </div>
-)
+import AppContainer from './containers/AppContainer'
+
+// const ExampleApp = connect(
+//   ({ auth }) => ({ user: auth })
+// ) (
+//   ({ user, children }) =>
+//     <div>
+//       <nav>
+//         {user ? <WhoAmI/> : <Login/>}
+//       </nav>
+//       {children}
+//     </div>
+// )
 
 ref.on('value', snap => {
   store.dispatch(settingGame(snap.val()))
@@ -41,9 +44,10 @@ let num = 99
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/" component={AppContainer}>
         <IndexRedirect to="/jokes" />
         <Route path="/jokes" component={TotalCards} />
+        <Route path="/test" component={selfCarousel} />
       </Route>
     </Router>
   </Provider>,
