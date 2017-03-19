@@ -25,10 +25,8 @@ export const river = {
   action: () => {
     playersArr.forEach(player => {
       let playerObj = ref.players[player]
-      if(playerObj.cards.river){
-        let numCards = playerObj.cards.river
-        playerObj.money += numCards //is this a proper way to update the firebase database?
-      }
+      let numCards = playerObj.cards.river || 0
+      playerObj.money += numCards //is this a proper way to update the firebase database?
     })
   },
   imgURL: ''
@@ -39,10 +37,8 @@ export const bakery = {
   industry: 'building',
   cardDescription: "Get 1 coin from the bank, on your turn only",
   action: () => {
-    if (currentTurn.cards.bakery){
-      let numCards = currentTurn.cards.bakery
-      currentTurn.money += numCards //is this a proper way to update the firebase database?
-    }
+    let numCards = currentTurn.cards.bakery || 0
+    currentTurn.money += numCards //is this a proper way to update the firebase database?
   },
   imgURL: ''
 };
@@ -52,20 +48,18 @@ export const cafe = {
   industry: 'mug',
   cardDescription: "Get 1 coin from the player who rolled the dice",
   action: () => {
-    let sum = 0
     playersArr.forEach(player => {
+      let numCards
+      let playerObj
       if (player !== ref.turn) {
-        let playerObj = ref.players[player]
-        if (playerObj.cards.cafe){
-          let numCards = playerObj.cards.cafe
-          playerObj.money += numCards //is this a proper way to update the firebase database?
-          sum += numCards
-        }
+        playerObj = ref.players[player]
+        numCards = playerObj.cards.cafe || 0
+        playerObj.money += numCards //is this a proper way to update the firebase database?
       }
+      if (currentTurn.money - numCards >= 0){
+        currentTurn.money -= numCards //is this a proper way to update the firebase database?
+      } else { currentTurn.money = 0  } //is this a proper way to update the firebase database?
     })
-    if (currentTurn.money - sum >= 0){
-      currentTurn.money -= sum //is this a proper way to update the firebase database?
-    } else { currentTurn.money = 0  } //is this a proper way to update the firebase database?
   },
   imgURL: ''
 };
@@ -75,10 +69,8 @@ export const convenienceStore = {
   industry: 'building',
   cardDescription: "Get 3 coins from the bank, on your turn only",
   action: () => {
-    if (currentTurn.cards.convenienceStore){
-      let numCards = currentTurn.cards.convenienceStore
-      currentTurn.money += numCards * 3 //is this a proper way to update the firebase database?
-    }
+    let numCards = currentTurn.cards.convenienceStore || 0
+    currentTurn.money += numCards * 3 //is this a proper way to update the firebase database?
   },
   imgURL: ''
 };
@@ -90,10 +82,8 @@ export const museum = {
   action: () => {
     playersArr.forEach(player => {
       let playerObj = ref.players[player]
-      if (playerObj.cards.museum){
-        let numCards = playerObj.cards.museum
-        playerObj.money += numCards //is this a proper way to update the firebase database?
-      }
+      let numCards = playerObj.cards.museum || 0
+      playerObj.money += numCards //is this a proper way to update the firebase database?
     })
   },
   imgURL: ''
@@ -111,19 +101,19 @@ export const stadium = {
   industry: 'antenna',
   cardDescription: "Get 2 coins from all players, on your turn only",
   action: () => {
-    let sum = 0
     playersArr.forEach(player => {
+      let gain = 0
       if (player !== ref.turn){
         let playerObj = ref.players[player]
         if (playerObj.money >= 2) {
-          sum += 2
+          gain += 2
           playerObj.money -= 2 //is this a proper way to update the firebase database?
         } else {
-          sum += playerObj.money
+          gain += playerObj.money
           playerObj.money = 0 //is this a proper way to update the firebase database?
         }
       }
-      currentTurn.money += sum //is this a proper way to update the firebase database?
+      currentTurn.money += gain //is this a proper way to update the firebase database?
     })
   },
   imgURL: ''
@@ -141,11 +131,8 @@ export const powerPlant = {
   industry: 'factory',
   cardDescription: "Get 3 coins from the bank for each [cow icon] establishment that you own, on your turn only",
   action: () => {
-    let numCards
-    if (currentTurn.cards.river) { //river is the only card type with the cow icon
-      numCards = currentTurn.cards.river
-      currentTurn.money += numCards * 3 //is this a proper way to update the firebase database?
-    }
+    let numCards = currentTurn.cards.river || 0 //river is the only card type with the cow icon
+    currentTurn.money += numCards * 3 //is this a proper way to update the firebase database?
   },
   imgURL: ''
 };
@@ -156,13 +143,9 @@ export const touristBus = {
   cardDescription: "Get 3 coins from the bank for each [gear icon] establishment that you own. On your turn only",
   action: () => {
     let numCards = 0
-    if (currentTurn.cards.museum) { //museum and theater are the only card types with gear icon
-      numCards += currentTurn.cards.museum
-    }
-    if (currentTurn.cards.theater) {
-      numCards += currentTurn.cards.theater
-    }
-      currentTurn.money += numCards * 3 //is this a proper way to update the firebase database?
+    numCards += currentTurn.cards.museum || 0 //museum and theater are the only card types with gear icon
+    numCards += currentTurn.cards.theater || 0
+    currentTurn.money += numCards * 3 //is this a proper way to update the firebase database?
   },
   imgURL: ''
 };
@@ -174,10 +157,8 @@ export const theater = {
   action: () => {
     playersArr.forEach(player => {
       let playerObj = ref.players[player]
-      if (playerObj.cards.theater){
-        let numCards = playerObj.cards.theater
-        playerObj.money += numCards * 5 //is this a proper way to update the firebase database?
-      }
+      let numCards = playerObj.cards.theater || 0
+      playerObj.money += numCards * 5 //is this a proper way to update the firebase database?
     })
   },
   imgURL: ''
@@ -188,20 +169,17 @@ export const bodega = {
   industry: 'mug',
   cardDescription: "Get 2 coins from the player who rolled the dice",
   action: () => {
-    let sum = 0
     playersArr.forEach(player => {
+      let numCards
       if (player !== ref.turn) {
         let playerObj = ref.players[player]
-        if (playerObj.cards.bodega){
-          let numCards = playerObj.cards.bodega
+          numCards = playerObj.cards.bodega || 0
           playerObj.money += numCards * 2 //is this a proper way to update the firebase database?
-          sum += numCards * 2
-        }
       }
+      if (currentTurn.money - (numCards * 2) >= 0){
+        currentTurn.money -= (numCards * 2) //is this a proper way to update the firebase database?
+      } else { currentTurn.money = 0  } //is this a proper way to update the firebase database?
     })
-    if (currentTurn.money - sum >= 0){
-      currentTurn.money -= sum //is this a proper way to update the firebase database?
-    } else { currentTurn.money = 0  } //is this a proper way to update the firebase database?
   },
   imgURL: ''
 };
@@ -213,10 +191,8 @@ export const wineShop = {
   action: () => {
     playersArr.forEach(player => {
       let playerObj = ref.players[player]
-      if (playerObj.cards.wineShop){
-        let numCards = playerObj.cards.wineShop
-        playerObj.money += numCards * 3 //is this a proper way to update the firebase database?
-      }
+      let numCards = playerObj.cards.wineShop || 0
+      playerObj.money += numCards * 3 //is this a proper way to update the firebase database?
     })
   },
   imgURL: ''
@@ -228,12 +204,8 @@ export const restaurant = {
   cardDescription: "Get 2 coins from the bank for each [wheat icon] establishment that you own. On your turn only",
   action: () => {
     let numCards = 0
-    if (currentTurn.cards.farmersMarket) { //farmersMarket and wine are the only card types with wheat icon
-      numCards += currentTurn.cards.farmersMarket
-    }
-    if (currentTurn.cards.wineShop) {
-      numCards += currentTurn.cards.wineShop
-    }
+    numCards += currentTurn.cards.farmersMarket || 0 //farmersMarket and wine are the only card types
+    numCards += currentTurn.cards.wineShop || 0
     currentTurn.money += numCards * 2 //is this a proper way to update the firebase database?
   },
   imgURL: ''
@@ -253,7 +225,35 @@ export const shoppingMall = {
 };
 export const coneyIsland = {
   cost: 16,
-  cardDescription: 'Each of your [mug icon] and [building icon] establishments earn +1 coin'
+  cardDescription: 'Each of your [mug icon] and [building icon] establishments earn +1 coin',
+
+  //  THIS FUNCTION NEEDS WORK
+  // action: () => {
+  //   playersArr.forEach(player => {
+  //     let sumToLose = 0
+  //     let numCards = 0
+  //     if (player !== ref.turn){
+  //       let playerObj = ref.players[player]
+  //       //bakery card calcs
+  //       numCards += playerObj.cards.bakery || 0
+  //       //cafe card calcs
+  //       numCards += playerObj.cards.cafe || 0
+  //       sumToLose += playerObj.cards.cafe || 0
+  //       //convenienceStore calcs
+  //       numCards += playerObj.cards.convenienceStore || 0
+  //       //bodega calcs
+  //       numCards += playerObj.cards.bodega || 0
+  //       sumToLose += playerObj.cards.bodega || 0
+
+  //       currentTurn.money += numCards //is this a proper way to update the firebase database?
+  //       if (currentTurn.money >= sumToLose) {
+  //         currentTurn.money -= sumToLose //is this a proper way to update the firebase database?
+  //       } else {
+  //         currentTurn.money = 0 //is this a proper way to update the firebase database?
+  //       }
+  //     }
+  //   })
+  // }
 };
 export const subwayStation = {
   cost: 4,
