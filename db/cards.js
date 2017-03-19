@@ -1,9 +1,15 @@
+import {ref} from '../firebase'
+
+let playersArr = Object.keys(ref.players)
 
 export const farmersMarket = {
   rollValue: 1,
   cost: 1,
   industry: 'wheat',
   cardDescription: "Get 1 coin from the bank, on anyone's turn",
+  action: function(){
+
+  },
   imgURL: ''
 };
 export const river = {

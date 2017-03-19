@@ -11,6 +11,7 @@ import WhoAmI from './components/WhoAmI'
 import {ref} from './firebase'
 import {settingGame} from './reducers/game'
 import TotalCards from './components/TotalCards'
+import {Dice} from './components/Dice'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -31,7 +32,7 @@ ref.on('value', snap => {
 
 console.log('ref', ref)
 //onGameEnter listen to firebase
-let num = 99
+// let num = 99
 // setInterval(() => {
 //   ref.child('cards').update({
 //   'bakery': num++
@@ -43,7 +44,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/jokes" />
-        <Route path="/jokes" component={TotalCards} />
+        <Route path="/jokes" component={Dice} />
       </Route>
     </Router>
   </Provider>,
