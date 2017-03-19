@@ -1,14 +1,19 @@
 import {ref} from '../firebase'
 
-let playersArr = Object.keys(ref.players)
+let playersArr = Object.keys(ref.players) //should give only player names (not entire obj)
+let currentTurn = ref.players[ref.turn] //should give the entire current player object
 
 export const farmersMarket = {
   rollValue: 1,
   cost: 1,
   industry: 'wheat',
   cardDescription: "Get 1 coin from the bank, on anyone's turn",
-  action: function(){
-
+  action: () => {
+    playersArr.forEach(player => {
+      let playerObj = ref.players[player]
+      let numCards = playerObj.cards.farmersMarket
+      playerObj.money += numCards //is this a proper way to update the firebase database?
+    })
   },
   imgURL: ''
 };
@@ -16,7 +21,16 @@ export const river = {
   rollValue: 1,
   cost: 1,
   industry: 'cow',
-  cardDescription: "Get 1 coin from bank on anyone's turn",
+  cardDescription: "Get 1 coin from the bank on anyone's turn",
+  action: () => {
+    playersArr.forEach(player => {
+      let playerObj = ref.players[player]
+      if(playerObj.cards.river){
+        let numCards = playerObj.cards.river
+        playerObj.money += numCards //is this a proper way to update the firebase database?
+      }
+    })
+  },
   imgURL: ''
 };
 export const bakery = {
@@ -24,6 +38,12 @@ export const bakery = {
   cost: 1,
   industry: 'building',
   cardDescription: "Get 1 coin from the bank, on your turn only",
+  action: () => {
+    if (currentTurn.cards.bakery){
+      let numCards = currentTurn.cards.bakery
+      currentTurn.money += numCards //is this a proper way to update the firebase database?
+    }
+  },
   imgURL: ''
 };
 export const cafe = {
@@ -31,6 +51,22 @@ export const cafe = {
   cost: 2,
   industry: 'mug',
   cardDescription: "Get 1 coin from the player who rolled the dice",
+  action: () => {
+    playersArr.forEach(player => {
+      var sum = 0
+      if (player !== ref.turn) {
+        let playerObj = ref.players[player]
+        if (playerObj.cards.cafe){
+          let numcards = playerObj.cards.cafe
+          playerObj.money += numCards //is this a proper way to update the firebase database?
+          sum += numCards
+        }
+      }
+      if (currentTurn.money - sum >= 0){
+        currentTurn.money -= sum //is this a proper way to update the firebase database?
+      } else { currentTurn.money = 0  } //is this a proper way to update the firebase database?
+    })
+  },
   imgURL: ''
 };
 export const convenienceStore = {
@@ -38,6 +74,12 @@ export const convenienceStore = {
   cost: 2,
   industry: 'building',
   cardDescription: "Get 3 coins from the bank, on your turn only",
+  action: () => {
+    if (currentTurn.cards.convenienceStore){
+      let numCards = currentTurn.cards.convenienceStore
+      currentTurn.money += numCards * 3 //is this a proper way to update the firebase database?
+    }
+  },
   imgURL: ''
 };
 export const museum = {
@@ -45,6 +87,15 @@ export const museum = {
   cost: 3,
   industry: 'gear',
   cardDescription: "Get 1 coin from the bank, on anyone's turn",
+  action: () => {
+    playersArr.forEach(player => {
+      let playerObj = ref.players[player]
+      if (playerObj.cards.museum){
+        let numCards = playerObj.cards.museum
+        playerObj.money += numCards //is this a proper way to update the firebase database?
+      }
+    })
+  },
   imgURL: ''
 };
 export const businessCenter = {
@@ -59,13 +110,29 @@ export const stadium = {
   cost: 6,
   industry: 'antenna',
   cardDescription: "Get 2 coins from all players, on your turn only",
+  action: () => {
+    let sum = 0
+    playersArr.forEach(player => {
+      if (player !== ref.turn){
+        let playerObj = ref.players[player]
+        if (playerObj.money >= 2) {
+          sum += 2
+          playerObj.money -= 2 //is this a proper way to update the firebase database?
+        } else {
+          sum += playerObj.money
+          playerObj.money = 0 //is this a proper way to update the firebase database?
+        }
+      }
+      currentTurn.money += sum //is this a proper way to update the firebase database?
+    })
+  },
   imgURL: ''
 };
 export const tvStation = {
   rollValue: 6,
   cost: 7,
   industry: 'antenna',
-  cardDescription: "Take 5 coins from anny one player, on your turn only",
+  cardDescription: "Take 5 coins from any one player, on your turn only",
   imgURL: ''
 };
 export const powerPlant = {
