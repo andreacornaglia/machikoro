@@ -1,6 +1,6 @@
 import {ref} from '../firebase'
 
-let playersArr = Object.keys(ref.players) //should give only player names (not entire obj)
+let playersArr = Object.keys(ref.players) //should give only player property names (not entire obj)
 let currentTurn = ref.players[ref.turn] //should give the entire current player object
 
 export const farmersMarket = {
@@ -52,20 +52,20 @@ export const cafe = {
   industry: 'mug',
   cardDescription: "Get 1 coin from the player who rolled the dice",
   action: () => {
+    let sum = 0
     playersArr.forEach(player => {
-      var sum = 0
       if (player !== ref.turn) {
         let playerObj = ref.players[player]
         if (playerObj.cards.cafe){
-          let numcards = playerObj.cards.cafe
+          let numCards = playerObj.cards.cafe
           playerObj.money += numCards //is this a proper way to update the firebase database?
           sum += numCards
         }
       }
-      if (currentTurn.money - sum >= 0){
-        currentTurn.money -= sum //is this a proper way to update the firebase database?
-      } else { currentTurn.money = 0  } //is this a proper way to update the firebase database?
     })
+    if (currentTurn.money - sum >= 0){
+      currentTurn.money -= sum //is this a proper way to update the firebase database?
+    } else { currentTurn.money = 0  } //is this a proper way to update the firebase database?
   },
   imgURL: ''
 };
@@ -140,6 +140,13 @@ export const powerPlant = {
   cost: 5,
   industry: 'factory',
   cardDescription: "Get 3 coins from the bank for each [cow icon] establishment that you own, on your turn only",
+  action: () => {
+    let numCards
+    if (currentTurn.cards.river) { //river is the only card type with the cow icon
+      numCards = currentTurn.cards.river
+      currentTurn.money += numCards * 3 //is this a proper way to update the firebase database?
+    }
+  },
   imgURL: ''
 };
 export const touristBus = {
@@ -147,6 +154,16 @@ export const touristBus = {
   cost: 3,
   industry: 'factory',
   cardDescription: "Get 3 coins from the bank for each [gear icon] establishment that you own. On your turn only",
+  action: () => {
+    let numCards = 0
+    if (currentTurn.cards.museum) { //museum and theater are the only card types with gear icon
+      numCards += currentTurn.cards.museum
+    }
+    if (currentTurn.cards.theater) {
+      numCards += currentTurn.cards.theater
+    }
+      currentTurn.money += numCards * 3 //is this a proper way to update the firebase database?
+  },
   imgURL: ''
 };
 export const theater = {
@@ -154,6 +171,15 @@ export const theater = {
   cost: 6,
   industry: 'gear',
   cardDescription: "Get 5 coins from the bank, on anyone's turn",
+  action: () => {
+    playersArr.forEach(player => {
+      let playerObj = ref.players[player]
+      if (playerObj.cards.theater){
+        let numCards = playerObj.cards.theater
+        playerObj.money += numCards * 5 //is this a proper way to update the firebase database?
+      }
+    })
+  },
   imgURL: ''
 };
 export const bodega = {
@@ -161,6 +187,22 @@ export const bodega = {
   cost: 3,
   industry: 'mug',
   cardDescription: "Get 2 coins from the player who rolled the dice",
+  action: () => {
+    let sum = 0
+    playersArr.forEach(player => {
+      if (player !== ref.turn) {
+        let playerObj = ref.players[player]
+        if (playerObj.cards.bodega){
+          let numCards = playerObj.cards.bodega
+          playerObj.money += numCards * 2 //is this a proper way to update the firebase database?
+          sum += numCards * 2
+        }
+      }
+    })
+    if (currentTurn.money - sum >= 0){
+      currentTurn.money -= sum //is this a proper way to update the firebase database?
+    } else { currentTurn.money = 0  } //is this a proper way to update the firebase database?
+  },
   imgURL: ''
 };
 export const wineShop = {
@@ -168,6 +210,15 @@ export const wineShop = {
   cost: 3,
   industry: 'wheat',
   cardDescription: "Get 3 coins from the bank,on anyone's turn",
+  action: () => {
+    playersArr.forEach(player => {
+      let playerObj = ref.players[player]
+      if (playerObj.cards.wineShop){
+        let numCards = playerObj.cards.wineShop
+        playerObj.money += numCards * 3 //is this a proper way to update the firebase database?
+      }
+    })
+  },
   imgURL: ''
 };
 export const restaurant = {
@@ -175,6 +226,16 @@ export const restaurant = {
   cost: 2,
   industry: 'fruit',
   cardDescription: "Get 2 coins from the bank for each [wheat icon] establishment that you own. On your turn only",
+  action: () => {
+    let numCards = 0
+    if (currentTurn.cards.farmersMarket) { //farmersMarket and wine are the only card types with wheat icon
+      numCards += currentTurn.cards.farmersMarket
+    }
+    if (currentTurn.cards.wineShop) {
+      numCards += currentTurn.cards.wineShop
+    }
+    currentTurn.money += numCards * 2 //is this a proper way to update the firebase database?
+  },
   imgURL: ''
 };
 
