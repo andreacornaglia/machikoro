@@ -20,23 +20,23 @@
   padding-left: 10px; }
 
 .col-xs-5ths {
-  width: 20%;
-  float: left; }
+  width: 20% !important;
+  float: left !important; }
 
 @media (min-width: 768px) {
   .col-sm-5ths {
-    width: 20%;
-    float: left; } }
+    width: 20% !important;
+    float: left !important; } }
 
 @media (min-width: 992px) {
   .col-md-5ths {
-    width: 20%;
-    float: left; } }
+    width: 20% !important;
+    float: left !important; } }
 
 @media (min-width: 1200px) {
   .col-lg-5ths {
-    width: 20%;
-    float: left; } }
+    width: 20% !important;
+    float: left !important; } }
 
 .card-cont .card-tooltip {
   visibility: hidden;
@@ -49,11 +49,12 @@
 .carousel-container {
   margin: 0 auto;
   padding: 30px;
-  width: 70%;
-  /*height: 200px; */
+  width: 60%;
+  height: 30vh;
   background-color: white;
   float: left;
-  border: 3px solid black; }
+  border-top: 3px solid black;
+  vertical-align: middle; }
 
 .center .slick-center h1 {
   color: white;
@@ -70,26 +71,37 @@
 
 div .content-container .slick-slide .slick-active .slick-center {
   background-color: white;
-  /*margin-left: -50px;
-  margin-right: -50px;*/
-  width: 100px;
+  width: 100%;
   margin-left: 10px;
-  margin-right: 10px;
-  /*height: 90%;*/
-  /*width: 150px;
-  height: 150px;*/ }
+  margin-right: 10px; }
 
-/*.slide-track {
-  background-color: white;
-  padding: 5px;
-  /*margin: auto;*/
 .slide-content {
-  /*background-color: #90CAF9;*/
-  /*padding: 20px;*/
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+  background-image: url("./images/coney-island.png");
+  width: 90%;
+  height: 20vh;
+  background-size: cover; }
+
+.summaryContainer {
+  width: 40%;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  margin: auto;
+  float: right;
+  text-align: center;
+  height: 30vh;
+  background-color: white; }
+
+  .summaryContainer h4 {
+    display: inline-block;
+    margin-left: 15%;
+    margin-right: 15%; }
+
+.slide-content {
   margin-left: 5px;
   margin-right: 5px;
-  /*margin-left: -50px;
-  margin-right: -50px;*/
   display: block;
   text-align: center;
   background-image: url("./images/coneyIsland.png");
@@ -98,16 +110,44 @@ div .content-container .slick-slide .slick-active .slick-center {
   background-size: cover;
   background-repeat: no-repeat;
   align-content: center;
-  /*margin: auto 5px;*/ }
+  }
 
 .unlockCards {
   display: inline-block;
   border-color: black;
-  height: 80px;
+  height: 140px;
   width: 20%;
   background-size: cover;
   margin: 10px 10px;
-  background-image: url("./images/coneyIsland.png"); }
+  padding-bottom: 20px; }
+  .unlockCards .card-cont:hover .card-tooltip {
+    visibility: visible; }
+
+#coney-island {
+  background-image: url("./images/coney-island.png");
+  filter: grayscale(100%); }
+
+#subway {
+  background-image: url("./images/subway.png");
+  filter: grayscale(100%); }
+
+#radio-tower {
+  background-image: url("./images/radio-tower.png");
+  filter: grayscale(100%); }
+
+#subway {
+  background-image: url("./images/subway.png");
+  filter: grayscale(100%); }
+
+#wine-shop {
+  background-image: url("./images/wine-shop.png"); }
+
+#self-dashboard {
+  position: fixed;
+  bottom: 0px;
+  margin-bottom: 0px;
+  left: 0px;
+  right: 0px; }
 
 .summaryContainer {
   width: 30%;
@@ -152,3 +192,4 @@ div .content-container .slick-slide .slick-active .slick-center {
 
 .opp-cards {
   float: left; }
+
