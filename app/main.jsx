@@ -11,11 +11,8 @@ import WhoAmI from './components/WhoAmI'
 import {ref} from './firebase'
 import {settingGame} from './reducers/game'
 
-// import TotalCards from './components/TotalCards'
-// import SelfCarousel from './components/SelfCarousel'
-// import CardGrid from './components/CardGrid'
-
 import GamePage from './components/GamePage'
+import Opponent from './components/Opponent'
 
 import AppContainer from './containers/AppContainer'
 
@@ -25,27 +22,13 @@ const setGame = () => {
   })
 }
 
-// ref.on('value', snap => {
-//   store.dispatch(settingGame(snap.val()))
-// })
-
-
-
-console.log('ref', ref)
-
-let num = 99
-// setInterval(() => {
-//   ref.child('cards').update({
-//   'bakery': num++
-//   })
-// }, 1000)
-
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
         <IndexRedirect to="/game" />
         <Route path="/game" component={GamePage} onEnter={setGame}/>
+        <Route path="/opponent" component={Opponent} onEnter={setGame}/>
       </Route>
     </Router>
   </Provider>,

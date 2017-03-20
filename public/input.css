@@ -93,10 +93,24 @@ div .content-container .slick-slide .slick-active .slick-center {
   text-align: center;
   height: 30vh;
   background-color: white; }
+
   .summaryContainer h4 {
     display: inline-block;
     margin-left: 15%;
     margin-right: 15%; }
+
+.slide-content {
+  margin-left: 5px;
+  margin-right: 5px;
+  display: block;
+  text-align: center;
+  background-image: url("./images/coneyIsland.png");
+  width: 90%;
+  height: 20vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-content: center;
+  }
 
 .unlockCards {
   display: inline-block;
@@ -134,3 +148,48 @@ div .content-container .slick-slide .slick-active .slick-center {
   margin-bottom: 0px;
   left: 0px;
   right: 0px; }
+
+.summaryContainer {
+  width: 30%;
+  border: 3px solid black;
+  margin: auto;
+  float: right;
+  text-align: center; }
+
+.summaryContainer h4 {
+  display: inline-block;
+  margin-left: 15%;
+  margin-right: 15%; }
+
+#coneyIsland {
+  background-image: url("./images/coneyIsland.png"); }
+
+#opponent {
+  display: inline-block; }
+
+#avatar {
+  background-image: url("./piggy.png");
+  width: 100px;
+  height: 100px;
+  border-radius: 25px;
+  background-size: cover;
+  margin: 0 auto; }
+
+#unlockables img, #opp-extension img {
+  width: 50px;
+  height: 50px; }
+
+#opp-summary, #opp-extension {
+  width: 250px;
+  height: 350px;
+  border: 1px solid black;
+  padding: 20px;
+  text-align: center;
+  float: left; }
+
+#opp-extension {
+  display: none; }
+
+.opp-cards {
+  float: left; }
+
