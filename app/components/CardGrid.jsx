@@ -1,19 +1,36 @@
 import React, { Component } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Tooltip } from 'react-bootstrap';
+import {cardArray} from '../../db/cards';
 
-const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
-export const CardGrid = () => (
-  <div className="game-grid">
-    {array.forEach(element => {
-      console.log(element)
-      return (
-        <Col lg={2} id='Farm'>
-          <img src="./piggy.png" className='card'/>
-        </Col>
-      )
-    })}
-  </div>
-)
-
-export default CardGrid
+export default class CardGrid extends Component {
+  constructor(){
+    super()
+    this.onClick = this.onClick.bind(this)
+  }
+  
+  onClick(evt){
+    console.log('onClick on:', evt)
+  }
+  
+  render() {
+    return (
+    <div className="game-grid">
+      {cardArray.map((element, index) => {
+        console.log(element)
+        return (
+          <Col lg={4} className="col-lg-5ths card-cont" key={index} onClick={(element) => this.onClick(element)}>
+            <Tooltip placement="top" className="in card-tooltip" id={index}>
+              <p>Roll value: {element.rollValue}</p>
+              <p>Cost: {element.cost}</p>
+              <p>Industry: {element.industry}</p>
+              <p>{element.cardDescription}</p>
+            </Tooltip>
+            <img src={element.imgURL} className='card'/>
+          </Col>
+        )
+      })}
+    </div>
+    )
+  }
+}

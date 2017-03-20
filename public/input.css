@@ -1,4 +1,47 @@
-.game-grid .col-half-offset {
-  margin-left: 4.166666667%; }
-  .game-grid .col-half-offset .card {
+.game-grid {
+  width: 60%;
+  margin-right: 20%;
+  margin-left: 20%;
+  margin-top: 40px;
+  background: #969595;
+  display: inline-block; }
+  .game-grid .col-half-offset {
+    margin-left: 4.166666667%; }
+  .game-grid .card {
     width: 100%; }
+
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px; }
+
+.col-xs-5ths {
+  width: 20%;
+  float: left; }
+
+@media (min-width: 768px) {
+  .col-sm-5ths {
+    width: 20%;
+    float: left; } }
+
+@media (min-width: 992px) {
+  .col-md-5ths {
+    width: 20%;
+    float: left; } }
+
+@media (min-width: 1200px) {
+  .col-lg-5ths {
+    width: 20%;
+    float: left; } }
+
+.card-cont .card-tooltip {
+  visibility: hidden;
+  margin-top: -20px;
+  text-align: left; }
+
+.card-cont:hover .card-tooltip {
+  visibility: visible; }
