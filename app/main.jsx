@@ -13,20 +13,9 @@ import {settingGame} from './reducers/game'
 import TotalCards from './components/TotalCards'
 import SelfCarousel from './components/SelfCarousel'
 import SelfTest from './components/SelfTest'
+import CardGrid from './components/CardGrid'
 
 import AppContainer from './containers/AppContainer'
-
-// const ExampleApp = connect(
-//   ({ auth }) => ({ user: auth })
-// ) (
-//   ({ user, children }) =>
-//     <div>
-//       <nav>
-//         {user ? <WhoAmI/> : <Login/>}
-//       </nav>
-//       {children}
-//     </div>
-// )
 
 const setGame = () => {
   ref.on('value', snap => {
@@ -53,10 +42,8 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
-        <IndexRedirect to="/jokes" />
-        <Route path="/jokes" component={TotalCards} onEnter={setGame} />
-        <Route path="/test" component={SelfCarousel} />
-        <Route path="/testSummary" component={SelfTest} />
+        <IndexRedirect to="/game" />
+        <Route path="/game" component={CardGrid} onEnter={setGame}/>
       </Route>
     </Router>
   </Provider>,
