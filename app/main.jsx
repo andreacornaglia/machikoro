@@ -27,13 +27,20 @@ import AppContainer from './containers/AppContainer'
 //     </div>
 // )
 
-ref.on('value', snap => {
-  store.dispatch(settingGame(snap.val()))
-})
+const setGame = () => {
+  ref.on('value', snap => {
+    store.dispatch(settingGame(snap.val()))
+  })
+}
+
+// ref.on('value', snap => {
+//   store.dispatch(settingGame(snap.val()))
+// })
+
 
 
 console.log('ref', ref)
-//onGameEnter listen to firebase
+
 let num = 99
 // setInterval(() => {
 //   ref.child('cards').update({
@@ -46,7 +53,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
         <IndexRedirect to="/jokes" />
-        <Route path="/jokes" component={TotalCards} />
+        <Route path="/jokes" component={TotalCards} onEnter={setGame} />
         <Route path="/test" component={SelfCarousel} />
       </Route>
     </Router>
