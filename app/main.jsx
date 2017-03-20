@@ -11,7 +11,8 @@ import WhoAmI from './components/WhoAmI'
 import {ref} from './firebase'
 import {settingGame} from './reducers/game'
 import TotalCards from './components/TotalCards'
-import SelfCarousel from './components/selfCarousel'
+import SelfCarousel from './components/SelfCarousel'
+import SelfTest from './components/SelfTest'
 
 import AppContainer from './containers/AppContainer'
 
@@ -55,6 +56,7 @@ render (
         <IndexRedirect to="/jokes" />
         <Route path="/jokes" component={TotalCards} onEnter={setGame} />
         <Route path="/test" component={SelfCarousel} />
+        <Route path="/testSummary" component={SelfTest} />
       </Route>
     </Router>
   </Provider>,

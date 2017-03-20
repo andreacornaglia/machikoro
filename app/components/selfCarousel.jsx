@@ -16,15 +16,17 @@ class Carousel extends Component {
        useCSS: true,
        cssEase: true,
        focusOnSelect: true,
-       speed: 500,
+       speed: 500
+      //  variableWidth: true
      }
     return (
       <div className="carousel-container">
         <Slider {...settings}>
-          <div>
-            <div className="slide-content"><h1>1</h1></div>
+          <div className="content-container">
+            <div className="slide-content" id="subwayStation"></div>
+            {/*<div className="slide-content"></div>*/}
           </div>
-          <div>
+          {/*<div>
             <div className="slide-content"><h1>2</h1></div>
           </div>
           <div>
@@ -32,7 +34,7 @@ class Carousel extends Component {
           </div>
           <div>
             <div className="slide-content"><h1>4</h1></div>
-          </div>
+          </div>*/}
         </Slider>
       </div>
     )
