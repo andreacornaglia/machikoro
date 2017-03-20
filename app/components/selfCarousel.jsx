@@ -8,9 +8,10 @@ class Carousel extends Component {
        className: 'center',
        centerMode: true,
        centerPadding: '20px',
+       adaptiveHeight: true,
        infinite: true,
        slidesToShow: 4,
-       slidesToScroll: 2,
+       slidesToScroll: 1,
        arrows: true,
        useCSS: true,
        cssEase: true,
@@ -20,16 +21,16 @@ class Carousel extends Component {
     return (
       <div className="carousel-container">
         <Slider {...settings}>
-          <div className="slide-track">
+          <div>
             <div className="slide-content"><h1>1</h1></div>
           </div>
-          <div className="slide-track">
+          <div>
             <div className="slide-content"><h1>2</h1></div>
           </div>
-          <div className="slide-track">
+          <div>
             <div className="slide-content"><h1>3</h1></div>
           </div>
-          <div className="slide-track">
+          <div>
             <div className="slide-content"><h1>4</h1></div>
           </div>
         </Slider>
