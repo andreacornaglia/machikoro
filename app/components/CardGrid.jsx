@@ -19,7 +19,9 @@ export default class CardGrid extends Component {
       {cardArray.map((element, index) => {
         console.log(element)
         return (
-          <Col lg={4} className="col-lg-5ths card-cont" key={index} onClick={(element) => this.onClick(element)}>
+          <Col lg={4} className="col-lg-5ths card-cont" key={index} onClick={evt => {evt.preventDefault()
+              console.log('this is the element clicked', element)
+              }}>
             <Tooltip placement="top" className="in card-tooltip" id={index}>
               <p>Roll value: {element.rollValue}</p>
               <p>Cost: {element.cost}</p>
