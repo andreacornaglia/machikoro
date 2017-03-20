@@ -44,7 +44,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
         <IndexRedirect to="/game" />
-        <Route path="/game" component={Opponent} onEnter={setGame}/>
+        <Route path="/game" component={CardGrid} onEnter={setGame}/>
       </Route>
     </Router>
   </Provider>,
