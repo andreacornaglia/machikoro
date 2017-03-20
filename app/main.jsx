@@ -11,27 +11,26 @@ import WhoAmI from './components/WhoAmI'
 import {ref} from './firebase'
 import {settingGame} from './reducers/game'
 import TotalCards from './components/TotalCards'
+import SelfCarousel from './components/SelfCarousel'
+import SelfTest from './components/SelfTest'
 import CardGrid from './components/CardGrid'
 
-const ExampleApp = connect(
-  ({ auth }) => ({ user: auth })
-) (
-  ({ user, children }) =>
-    <div>
-      <nav>
-        {user ? <WhoAmI/> : <Login/>}
-      </nav>
-      {children}
-    </div>
-)
+import AppContainer from './containers/AppContainer'
 
-ref.on('value', snap => {
-  store.dispatch(settingGame(snap.val()))
-})
+const setGame = () => {
+  ref.on('value', snap => {
+    store.dispatch(settingGame(snap.val()))
+  })
+}
+
+// ref.on('value', snap => {
+//   store.dispatch(settingGame(snap.val()))
+// })
+
 
 
 console.log('ref', ref)
-//onGameEnter listen to firebase
+
 let num = 99
 // setInterval(() => {
 //   ref.child('cards').update({
@@ -42,9 +41,9 @@ let num = 99
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/" component={AppContainer}>
         <IndexRedirect to="/game" />
-        <Route path="/game" component={CardGrid} />
+        <Route path="/game" component={CardGrid} onEnter={setGame}/>
       </Route>
     </Router>
   </Provider>,

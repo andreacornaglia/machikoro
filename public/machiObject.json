@@ -17,6 +17,7 @@
       "wineShop": 6,
       "restaurant": 6
     },
+    "diceValue": 1,
     "turn": "playerOne",
     "turnOrder":{
       "first": "playerOne",
@@ -29,7 +30,7 @@
           "farmersMarket": 1,
           "bakery": 1
         },
-        "money": 0,
+        "money": 3,
         "activatedCards": {
           "radioTower": false,
           "shoppingMall": false,
@@ -43,7 +44,7 @@
           "farmersMarket": 1,
           "bakery": 1
         },
-        "money": 0,
+        "money": 3,
         "activatedCards": {
           "radioTower": false,
           "shoppingMall": false,
