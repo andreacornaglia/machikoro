@@ -10,31 +10,23 @@ class Carousel extends Component {
        centerPadding: '20px',
        adaptiveHeight: true,
        infinite: true,
-       slidesToShow: 4,
+       slidesToShow: 6,
        slidesToScroll: 1,
        arrows: true,
        useCSS: true,
        cssEase: true,
        focusOnSelect: true,
        speed: 500
-      //  variableWidth: true
      }
     return (
       <div className="carousel-container">
         <Slider {...settings}>
           <div className="content-container">
             <div className="slide-content" id="subwayStation"></div>
-            {/*<div className="slide-content"></div>*/}
-          </div>
-          {/*<div>
-            <div className="slide-content"><h1>2</h1></div>
           </div>
           <div>
-            <div className="slide-content"><h1>3</h1></div>
+            <div className="slide-content"></div>
           </div>
-          <div>
-            <div className="slide-content"><h1>4</h1></div>
-          </div>*/}
         </Slider>
       </div>
     )

@@ -3,8 +3,9 @@
   padding: 30px;
   width: 70%;
   /*height: 200px; */
-  background-color: gray;
+  background-color: white;
   float: left;
+  border: 3px solid black;
 }
 
 .center .slick-center h1 {
@@ -44,16 +45,16 @@ div .content-container .slick-slide .slick-active .slick-center {
 .slide-content {
   /*background-color: #90CAF9;*/
   /*padding: 20px;*/
-  /*margin-left: 5px;
-  margin-right: 5px;*/
+  margin-left: 5px;
+  margin-right: 5px;
   /*margin-left: -50px;
   margin-right: -50px;*/
   display: block;
   text-align: center;
   background-image: url("./images/coneyIsland.png");
-  width: 80%;
+  width: 90%;
   height: 20vh;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   align-content: center;
   /*margin: auto 5px;*/
@@ -71,7 +72,7 @@ div .content-container .slick-slide .slick-active .slick-center {
 
 .summaryContainer {
   width: 30%;
-  border: 5px solid black;
+  border: 3px solid black;
   margin: auto;
   float: right;
   text-align: center;
