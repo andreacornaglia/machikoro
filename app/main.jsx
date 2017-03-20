@@ -5,15 +5,17 @@ import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 
 import store from './store'
-import Jokes from './components/Jokes'
+
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import {ref} from './firebase'
 import {settingGame} from './reducers/game'
-import TotalCards from './components/TotalCards'
-import SelfCarousel from './components/SelfCarousel'
-import SelfTest from './components/SelfTest'
-import CardGrid from './components/CardGrid'
+
+// import TotalCards from './components/TotalCards'
+// import SelfCarousel from './components/SelfCarousel'
+// import CardGrid from './components/CardGrid'
+
+import GamePage from './components/GamePage'
 
 import AppContainer from './containers/AppContainer'
 
@@ -43,7 +45,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
         <IndexRedirect to="/game" />
-        <Route path="/game" component={CardGrid} onEnter={setGame}/>
+        <Route path="/game" component={GamePage} onEnter={setGame}/>
       </Route>
     </Router>
   </Provider>,

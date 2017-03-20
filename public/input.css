@@ -20,23 +20,23 @@
   padding-left: 10px; }
 
 .col-xs-5ths {
-  width: 20%;
-  float: left; }
+  width: 20% !important;
+  float: left !important; }
 
 @media (min-width: 768px) {
   .col-sm-5ths {
-    width: 20%;
-    float: left; } }
+    width: 20% !important;
+    float: left !important; } }
 
 @media (min-width: 992px) {
   .col-md-5ths {
-    width: 20%;
-    float: left; } }
+    width: 20% !important;
+    float: left !important; } }
 
 @media (min-width: 1200px) {
   .col-lg-5ths {
-    width: 20%;
-    float: left; } }
+    width: 20% !important;
+    float: left !important; } }
 
 .card-cont .card-tooltip {
   visibility: hidden;
@@ -45,3 +45,92 @@
 
 .card-cont:hover .card-tooltip {
   visibility: visible; }
+
+.carousel-container {
+  margin: 0 auto;
+  padding: 30px;
+  width: 60%;
+  height: 30vh;
+  background-color: white;
+  float: left;
+  border-top: 3px solid black;
+  vertical-align: middle; }
+
+.center .slick-center h1 {
+  color: white;
+  opacity: 1;
+  transform: scale(1.08); }
+
+.center h1 {
+  color: black;
+  opacity: 0.8;
+  transition: all 300ms ease; }
+
+.center .slick-prev:before, .center .slick-next:before {
+  color: #2962FF; }
+
+div .content-container .slick-slide .slick-active .slick-center {
+  background-color: white;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px; }
+
+.slide-content {
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+  background-image: url("./images/coney-island.png");
+  width: 90%;
+  height: 20vh;
+  background-size: cover; }
+
+.summaryContainer {
+  width: 40%;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  margin: auto;
+  float: right;
+  text-align: center;
+  height: 30vh;
+  background-color: white; }
+  .summaryContainer h4 {
+    display: inline-block;
+    margin-left: 15%;
+    margin-right: 15%; }
+
+.unlockCards {
+  display: inline-block;
+  border-color: black;
+  height: 140px;
+  width: 20%;
+  background-size: cover;
+  margin: 10px 10px;
+  padding-bottom: 20px; }
+  .unlockCards .card-cont:hover .card-tooltip {
+    visibility: visible; }
+
+#coney-island {
+  background-image: url("./images/coney-island.png");
+  filter: grayscale(100%); }
+
+#subway {
+  background-image: url("./images/subway.png");
+  filter: grayscale(100%); }
+
+#radio-tower {
+  background-image: url("./images/radio-tower.png");
+  filter: grayscale(100%); }
+
+#subway {
+  background-image: url("./images/subway.png");
+  filter: grayscale(100%); }
+
+#wine-shop {
+  background-image: url("./images/wine-shop.png"); }
+
+#self-dashboard {
+  position: fixed;
+  bottom: 0px;
+  margin-bottom: 0px;
+  left: 0px;
+  right: 0px; }
