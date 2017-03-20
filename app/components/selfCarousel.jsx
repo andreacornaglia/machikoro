@@ -1,29 +1,38 @@
 import React, { Component } from 'react';
-import CenterMode from 'react-slick'
+import Slider from 'react-slick'
 import {connect} from 'react-redux'
 
 class Carousel extends Component {
   render(){
-    var settings = {
+    const settings = {
        className: 'center',
        centerMode: true,
-       centerPadding: '60px',
+       centerPadding: '20px',
        infinite: true,
-       slidesToShow: 2,
-       slidesToScroll: 1,
-       swipeToSlide: true,
+       slidesToShow: 4,
+       slidesToScroll: 2,
        arrows: true,
        useCSS: true,
-       focusOnSelect: true
+       cssEase: true,
+       focusOnSelect: true,
+       speed: 500,
      }
     return (
-      <div className="container">
-        <CenterMode {...settings}>
-          <div><h1>1</h1></div>
-          <div><h1>2</h1></div>
-          <div><h1>3</h1></div>
-          <div><h1>4</h1></div>
-        </CenterMode>
+      <div className="carousel-container">
+        <Slider {...settings}>
+          <div className="slide-track">
+            <div className="slide-content"><h1>1</h1></div>
+          </div>
+          <div className="slide-track">
+            <div className="slide-content"><h1>2</h1></div>
+          </div>
+          <div className="slide-track">
+            <div className="slide-content"><h1>3</h1></div>
+          </div>
+          <div className="slide-track">
+            <div className="slide-content"><h1>4</h1></div>
+          </div>
+        </Slider>
       </div>
     )
   }
