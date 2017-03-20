@@ -112,19 +112,23 @@ export const cardArray = [farmersMarket, river, bakery, cafe, convenienceStore, 
 
 export const radioTower = {
   cost: 22,
-  cardDescription: 'Once Every Turn You can Choose To Re-Roll Your Dice'
+  cardDescription: 'Once Every Turn You can Choose To Re-Roll Your Dice',
+  imgURL: ''
 };
 export const shoppingMall = {
   cost: 10,
-  cardDescription: 'If you roll doubles, take another turn after this one'
+  cardDescription: 'If you roll doubles, take another turn after this one',
+  imgURL: ''
 };
 export const coneyIsland = {
   cost: 16,
-  cardDescription: 'Each of your [mug icon] and [building icon] establishments earn +1 coin'
+  cardDescription: 'Each of your [mug icon] and [building icon] establishments earn +1 coin',
+  imgURL: ''
 };
 export const subwayStation = {
   cost: 4,
-  cardDescription: 'You may roll 1 or 2 dice'
+  cardDescription: 'You may roll 1 or 2 dice',
+  imgURL: ''
 };
 
 export const unlockableArray = [radioTower, shoppingMall, coneyIsland, subwayStation]
