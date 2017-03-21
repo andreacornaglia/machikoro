@@ -61,6 +61,17 @@ body{
   visibility: visible;
 }
 
+// DICE VIEW COMPONENT
+.diceContainer {
+  text-align: center;
+  border: 1px solid black;
+  width: 80%;
+  padding: 10px;
+  float: left;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
 
 // CAROUSEL CONTAINER
 
@@ -167,7 +178,7 @@ div .content-container .slick-slide .slick-active .slick-center {
 
 
 #self-dashboard {
- 
+
 }
 
 //OPPONENT COMPONENT
