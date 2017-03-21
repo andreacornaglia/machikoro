@@ -32,7 +32,7 @@ export default class GamePage extends Component {
             <Opponent id='oponent-right'/>
           </Col>
         </div>
-        <div className="row">
+        <div className="row game-part-opponent">
           <SelfDashboard/>
         </div>
       </div>
