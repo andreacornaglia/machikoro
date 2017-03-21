@@ -28,7 +28,6 @@ render (
       <Route path="/" component={AppContainer}>
         <IndexRedirect to="/game" />
         <Route path="/game" component={GamePage} onEnter={setGame}/>
-        <Route path="/opponent" component={Opponent} onEnter={setGame}/>
       </Route>
     </Router>
   </Provider>,
