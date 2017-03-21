@@ -57,6 +57,15 @@ body {
 .card-cont:hover .card-tooltip {
   visibility: visible; }
 
+.diceContainer {
+  text-align: center;
+  border: 1px solid black;
+  width: 80%;
+  padding: 10px;
+  float: left;
+  margin-right: 20px;
+  margin-left: 20px; }
+
 .carousel-container {
   margin: 0 auto;
   padding: 20px;

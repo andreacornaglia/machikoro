@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SelfDashboard from './SelfDashboard';
 import CardGrid from './CardGrid';
 import Opponent from './Opponent';
+import DiceViewContainer from '../containers/DiceViewContainer';
 import { Col, Row, Tooltip } from 'react-bootstrap';
 
 export default class GamePage extends Component {
@@ -13,7 +14,12 @@ export default class GamePage extends Component {
           <Col lg={4}>
             <Opponent id='oponent-top'/>
           </Col>
-          <Col lg={4}/>
+
+          <Col lg={2}/>
+
+          <Col lg={2}>
+            <DiceViewContainer />
+          </Col>
         </div>
         <div className="row game-page-central">
           <Col lg={2}>
