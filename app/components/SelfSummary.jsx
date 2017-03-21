@@ -20,7 +20,7 @@ export default class SelfSummary extends Component {
                 <br></br>
                 {unlockableArray.map((card, index) => {
                   return (
-                    <Col lg={2.5} className="unlockCards card-cont" id={card.name} key={index} onClick={evt => {evt.preventDefault()
+                    <Col lg={2.5} className="unlockCards card-cont" id={card.refName} key={index} onClick={evt => {evt.preventDefault()
                         console.log('this is the element clicked', card)
                         }}>
                         <Tooltip placement="top" className="in card-tooltip" id={index}>
