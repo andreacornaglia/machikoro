@@ -19,18 +19,20 @@ export default class Opponent extends Component{
 
   render(){
     const player = {
-      name: 'player1',
-      money: 100,
+      name: 'Player 1',
+      money: 10,
       unlocked: cardArray.slice(0, 4)
     }
     return (
       <div id="opponent" onClick = {this.handleOnClick}>
         <div id="opp-summary">
           <div id="avatar"></div>
-          <p>{player.name}</p>
-          <p>{player.money} coins</p>
-          <p>Unlocked cards: </p>
+          <div className="opp-details">
+            <p>{player.name}</p>
+            <p>{player.money} coins</p>
+          </div>
           <div id="unlockables">
+            <p>Unlocked cards: </p>
             {player.unlocked.map((card, index) => <img key={index} src={card.imgURL} />)}
           </div>
         </div>

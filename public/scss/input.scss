@@ -1,9 +1,11 @@
+body{
+  background-color: #eee !important;
+}
+
 .game-grid{
-  width: 60%;
-  margin-right: 20%;
-  margin-left: 20%;
-  margin-top: 40px;
-  background: #969595;
+  margin-top: 10px;
+  background: #eee;
+  border: 4px solid #eee;
   display: inline-block;
   .col-half-offset{
     margin-left: 4.166666667%;
@@ -67,9 +69,10 @@
   padding: 30px;
   width: 60%;
   height: 30vh;
-  background-color: white;
+  background-color: #eee;
   float: left;
-  border-top: 3px solid black;
+  border-top: 1px solid grey;
+  border-right: 1px solid grey;
   vertical-align: middle;
 }
 
@@ -110,18 +113,16 @@ div .content-container .slick-slide .slick-active .slick-center {
 // SUMMARY COMPONENT
 .summaryContainer {
   width: 40%;
-  border-top: 3px solid black;
-  border-left: 3px solid black;
+  padding: 20px;
   margin: auto;
   float: right;
-  text-align: center;
-  height: 30vh;
-  background-color: white;
-
-  h4 {
-    display: inline-block;
-    margin-left: 15%;
-    margin-right: 15%;
+  background-color: #eee;
+  float: left;
+  border-top: 1px solid grey;
+  img{
+    width: 50px;
+    height: 50px;
+    float: left;
   }
 }
 
@@ -164,23 +165,21 @@ div .content-container .slick-slide .slick-active .slick-center {
   background-image: url("./images/wine-shop.png");
 }
 
+
 #self-dashboard {
-  position: fixed;
-  bottom: 0px;
-  margin-bottom: 0px;
-  left:0px;
-  right:0px;
+ 
 }
 
 //OPPONENT COMPONENT
 #opponent {
   display: inline-block;
+  background: white;
 }
 
 #avatar {
   background-image: url("./piggy.png");
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 25px;
   background-size: cover;
   margin: 0 auto;
@@ -189,14 +188,31 @@ div .content-container .slick-slide .slick-active .slick-center {
 #unlockables img, #opp-extension img {
   width: 50px;
   height: 50px;
+  margin-right: 5px;
 }
 
 #opp-summary, #opp-extension {
-  width: 250px;
-  height: 350px;
-  border: 1px solid black;
-  padding: 20px;
-  text-align: center;
+  border: 1px solid grey;
+  padding: 10px;
+  float: left;
+}
+
+.row-top #opp-summary, #opp-extension {
+  height: 100px;
+  width: 500px;
+}
+
+.row-top #avatar{
+  float: left;
+}
+
+.row-top .opp-details{
+  float: left;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.row-top #unlockables{
   float: left;
 }
 
@@ -206,4 +222,16 @@ div .content-container .slick-slide .slick-active .slick-center {
 
 .opp-cards {
   float: left
+}
+
+#global-board{
+  width:100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.game-page-central #opponent{
+  margin-right: 20px;
+  margin-left: 20px;
+  height: 400px;
 }

@@ -15,9 +15,8 @@ export default class SelfSummary extends Component {
     render() {
         return (
             <div className="summaryContainer">
-                <h3>Summary</h3>
-                <h4>Name</h4>
-                <h4>Money</h4>
+                <img src='./piggy.png'/>
+                <h3>Andrea <span>$10</span></h3>
                 <br></br>
                 {unlockableArray.map((card, index) => {
                   return (
