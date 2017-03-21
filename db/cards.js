@@ -144,29 +144,29 @@ export const radioTower = {
   refName: 'radioTower',
   displayName: 'Radio Tower',
   cost: 22,
-  cardDescription: 'Once Every Turn You can Choose To Re-Roll Your Dice',
-  imgURL: ''
+  cardDescription: 'Once every turn you can choose to re-roll your dice',
+  imgURL: '/images/radio-tower.png'
 };
 export const shoppingMall = {
   refName: 'shoppingMall',
   displayName: 'Shopping Mall',
   cost: 10,
   cardDescription: 'If you roll doubles, take another turn after this one',
-  imgURL: ''
+  imgURL: '/images/radio-tower.png'
 };
 export const coneyIsland = {
   refName: 'coneyIsland',
   displayName: 'Coney Island',
   cost: 16,
-  cardDescription: 'Each of your [mug icon] and [building icon] establishments earn +1 coin',
-  imgURL: ''
+  cardDescription: 'Each of your ☕ and 🏢 establishments earn +1 coin',
+  imgURL: '/images/coney-island.png'
 };
 export const subwayStation = {
   refName: 'subwayStation',
   displayName: 'Subway Station',
   cost: 4,
   cardDescription: 'You may roll 1 or 2 dice',
-  imgURL: ''
+  imgURL: '/images/subway.png'
 };
 
 export const unlockableArray = [radioTower, shoppingMall, coneyIsland, subwayStation]

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import SelfCarousel from './SelfCarousel';
 import SelfSummary from './SelfSummary';
 
-export default class SelfTest extends Component {
+export default class SelfDashboard extends Component {
     render() {
         return (
-            <div>
+            <div id="self-dashboard">
                 <SelfCarousel />
                 <SelfSummary />
             </div>

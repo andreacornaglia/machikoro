@@ -6,26 +6,23 @@ class Carousel extends Component {
   render(){
     const settings = {
        className: 'center',
-       centerMode: true,
-       centerPadding: '20px',
        adaptiveHeight: true,
        infinite: true,
-       slidesToShow: 6,
+       slidesToShow: 5,
        slidesToScroll: 1,
        arrows: true,
        useCSS: true,
        cssEase: true,
-       focusOnSelect: true,
        speed: 500
      }
     return (
       <div className="carousel-container">
         <Slider {...settings}>
           <div className="content-container">
-            <div className="slide-content" id="subwayStation"></div>
+            <div className="slide-content" id="wine-shop"></div>
           </div>
-          <div>
-            <div className="slide-content"></div>
+          <div className="content-container">
+            <div className="slide-content" id="wine-shop"></div>
           </div>
         </Slider>
       </div>
