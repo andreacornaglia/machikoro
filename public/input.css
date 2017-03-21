@@ -110,23 +110,23 @@ div .content-container .slick-slide .slick-active .slick-center {
   .unlockCards .card-cont:hover .card-tooltip {
     visibility: visible; }
 
-#coney-island {
+#coneyIsland {
   background-image: url("./images/coney-island.png");
   filter: grayscale(100%); }
 
-#subway {
+#subwayStation {
   background-image: url("./images/subway.png");
   filter: grayscale(100%); }
 
-#radio-tower {
+#radioTower {
   background-image: url("./images/radio-tower.png");
   filter: grayscale(100%); }
 
-#subway {
+#subwayStation {
   background-image: url("./images/subway.png");
   filter: grayscale(100%); }
 
-#wine-shop {
+#wineShop {
   background-image: url("./images/wine-shop.png"); }
 
 #opponent {
