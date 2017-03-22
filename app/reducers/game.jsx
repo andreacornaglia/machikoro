@@ -2,7 +2,7 @@
 
 const reducer = (state=null, action) => {
   switch(action.type) {
-  case SET_GAME:
+  case 'SET_GAME':
     return action.game
   }
   return state

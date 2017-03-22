@@ -1,0 +1,245 @@
+body {
+  background-color: #fefefe !important;
+  width: 100%;
+  height: 100vh; }
+
+.game-grid {
+  margin-top: 10px;
+  background: #fefefe;
+  border: 4px solid #eee;
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.870588);
+  background-color: white;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+  border-radius: 2px;
+  z-index: 1; }
+  .game-grid .col-half-offset {
+    margin-left: 4.166666667%; }
+  .game-grid .card {
+    width: 100%; }
+
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px; }
+
+.col-xs-5ths {
+  width: 20% !important;
+  float: left !important; }
+
+@media (min-width: 768px) {
+  .col-sm-5ths {
+    width: 20% !important;
+    float: left !important; } }
+
+@media (min-width: 992px) {
+  .col-md-5ths {
+    width: 20% !important;
+    float: left !important; } }
+
+@media (min-width: 1200px) {
+  .col-lg-5ths {
+    width: 20% !important;
+    float: left !important; } }
+
+.card-cont .card-tooltip {
+  visibility: hidden;
+  margin-top: -20px;
+  text-align: left; }
+
+.card-cont:hover .card-tooltip {
+  visibility: visible; }
+
+.diceContainer {
+  text-align: center;
+  border: 1px solid black;
+  width: 80%;
+  padding: 10px;
+  float: left;
+  margin-right: 20px;
+  margin-left: 20px; }
+
+.carousel-container {
+  margin: 0 auto;
+  padding: 20px;
+  width: 70%;
+  height: 20vh;
+  float: left;
+  vertical-align: middle; }
+
+.center .slick-center h1 {
+  color: white;
+  opacity: 1;
+  transform: scale(1.08); }
+
+.center h1 {
+  color: black;
+  opacity: 0.8;
+  transition: all 300ms ease; }
+
+.center .slick-prev:before, .center .slick-next:before {
+  color: #2962FF; }
+
+div .content-container .slick-slide .slick-active .slick-center {
+  background-color: white;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px; }
+
+.slide-content {
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+  background-image: url("./images/coney-island.png");
+  width: 90%;
+  height: 20vh;
+  background-size: cover; }
+
+.slick-prev {
+  left: 0 !important;
+  z-index: 10; }
+
+.slick-next {
+  right: 0 !important; }
+
+.summaryContainer {
+  width: 30%;
+  padding: 10px;
+  margin: auto;
+  float: left; }
+  .summaryContainer img {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-right: 20px; }
+  .summaryContainer h3 {
+    margin: 10px; }
+  .summaryContainer span {
+    padding: 0 20px; }
+  .summaryContainer .unlockableSelf {
+    width: 100%;
+    display: inline-block; }
+
+.unlockCards {
+  display: inline-block;
+  border-color: black;
+  height: 140px;
+  width: 20%;
+  background-size: cover;
+  margin: 10px 10px;
+  padding-bottom: 20px; }
+  .unlockCards .card-cont:hover .card-tooltip {
+    visibility: visible; }
+
+#coneyIsland {
+  background-image: url("./images/coney-island.png");
+  filter: grayscale(100%); }
+
+#subwayStation {
+  background-image: url("./images/subway.png");
+  filter: grayscale(100%); }
+
+#radioTower {
+  background-image: url("./images/radio-tower.png");
+  filter: grayscale(100%); }
+
+#subwayStation {
+  background-image: url("./images/subway.png");
+  filter: grayscale(100%); }
+
+#wineShop {
+  background-image: url("./images/wine-shop.png"); }
+
+#self-dashboard {
+  width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  background-color: white;
+  box-sizing: border-box;
+  border-top: 1px solid #ccc;
+  z-index: 1; }
+
+#opponent {
+  display: inline-block;
+  background: white; }
+
+#avatar {
+  background-image: url("./piggy.png");
+  width: 80px;
+  height: 80px;
+  border-radius: 25px;
+  background-size: cover;
+  margin: 0 auto; }
+
+#unlockables img, #opp-extension img {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px; }
+
+#opp-summary, #opp-extension {
+  padding: 10px;
+  float: left; }
+
+#opp-summary {
+  color: rgba(0, 0, 0, 0.870588);
+  background-color: white;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+  border-radius: 2px;
+  z-index: 1; }
+
+.row-top #opp-summary, #opp-extension {
+  height: 100px;
+  width: 500px; }
+
+.row-top #avatar {
+  float: left; }
+
+.row-top .opp-details {
+  float: left;
+  margin-left: 40px;
+  margin-right: 40px; }
+
+.row-top #unlockables {
+  float: left; }
+
+#opp-extension {
+  display: none; }
+
+.opp-cards {
+  float: left; }
+
+.global-board {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; }
+
+.row-top {
+  margin: 0 !important;
+  height: 12vh;
+  overflow: hidden; }
+
+.game-page-central {
+  margin: 0 !important;
+  height: 63vh;
+  overflow: hidden; }
+
+.game-part-opponent {
+  margin: 0 !important;
+  height: 25vh;
+  overflow: hidden; }
+
+.game-page-central #opponent {
+  margin-top: 10vh;
+  margin-right: 20px;
+  margin-left: 20px;
+  height: 400px; }
