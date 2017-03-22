@@ -12,10 +12,7 @@ import {ref} from './firebase'
 import {settingGame} from './reducers/game'
 
 import GamePage from './components/GamePage'
-import Opponent from './components/Opponent'
 import InstructionButton from './components/Instructions'
-import CardGrid from './components/CardGrid'
-
 import AppContainer from './containers/AppContainer'
 
 const setGame = () => {
