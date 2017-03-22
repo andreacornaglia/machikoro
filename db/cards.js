@@ -313,17 +313,17 @@ export const radioTower = {
   cardDescription: 'Once every turn you can choose to re-roll your dice',
   imgURL: '/images/radio-tower.png'
 };
-export const shoppingMall = {
-  refName: 'shoppingMall',
-  displayName: 'Shopping Mall',
-  cost: 10,
-  cardDescription: 'If you roll doubles, take another turn after this one',
-  imgURL: '/images/radio-tower.png'
-};
 export const coneyIsland = {
   refName: 'coneyIsland',
   displayName: 'Coney Island',
   cost: 16,
+  cardDescription: 'If you roll doubles, take another turn after this one',
+  imgURL: '/images/radio-tower.png'
+};
+export const shoppingMall = {
+  refName: 'shoppingMall',
+  displayName: 'Shopping Mall',
+  cost: 10,
   cardDescription: 'Each of your ☕ and 🏢 establishments earn +1 coin',
   imgURL: '/images/coney-island.png',
   action: () => {
@@ -334,7 +334,7 @@ export const coneyIsland = {
       let newAmount
       let currentTurnNewAmount
 
-      if (ref.players[player].activatedCards.coneyIsland){
+      if (ref.players[player].activatedCards.shoppingMall){
         playerObj = ref.players[player]
         numCards += playerObj.cards.bakery || 0
         numCards += playerObj.cards.cafe || 0
