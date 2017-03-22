@@ -92,19 +92,71 @@ describe('Card functions', () => {
         it('has a function', () => {
             expect(cardFunctions.bodega.cardFn).to.be.a('function');
         });
+        
+        const game = {
+          diceValue: 10,
+          turn: 'playerTwo',
+          turnOrder: {
+            first: 'playerOne',
+            second: 'playerTwo',
+            third: 'playerThree',
+            fourth: 'playerFour'
+          },
+          players: {
+            playerOne: {
+              cards: {
+                bodega: 1 
+              },
+              activatedCards:{
+                shoppingMall: false
+              },
+              money: 20
+            },
+            playerTwo: {
+              cards: {
+                bodega: 2 
+              },
+              activatedCards:{
+                shoppingMall: false
+              },
+              money: 5
+            },
+            playerThree: {
+              cards: {
+                bodega: 1 
+              },
+              activatedCards:{
+                shoppingMall: false
+              },
+              money: 5
+            },
+            playerFour: {
+              cards: {
+                bodega: 1 
+              },
+              activatedCards:{
+                shoppingMall: true
+              },
+              money: 5
+            }
+          }
+        };
 
-        it('should return { money: 1 } when player has one farmers market', () => {
-            const gainedAmount = cardFunctions.farmersMarket.cardFn('raina', {
-                diceValue: 1,
-                players: {
-                    raina: {
-                        cards: {
-                            farmersMarket: 1
-                        }
-                    }
-                }
-            });
-            expect(gainedAmount.money).to.be.equal(1);
+        it('should return { money: -5 } when player rolls 9-10 and other players have bodegas', () => {
+            const gainedAmount = cardFunctions.bodega.cardFn('playerTwo', game);
+            expect(gainedAmount.money).to.be.equal(-5);
+        });
+        
+        it('should return { money: 2 } when other player rolls 9-10 and current player has bodega cards', () => {
+            const gainedAmount = cardFunctions.bodega.cardFn('playerFour', game);
+            expect(gainedAmount.money).to.be.equal(2);
+        });
+        
+        it('should return { money: 3 } when other player rolls 9-10 and current player has bodega cards', () => {
+          //need to change game turn to playerOne
+            //game.turn = 'playerOne';
+            const gainedAmount = cardFunctions.bodega.cardFn('playerFour', game);
+            expect(gainedAmount.money).to.be.equal(3);
         });
       
       
