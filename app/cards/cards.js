@@ -167,7 +167,6 @@ export const convenienceStore = {
       return {money: 0}
     }
   }
-  
 };
 
 export const museum = {
@@ -198,7 +197,6 @@ export const businessCenter = {
   industry: 'antenna',
   cardDescription: "Trade one non [antenna icon] establishment with another player, on your turn only",
   imgURL: '/images/subway.png'
-  //Fn TBD
 };
 
 export const stadium = {
@@ -250,7 +248,6 @@ export const tvStation = {
   industry: 'antenna',
   cardDescription: "Take 5 coins from any one player, on your turn only",
   imgURL: '/images/radio-tower.png'
-  //fn tbd
 };
 
 export const powerPlant = {
@@ -261,7 +258,7 @@ export const powerPlant = {
   industry: 'factory',
   cardDescription: "Get 3 coins from the bank for each [cow icon] establishment that you own, on your turn only",
   imgURL: '/images/power-plant.png',
-  cardFn: (currentPlayer, gameState) => {
+  cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
         const currentPlayerObj = gameState.players[currentPlayer];
@@ -282,7 +279,7 @@ export const touristBus = {
   industry: 'factory',
   cardDescription: "Get 3 coins from the bank for each [gear icon] establishment that you own. On your turn only",
   imgURL: '/images/tour-bus.png',
-  cardFn: (currentPlayer, gameState) => {
+  cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
         const currentPlayerObj = gameState.players[currentPlayer];
@@ -303,7 +300,7 @@ export const theatre = {
   industry: 'gear',
   cardDescription: "Get 5 coins from the bank, on anyone's turn",
   imgURL: '/images/subway.png',
-  cardFn: (currentPlayer, gameState) => {
+  cardFn: function(currentPlayer, gameState){
     if (this.diceValue = gameState.diceValue) {
       const currentPlayerObj = gameState.players[currentPlayer];
       const numCards = currentPlayerObj.cards.theatre;
@@ -334,7 +331,7 @@ export const bodega = {
         // Create an array of the players names in the order they should be paid.
         let playerOrder = [];
         const orderKeys = Object.keys(gameState.turnOrder);
-        
+   
         let playerOnTurnIndex;
         orderKeys.forEach((element, index) => {
           if (gameState.turnOrder[element] === gameState.turn) {
@@ -365,7 +362,6 @@ export const bodega = {
           }
           playersMoneyNeeded[playerOrderNames[k]] = {needs: moneyToCollect, gets: 0};
         }
-        
         // Determine how much actual money each player will receive, taking into account how much money the player who's turn it is has.
         while (playerOnTurnMoney > 0) {
           for (var key in playersMoneyNeeded) {
@@ -378,7 +374,6 @@ export const bodega = {
             }
           }
         }
-        
       if (gameState.turn !== currentPlayer) {
         // Now return a value that refers to how much money the currentPlayer will gain.
         const gainedAmount = playersMoneyNeeded[currentPlayer].gets;
@@ -397,12 +392,14 @@ export const bodega = {
 };
     
 export const wineShop = {
+  refName: 'wineShop',
+  displayName: 'Wine Shop',
   diceValue: 10,
   cost: 3,
   industry: 'wheat',
   cardDescription: "Get 3 coins from the bank,on anyone's turn",
   imgURL: '/images/tour-bus.png',
-  cardFn: (currentPlayer, gameState) => {
+  cardFn: function(currentPlayer, gameState){
     if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[currentPlayer];
         const numCards = playerObj.cards.wineShop;
@@ -422,7 +419,7 @@ export const restaurant = {
   industry: 'fruit',
   cardDescription: "Get 2 coins from the bank for each [wheat icon] establishment that you own. On your turn only",
   imgURL: '/images/tour-bus.png',
-  cardFn: (currentPlayer, gameState) => {
+  cardFn: function(currentPlayer, gameState){
     if (this.diceValue.includes(gameState.diceValue)) {
       if (gameState.turn === currentPlayer) {
         const currentPlayerObj = gameState.players[currentPlayer];
