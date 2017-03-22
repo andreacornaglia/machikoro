@@ -1,3 +1,4 @@
+/*
 import {ref} from '../firebase'
 const reducer = (state=null, action) => {
   switch(action.type) {
@@ -18,3 +19,4 @@ export const fetchData = () => {
   }
 }
 export default reducer
+*/
