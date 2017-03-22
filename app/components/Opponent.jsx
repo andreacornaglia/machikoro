@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {cardArray} from '../../db/cards'
+import {cardArray} from '../cards/cards.js';
 
 export default class Opponent extends Component{
   constructor (){
@@ -48,4 +48,3 @@ export default class Opponent extends Component{
     )
   }
 }
-

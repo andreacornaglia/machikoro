@@ -9,10 +9,12 @@ class DiceView extends Component {
     constructor(props){
       super(props)
       this.state = {
-        show: false
+        show: false,
+        showRollAgain: false
       }
       this.rollDice = this.rollDice.bind(this)
       this.checkIfSubwayUnlocked = this.checkIfSubwayUnlocked.bind(this)
+      this.checkIfRadioTowerUnlocked = this.checkIfRadioTowerUnlocked.bind(this)
       this.displayChooseDiceNumModal = this.displayChooseDiceNumModal.bind(this)
     }
 
@@ -32,6 +34,17 @@ class DiceView extends Component {
       let currentTurn = game.turn;
       let currentTurnObj = game.players[currentTurn]
       if (currentTurnObj.activatedCards.subwayStation) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    checkIfRadioTowerUnlocked(){
+      let game = this.props.game
+      let currentTurn = game.turn;
+      let currentTurnObj = game.players[currentTurn]
+      if (currentTurnObj.activatedCards.radioTower) {
         return true;
       } else {
         return false;

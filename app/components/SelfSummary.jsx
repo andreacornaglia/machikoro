@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {unlockableArray} from '../../db/cards';
+import {unlockableArray} from '../cards/cards.js';
 import { Tooltip, Col } from 'react-bootstrap';
 
 export default class SelfSummary extends Component {

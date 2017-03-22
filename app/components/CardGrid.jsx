@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {ref} from '../firebase'
 import { Col, Row, Tooltip } from 'react-bootstrap';
-import {cardArray} from '../../db/cards';
+import {cardArray} from '../cards/cards.js';
 import {connect} from 'react-redux'
 
 
