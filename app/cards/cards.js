@@ -103,7 +103,7 @@ export const cafe = {
         });
         
         // Amount of money each player should receive in order of turns. In the form of an object with the player's name as the key and a value of an object with how much money they need (assuming the player who's turn it is has infinite money) and how much they will actually get (which is zero for now).
-        playersMoneyNeeded = {};
+        let playersMoneyNeeded = {};
         for (var k = 0; k < playerOrderNames.length; k++) {
           let player = gameState.players[playerOrderNames[k]];
           let numCafes = player.cards.cafe;
