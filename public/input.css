@@ -181,3 +181,15 @@ div .content-container .slick-slide .slick-active .slick-center {
   margin-right: 20px;
   margin-left: 20px;
   height: 400px; }
+
+.modal-container {
+  position: relative; }
+
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute; }
+
+.modal-container {
+  height: 200; }
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.2) !important; }

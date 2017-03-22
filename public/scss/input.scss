@@ -167,7 +167,7 @@ div .content-container .slick-slide .slick-active .slick-center {
 
 
 #self-dashboard {
- 
+
 }
 
 //OPPONENT COMPONENT
@@ -235,3 +235,18 @@ div .content-container .slick-slide .slick-active .slick-center {
   margin-left: 20px;
   height: 400px;
 }
+
+//CARDGRID MODALS
+.modal-container {
+    position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+    position: absolute;
+}
+.modal-container {
+  height: 200;
+}
+.modal-backdrop {
+  background-color:rgba(0, 0, 0, 0.2) !important;
+}
+

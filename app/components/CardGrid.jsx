@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {ref} from '../firebase'
-import { Col, Row, Tooltip } from 'react-bootstrap';
+import { Col, Row, Tooltip, Modal, Button } from 'react-bootstrap';
 import {cardArray} from '../../db/cards';
+import CardModal from './CardModal'
 
 
 export default class CardGrid extends Component {
   constructor(){
     super()
+    this.state = {show: false}
     this.onClick = this.onClick.bind(this)
   }
 
@@ -15,6 +17,7 @@ export default class CardGrid extends Component {
   }
 
   render() {
+    let close = () => this.setState({show: false})
     let quantityRemaining
     return (
     <div className="game-grid">
@@ -23,17 +26,14 @@ export default class CardGrid extends Component {
             quantityRemaining = snap.val().cards[element.refName]
           })
         return (
-          <Col lg={4} className="col-lg-5ths card-cont" key={index} onClick={evt => {evt.preventDefault()
-              console.log('this is the element clicked', element)
-              }}>
+          <Col lg={4} className="col-lg-5ths card-cont modal-container" key={index} onClick={(evt, element) => {
+            evt.preventDefault()
+            this.setState({show: true})
+          }}>
             <Tooltip placement="top" className="in card-tooltip" id={index}>
-              <p><strong>Card: </strong>{element.displayName}</p>
-              <p><strong>Function:<br /></strong>{element.cardDescription}</p>
-              <p><strong>Roll value:</strong> {element.rollValue}</p>
-              <p><strong>Cost: </strong>{element.cost}</p>
-              <p><strong>Industry: </strong>{element.industry}</p>
-              <p><strong>Qty Remaining: </strong>{quantityRemaining}</p>
+              <p>Click for card details</p>
             </Tooltip>
+            {this.state.show ? <CardModal close={close.bind(this)} element={element} /> : null}
             <img src={element.imgURL} className="card" />
           </Col>
         )

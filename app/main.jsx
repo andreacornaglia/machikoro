@@ -13,6 +13,7 @@ import {settingGame} from './reducers/game'
 
 import GamePage from './components/GamePage'
 import Opponent from './components/Opponent'
+import CardGrid from './components/CardGrid'
 
 import AppContainer from './containers/AppContainer'
 
@@ -27,7 +28,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
         <IndexRedirect to="/game" />
-        <Route path="/game" component={GamePage} onEnter={setGame}/>
+        <Route path="/game" component={CardGrid} onEnter={setGame}/>
       </Route>
     </Router>
   </Provider>,
