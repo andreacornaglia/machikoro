@@ -220,7 +220,7 @@ export const stadium = {
           let gainedAmount = 0;
           playersArr.forEach(player => {
             if (player !== currentPlayer){
-              const money = player.money
+              const money = gameState.players[player].money
               if(money >= moneyRequested){
                 gainedAmount += moneyRequested;
               } else{

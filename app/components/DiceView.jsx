@@ -61,7 +61,7 @@ class DiceView extends Component {
         this.setState({ show: true})
       } else {
         let newDiceVal = this.rollDice(1)
-        //how do we deal w/async??
+        //use promise to guarantee we use the latest dice value
         updateDiceNum(newDiceVal)
           .then(()=>calculateMoney(currentPlayer, this.props.game))
           .catch(console.error)
