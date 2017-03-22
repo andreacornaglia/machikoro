@@ -72,11 +72,8 @@
     "sequelize": "^3.24.6",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
-<<<<<<< HEAD
     "slick-carousel": "^1.6.0"
-=======
     "yesno": "0.0.1"
->>>>>>> 90cfc5db450fa39a803e24302d6311dec627e085
   },
   "devDependencies": {
     "babel": "^6.5.2",
