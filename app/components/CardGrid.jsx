@@ -2,24 +2,18 @@ import React, { Component } from 'react';
 import {ref} from '../firebase'
 import { Col, Row, Tooltip } from 'react-bootstrap';
 import {cardArray} from '../../db/cards';
-import {fetchData} from '../reducers/access'
 import {connect} from 'react-redux'
 
 
 class CardGrid extends Component {
   constructor(){
     super()
-    this.state = {snapshot: null}
     this.onClick = this.onClick.bind(this)
     this.getQuantity = this.getQuantity.bind(this)
   }
 
   onClick(evt){
     //console.log('onClick on:', evt)
-  }
-
-  componentDidMount(){
-    this.props.fetchData()
   }
 
   getQuantity(element){
@@ -53,8 +47,8 @@ class CardGrid extends Component {
 
 const mapStateToProps = state => {
   return {
-    snapshot: state.snapshot
+    snapshot: state.game
   }
 }
 
-export default connect(mapStateToProps, {fetchData})(CardGrid)
+export default connect(mapStateToProps)(CardGrid)
