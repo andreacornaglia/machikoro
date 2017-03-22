@@ -25,11 +25,7 @@
       "third": "playerThree",
       "fourth": "playerFour"
     },
-    "phase": {
-      "roll": false,
-      "buy": false,
-      "unlock": false
-    },
+    "phase": "roll",
     "players" : {
       "playerOne": {
         "name": null,
