@@ -1,7 +1,3 @@
-import {ref} from '../firebase'
-
-let playersArr = Object.keys(ref.players) //should give only player property names (not entire obj)
-let currentTurn = ref.players[ref.turn] //should give the entire current player object
 
 export const farmersMarket = {
   refName: 'farmersMarket',
@@ -11,32 +7,30 @@ export const farmersMarket = {
   industry: 'wheat',
   cardDescription: "Get 1 coin from the bank, on anyone's turn",
   imgURL: '/images/wine-shop.png',
-  action: () => {
-    playersArr.forEach(player => {
-      let playerObj = ref.players[player]
-      let numCards = playerObj.cards.farmersMarket
-      let newAmount = playerObj.money + numCards
-      playerObj.update({money: newAmount}) //is this a proper way to update the firebase database?
-    })
+  action: (currentPlayer, gameState) => {
+      const playerObj = gameState.players[currentPlayer]
+      const numCards = playerObj.cards.farmersMarket
+      const gainedAmount = {money: numCards * 1}
+      return gainedAmount
   }
 };
+
 export const river = {
   refName: 'river',
   displayName: 'River',
   diceValue: 1,
   cost: 1,
   industry: 'cow',
-  imgURL: '/images/subway.png',
   cardDescription: "Get 1 coin from the bank on anyone's turn",
-  action: () => {
-    playersArr.forEach(player => {
-      let playerObj = ref.players[player]
-      let numCards = playerObj.cards.river || 0
-      let newAmount = playerObj.money + numCards
-      playerObj.update({money: newAmount}) //is this a proper way to update the firebase database?
-    })
+  imgURL: '/images/subway.png',
+  action: (currentPlayer, gameState) => {
+      const playerObj = gameState.players[currentPlayer]
+      const numCards = playerObj.cards.river
+      const gainedAmount = {money: numCards * 1}
+      return gainedAmount
   }
 };
+
 export const bakery = {
   refName: 'bakery',
   displayName: 'Bakery',
@@ -45,12 +39,17 @@ export const bakery = {
   industry: 'building',
   cardDescription: "Get 1 coin from the bank, on your turn only",
   imgURL: '/images/wine-shop.png',
-  action: () => {
-    let numCards = currentTurn.cards.bakery || 0
-    let newAmount = currentTurn.money + numCards
-    currentTurn.update({money: newAmount}) //is this a proper way to update the firebase database?
+  action: (currentPlayer, gameState) => {
+    let gainedAmount
+    if (currentPlayer === gameState.turn) {
+      const playerObj = gameState.players[currentPlayer]
+      const numCards = playerObj.cards.bakery
+      gainedAmount = {money: numCards}
+    } else { gainedAmount = {money: 0} }
+    return gainedAmount
   }
 };
+
 export const cafe = {
   refName: 'cafe',
   displayName: 'Cafe',
@@ -59,25 +58,9 @@ export const cafe = {
   industry: 'mug',
   cardDescription: "Get 1 coin from the player who rolled the dice",
   imgURL: '/images/wine-shop.png',
-  action: () => {
-    playersArr.forEach(player => {
-      let numCards
-      let playerObj
-      let newAmount
-      let currentTurnNewAmount
-      if (player !== ref.turn) {
-        playerObj = ref.players[player]
-        numCards = playerObj.cards.cafe || 0
-        newAmount = playerObj.money + numCards
-        playerObj.update({money: newAmount}) //is this a proper way to update the firebase database?
-      }
-      if (currentTurn.money - numCards >= 0){
-        currentTurnNewAmount = currentTurn.money - numCards
-        currentTurn.update({money: currentTurnNewAmount}) //is this a proper way to update the firebase database?
-      } else { currentTurn.update({money: 0}) } //is this a proper way to update the firebase database?
-    })
-  }
+  //TBD: add action based on susan's function
 };
+
 export const convenienceStore = {
   refName: 'convenienceStore',
   displayName: 'Convenience Store',
@@ -86,12 +69,17 @@ export const convenienceStore = {
   industry: 'building',
   cardDescription: "Get 3 coins from the bank, on your turn only",
   imgURL: '/images/subway.png',
-  action: () => {
-    let numCards = currentTurn.cards.convenienceStore || 0
-    let newAmount = currentTurn.money + (numCards * 3)
-    currentTurn.update({money: newAmount}) //is this a proper way to update the firebase database?
+  action: (currentPlayer, gameState) => {
+    let gainedAmount
+    if (currentPlayer === gameState.turn) {
+      const playerObj = gameState.players[currentPlayer]
+      const numCards = playerObj.cards.convenienceStore
+      gainedAmount = {money: numCards * 3}
+    } else { gainedAmount = {money: 0} }
+    return gainedAmount
   }
 };
+
 export const museum = {
   refName: 'museum',
   displayName: 'Museum',
@@ -100,15 +88,14 @@ export const museum = {
   industry: 'gear',
   cardDescription: "Get 1 coin from the bank, on anyone's turn",
   imgURL: '/images/museum.png',
-  action: () => {
-    playersArr.forEach(player => {
-      let playerObj = ref.players[player]
-      let numCards = playerObj.cards.museum || 0
-      let newAmount = playerObj.money + numCards
-      playerObj.update({money: newAmount}) //is this a proper way to update the firebase database?
-    })
+  action: (currentPlayer, gameState) => {
+      const playerObj = gameState.players[currentPlayer]
+      const numCards = playerObj.cards.museum
+      const gainedAmount = {money: numCards * 1}
+      return gainedAmount
   }
 };
+
 export const businessCenter = {
   refName: 'businessCenter',
   displayName: 'Business Center',
@@ -118,6 +105,7 @@ export const businessCenter = {
   cardDescription: "Trade one non [antenna icon] establishment with another player, on your turn only",
   imgURL: '/images/subway.png'
 };
+
 export const stadium = {
   refName: 'stadium',
   displayName: 'Stadium',
@@ -126,6 +114,7 @@ export const stadium = {
   industry: 'antenna',
   cardDescription: "Get 2 coins from all players, on your turn only",
   imgURL: '/images/museum.png',
+  //TBD: refactor
   action: () => {
     playersArr.forEach(player => {
       let gain = 0
@@ -147,6 +136,7 @@ export const stadium = {
     })
   }
 };
+
 export const tvStation = {
   refName: 'tvStation',
   displayName: 'TV Station',
@@ -156,6 +146,7 @@ export const tvStation = {
   cardDescription: "Take 5 coins from any one player, on your turn only",
   imgURL: '/images/radio-tower.png'
 };
+
 export const powerPlant = {
   refName: 'powerPlant',
   displayName: 'Power Plant',
@@ -164,12 +155,14 @@ export const powerPlant = {
   industry: 'factory',
   cardDescription: "Get 3 coins from the bank for each [cow icon] establishment that you own, on your turn only",
   imgURL: '/images/power-plant.png',
+  //TBD: refactor
   action: () => {
     let numCards = currentTurn.cards.river || 0 //river is the only card type with the cow icon
     let newAmount = currentTurn.money + (numCards * 3)
     currentTurn.update({money: newAmount}) //is this a proper way to update the firebase database?
   }
 };
+
 export const touristBus = {
   refName: 'touristBus',
   displayName: 'Tourist Bus',
@@ -178,6 +171,7 @@ export const touristBus = {
   industry: 'factory',
   cardDescription: "Get 3 coins from the bank for each [gear icon] establishment that you own. On your turn only",
   imgURL: '/images/tour-bus.png',
+  //TBD refactor
   action: () => {
     let numCards = 0
     numCards += currentTurn.cards.museum || 0 //museum and theater are the only card types with gear icon
@@ -186,6 +180,7 @@ export const touristBus = {
     currentTurn.update({money: newAmount}) //is this a proper way to update the firebase database?
   }
 };
+
 export const theatre = {
   refName: 'theatre',
   displayName: 'Theatre',
@@ -194,6 +189,7 @@ export const theatre = {
   industry: 'gear',
   cardDescription: "Get 5 coins from the bank, on anyone's turn",
   imgURL: '/images/subway.png',
+  //TBD: refactor
   action: (currentPlayer, gameState) => {
     if (this.diceValue = gameState.diceValue) {
       const currentPlayerObj = gameState.players[currentPlayer];
@@ -278,9 +274,24 @@ export const bodega = {
         }
         return { money: lostAmount };
       }
-    }
+};
+    
+export const wineShop = {
+  diceValue: 10,
+  cost: 3,
+  industry: 'wheat',
+  cardDescription: "Get 3 coins from the bank,on anyone's turn",
+  imgURL: '/images/tour-bus.png',
+  action: () => {
+    playersArr.forEach(player => {
+      let playerObj = ref.players[player]
+      let numCards = playerObj.cards.wineShop || 0
+      let newAmount = playerObj.money + (numCards * 3)
+      playerObj.update({money: newAmount}) //is this a proper way to update the firebase database?
+    })
   }
 };
+
 export const restaurant = {
   refName: 'restaurant',
   displayName: 'Restaurant',

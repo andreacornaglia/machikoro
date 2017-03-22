@@ -21,7 +21,9 @@
     "turn": "playerOne",
     "turnOrder":{
       "first": "playerOne",
-      "second": "playerTwo"
+      "second": "playerTwo",
+      "third": "playerThree",
+      "fourth": "playerFour"
     },
     "phase": {
       "roll": false,
