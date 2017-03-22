@@ -243,3 +243,12 @@ div .content-container .slick-slide .slick-active .slick-center {
   margin-right: 20px;
   margin-left: 20px;
   height: 400px; }
+
+.overlay {
+  position: fixed;
+  top: 10;
+  left: 20;
+  height: 10%;
+  width: 40%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5); }
