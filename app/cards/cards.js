@@ -1,4 +1,7 @@
+<<<<<<< Updated upstream:db/cards.js
 
+=======
+>>>>>>> Stashed changes:app/cards/cards.js
 export const farmersMarket = {
   refName: 'farmersMarket',
   displayName: "Farmer's Market",
@@ -6,7 +9,21 @@ export const farmersMarket = {
   cost: 1,
   industry: 'wheat',
   cardDescription: "Get 1 coin from the bank, on anyone's turn",
+<<<<<<< Updated upstream:db/cards.js
   imgURL: '/images/wine-shop.png'
+=======
+  action: (currentPlayer, gameState) => {
+      if (gameState.diceValue === 1) {
+          const playerObj = gameState.players[currentPlayer];
+          const numCards = playerObj.cards.farmersMarket;
+          const gainedAmount = numCards * 1;
+          return { money: gainedAmount };
+      } else {
+        return { money: 0 };
+      }
+  },
+  imgURL: ''
+>>>>>>> Stashed changes:app/cards/cards.js
 };
 export const river = {
   refName: 'river',
@@ -33,7 +50,32 @@ export const cafe = {
   cost: 2,
   industry: 'mug',
   cardDescription: "Get 1 coin from the player who rolled the dice",
+<<<<<<< Updated upstream:db/cards.js
   imgURL: '/images/wine-shop.png'
+=======
+  action: (currentPlayer, gameState) => {
+      let numCards
+      let playerObj
+      let newAmount
+      let currentTurnNewAmount
+      if (currentPlayer !== gameState.turn) {
+        playerObj = gameState.players[player];
+        const turnPlayerObj = gameState.players[gameState.turn];
+        const turnPlayerMoney = turnPlayerObj.money;
+        if (turnPlayerMoney.money === 0) {
+          return {money: 0};
+        }
+        numCards = playerObj.cards.cafe || 0;
+        newAmount = numCards;
+        playerObj.update({money: newAmount}) //is this a proper way to update the firebase database?
+      }
+      if (currentTurn.money - numCards >= 0){
+        currentTurnNewAmount = currentTurn.money - numCards
+        currentTurn.update({money: currentTurnNewAmount}) //is this a proper way to update the firebase database?
+      } else { currentTurn.update({money: 0}) } //is this a proper way to update the firebase database?
+  },
+  imgURL: ''
+>>>>>>> Stashed changes:app/cards/cards.js
 };
 export const convenienceStore = {
   refName: 'convenienceStore',
