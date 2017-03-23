@@ -32,27 +32,27 @@ closeModal(){
     return (
       <div className="global-board">
         <div className="row row-top">
-          <Col lg={4}/>
-          <Col lg={4}>
+          <Col sm={4}/>
+          <Col sm={4}>
             <Opponent id='oponent-top'/>
           </Col>
 
-          <Col lg={2}/>
+          <Col sm={2}/>
 
-          <Col lg={2}>
+          <Col sm={2}>
             <DiceView
               showModal={this.showModal}
             />
           </Col>
         </div>
         <div className="row game-page-central">
-          <Col lg={2}>
+          <Col sm={2}>
             <Opponent id='oponent-left'/>
           </Col>
-          <Col lg={8}>
+          <Col sm={8}>
             <CardGrid id="center"/>
           </Col>
-          <Col lg={2}>
+          <Col sm={2}>
             <Opponent id='oponent-right'/>
           </Col>
         </div>

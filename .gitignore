@@ -16,4 +16,4 @@ npm-debug.log
 machikey.js
 
 # CSS
-public/input.css
+*.css

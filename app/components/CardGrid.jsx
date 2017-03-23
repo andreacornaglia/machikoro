@@ -44,7 +44,7 @@ class CardGrid extends Component {
         />
         {cardArray.map((element, index) => {
           return (
-            <Col lg={4} className="col-lg-5ths card-cont modal-container" key={index}
+            <Col sm={4} className="col-lg-5ths card-cont modal-container" key={index}
               onClick={(evt) => {
               console.log('ELEMENT', element)
               evt.preventDefault()
@@ -54,9 +54,6 @@ class CardGrid extends Component {
               })
               this.disableButton(element)
             }}>
-              <Tooltip placement="top" className="in card-tooltip" id={index}>
-                <p>Click for card details</p>
-              </Tooltip>
               {this.state.showCardInfo ? <CardModal close={close.bind(this)} element={element} /> : null}
               <img src={element.imgURL} className="card" />
             </Col>

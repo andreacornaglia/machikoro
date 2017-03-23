@@ -4,6 +4,8 @@ body {
   height: 100vh; }
 
 .game-grid {
+  padding-top: 10px;
+  box-sizing: border-box;
   margin-top: 10px;
   background: #fefefe;
   border: 4px solid #eee;
@@ -13,13 +15,17 @@ body {
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
-  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
   border-radius: 2px;
   z-index: 1; }
   .game-grid .col-half-offset {
     margin-left: 4.166666667%; }
   .game-grid .card {
-    width: 100%; }
+    width: 100%;
+    margin-bottom: 10px; }
+
+.game-grid .card:hover, .summaryContainer img:hover, .carousel-img:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 10px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+  cursor: pointer; }
 
 .col-xs-5ths,
 .col-sm-5ths,
@@ -70,13 +76,14 @@ body {
   margin: 0 auto;
   padding: 20px;
   width: 70%;
-  height: 20vh;
+  height: 15vh;
   float: left;
   vertical-align: middle;
   display: inline-block; }
   .carousel-container div {
     float: left;
-    width: 20%; }
+    width: 15vh;
+    margin-right: 15px; }
     .carousel-container div img {
       width: 100%; }
 
@@ -119,27 +126,31 @@ div .content-container .slick-slide .slick-active .slick-center {
   width: 30%;
   padding: 10px;
   margin: auto;
-  float: left; }
+  float: left;
+  box-sizing: border-box; }
+  .summaryContainer card {
+    padding: 0;
+    margin: 0; }
   .summaryContainer img {
     width: 50px;
     height: 50px;
-    float: left;
-    margin-right: 20px; }
+    float: left; }
   .summaryContainer h3 {
     margin: 10px; }
   .summaryContainer span {
     padding: 0 20px; }
   .summaryContainer .unlockableSelf {
     width: 100%;
-    display: inline-block; }
+    display: inline-block;
+    padding-top: 20px; }
 
 .unlockCards {
   display: inline-block;
   border-color: black;
+  box-sizing: border-box;
   height: 140px;
   width: 20%;
   background-size: cover;
-  margin: 10px 10px;
   padding-bottom: 20px;
   filter: grayscale(100%); }
   .unlockCards img.grayscale.disabled {
@@ -221,12 +232,12 @@ div .content-container .slick-slide .slick-active .slick-center {
 
 .game-page-central {
   margin: 0 !important;
-  height: 63vh;
+  height: 68vh;
   overflow: hidden; }
 
 .game-part-opponent {
   margin: 0 !important;
-  height: 25vh;
+  height: 20vh;
   overflow: hidden; }
 
 .game-page-central #opponent {
@@ -250,5 +261,4 @@ div .content-container .slick-slide .slick-active .slick-center {
   top: 200px; }
 
 .carousel-img, .slick-slide img {
-  height: 100%;
-  padding-right: 15px; }
+  height: 100%; }
