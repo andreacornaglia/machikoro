@@ -51,7 +51,7 @@
           "radioTower": false,
           "shoppingMall": false,
           "coneyIsland": false,
-          "subwayStation": false
+          "subwayStation": true
         }
       },
       "playerTwo": {

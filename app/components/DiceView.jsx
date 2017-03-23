@@ -81,6 +81,8 @@ class DiceView extends Component {
       let game = this.props.game
 
         return (
+          <div>
+
             <div className="diceContainer">
               <p>Player Turn: {game.turn}</p>
               <p>Dice Value: {game.diceValue}</p>
@@ -92,6 +94,13 @@ class DiceView extends Component {
                 }}
                 >Roll Dice!</Button>
             </div>
+            <ChooseDiceNumModal
+              rollDice={this.rollDice}
+              show={this.state.show}
+              close={() => this.setState({ show: false})}
+            />
+          </div>
+
         )
     }
 }

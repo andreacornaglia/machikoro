@@ -92,7 +92,18 @@ body{
   height: 20vh;
   float: left;
   vertical-align: middle;
+  display: inline-block;
+  div{
+    float: left;
+    width: 20%;
+    img{
+      width: 100%;
+    }
+  }
 }
+
+
+
 
 .center .slick-center h1 {
   color: white;
@@ -168,35 +179,17 @@ div .content-container .slick-slide .slick-active .slick-center {
   background-size: cover;
   margin: 10px 10px;
   padding-bottom: 20px;
+  filter: grayscale(100%);
+
+    img.grayscale.disabled {
+    filter: none;
+  }
 
   .card-cont:hover .card-tooltip{
     visibility: visible;
   }
 }
 
-#coneyIsland {
-  background-image: url("./images/coney-island.png");
-  filter: grayscale(100%);
-}
-
-#subwayStation {
-  background-image: url("./images/subway.png");
-  filter: grayscale(100%);
-}
-
-#radioTower {
-  background-image: url("./images/radio-tower.png");
-  filter: grayscale(100%);
-}
-
-#subwayStation {
-  background-image: url("./images/subway.png");
-  filter: grayscale(100%);
-}
-
-#wineShop {
-  background-image: url("./images/wine-shop.png");
-}
 
 
 #self-dashboard {
@@ -229,6 +222,7 @@ div .content-container .slick-slide .slick-active .slick-center {
   width: 50px;
   height: 50px;
   margin-right: 5px;
+  filter: grayscale(100%);
 }
 
 #opp-summary, #opp-extension {
@@ -324,4 +318,7 @@ div .content-container .slick-slide .slick-active .slick-center {
   top: 200px;
 }
 
-
+.carousel-img, .slick-slide img{
+  height: 100%;
+  padding-right: 15px;
+}
