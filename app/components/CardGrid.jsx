@@ -8,7 +8,10 @@ import CardModal from './CardModal'
 export default class CardGrid extends Component {
   constructor(){
     super()
-    this.state = {show: false}
+    this.state = {
+      show: false,
+      modalElement: {}
+    }
     this.onClick = this.onClick.bind(this)
   }
 
@@ -21,14 +24,23 @@ export default class CardGrid extends Component {
     let quantityRemaining
     return (
     <div className="game-grid">
+      <CardModal
+        close={() => close()}
+        show={this.state.show}
+        element={this.state.modalElement}
+      />
       {cardArray.map((element, index) => {
           ref.on('value', snap => {
             quantityRemaining = snap.val().cards[element.refName]
           })
         return (
-          <Col lg={4} className="col-lg-5ths card-cont modal-container" key={index} onClick={(evt, element) => {
+          <Col lg={4} className="col-lg-5ths card-cont modal-container" key={index} onClick={(evt) => {
+            console.log('ELEMENT', element)
             evt.preventDefault()
-            this.setState({show: true})
+            this.setState({
+              show: true,
+              modalElement: element
+            })
           }}>
             <Tooltip placement="top" className="in card-tooltip" id={index}>
               <p>Click for card details</p>
