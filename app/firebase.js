@@ -5,7 +5,7 @@ import machiObject from '../public/machiObject.json'
 firebase.initializeApp(firebaseKeys)
 
 let database = firebase.database().ref()
-// database.set(machiObject)
+//database.set(machiObject)
 
 let ref = database.child('game')
 
