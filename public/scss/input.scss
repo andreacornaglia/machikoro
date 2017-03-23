@@ -307,16 +307,21 @@ div .content-container .slick-slide .slick-active .slick-center {
 //CARDGRID MODALS
 .modal-container {
     position: relative;
+
 }
 .modal-container .modal, .modal-container .modal-backdrop {
     position: absolute;
-}
-.modal-container {
-  height: 200;
 }
 .modal-backdrop {
   background-color:rgba(0, 0, 0, 1) !important;
 }
 
+//DICE MODAL
+
+#dice-modal {
+  z-index: 500;
+  position: fixed;
+  top: 200px;
+}
 
 
