@@ -50,7 +50,7 @@ class SelfSummary extends Component {
                 />
               {unlockableArray.map((element, index) => {
                 return (
-                  <Col lg={2.5} className="unlockCards card-cont modal-container" key={index}
+                  <div className="unlockCards card-cont modal-container" key={index}
                     onClick={(evt) => {
                     console.log('ELEMENT', element)
                     evt.preventDefault()
@@ -60,12 +60,9 @@ class SelfSummary extends Component {
                     })
                     this.disableButton(element)
                   }}>
-                    <Tooltip placement="top" className="in card-tooltip" id={index}>
-                      <p>Card details</p>
-                    </Tooltip>
                     {this.state.show ? <UnlockCardModal close={close.bind(this)} element={element} /> : null}
                     <img src={element.imgURL} className="card" />
-                  </Col>
+                  </div>
                 )
               })}
 

@@ -35,12 +35,12 @@ class Carousel extends Component {
   render(){
     return (
       <div className="carousel-container">
-        {this.checkUserCards().map(card => {
+        {this.checkUserCards().map((card, index) => {
           return(
-              <div>
-                <img className="carousel-img" src={card.imgURL}/>
-                <p>{card.amount}</p>
-              </div>
+            <div key={index}>
+              <img className="carousel-img" src={card.imgURL}/>
+              <p>{card.amount}</p>
+            </div>
           )
         })}
       </div>
@@ -49,13 +49,5 @@ class Carousel extends Component {
 }
 
 export default connect(state => {
-  /*
-  if (!state.game) return {total: 0}
-  let keys = Object.keys(state.game.cards);
-  let total = 0
-  keys.forEach(key => {
-    total += state.game.cards[key]
-  })
-  */
   return {game: state.game}
 })(Carousel)
