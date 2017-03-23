@@ -10,7 +10,7 @@ class DiceView extends Component {
     constructor(props){
       super(props)
       this.state = {
-        show: false,
+        diceModal: false,
         showRollAgain: false
       }
       this.rollDice = this.rollDice.bind(this)
@@ -58,7 +58,8 @@ class DiceView extends Component {
       //come back after doing oauth and refactor this part
       let currentPlayer = 'playerOne'
       if (this.checkIfSubwayUnlocked() === true){
-        this.setState({ show: true})
+        // this.setState({ diceModal: true})
+        this.props.showModal()
       } else {
         let newDiceVal = this.rollDice(1)
         //use promise to guarantee we use the latest dice value
@@ -77,9 +78,7 @@ class DiceView extends Component {
     // }
 
     render() {
-      console.log('state', this.state.show)
       let game = this.props.game
-      console.log('props', game)
 
         return (
           <div>

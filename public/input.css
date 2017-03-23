@@ -235,15 +235,22 @@ div .content-container .slick-slide .slick-active .slick-center {
   margin-left: 20px;
   height: 400px; }
 
+.modal-container {
+  position: relative; }
+
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute; }
-
-.modal-container {
-  height: 200; }
 
 .modal-backdrop {
   background-color: black !important; }
 
+
+#dice-modal {
+  z-index: 500;
+  position: fixed;
+  top: 200px; }
+
 .carousel-img, .slick-slide img {
   height: 100%;
   padding-right: 15px; }
+
