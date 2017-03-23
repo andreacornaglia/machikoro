@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import {ref} from '../firebase'
-import { Col, Row, Tooltip, Alert } from 'react-bootstrap';
+import CardModal from './CardModal'
+import { Col, Row, Tooltip, Modal, Button } from 'react-bootstrap';
 import {cardArray} from '../cards/cards.js';
 import {connect} from 'react-redux'
 import {updateAfterCardPurchase} from '../firebaseFunctions'
 import NotEnoughMoneyAlert from './NotEnoughMoneyAlert'
 
-
 class CardGrid extends Component {
   constructor(){
     super()
     this.state = {
-      show: false
+      show: false,
+      modalElement: {}
     }
-
     this.handleClick = this.handleClick.bind(this)
     this.getQuantity = this.getQuantity.bind(this)
   }
@@ -53,26 +53,37 @@ class CardGrid extends Component {
   }
 
   render() {
-    let close = () => this.setState({ show: false});
+
+    let close = () => this.setState({show: false})
+
     return (
-      <div>
-        <div className="game-grid">
-          {cardArray.map((element, index) => {
-            return (
-              <Col lg={4} className="col-lg-5ths card-cont" key={index} onClick={() => this.handleClick.bind(this, element)()}>
-                <Tooltip placement="top" className="in card-tooltip" id={index}>
-                  <p><strong>Card: </strong>{element.displayName}</p>
-                  <p><strong>Function:<br /></strong>{element.cardDescription}</p>
-                  <p><strong>Roll value:</strong> {element.diceValue}</p>
-                  <p><strong>Cost: </strong>{element.cost}</p>
-                  <p><strong>Industry: </strong>{element.industry}</p>
-                  <p><strong>Qty Remaining: </strong>{this.getQuantity(element)}</p>
-                </Tooltip>
-                <img src={element.imgURL} className="card" />
-              </Col>
-            )
-          })}
-        </div>
+     <div> 
+    <div className="game-grid">
+      <CardModal
+        close={() => close()}
+        show={this.state.show}
+        element={this.state.modalElement}
+      />
+      {cardArray.map((element, index) => {
+        return (
+          <Col lg={4} className="col-lg-5ths card-cont modal-container" key={index} 
+            onClick={(evt) => {
+            console.log('ELEMENT', element)
+            evt.preventDefault()
+            this.setState({
+              show: true,
+              modalElement: element
+            })
+          }}>
+            <Tooltip placement="top" className="in card-tooltip" id={index}>
+              <p>Click for card details</p>
+            </Tooltip>
+            {this.state.show ? <CardModal close={close.bind(this)} element={element} /> : null}
+            <img src={element.imgURL} className="card" />
+          </Col>
+        )
+      })}
+    </div>
         <NotEnoughMoneyAlert
           close={() => close()}
           show={this.state.show}
