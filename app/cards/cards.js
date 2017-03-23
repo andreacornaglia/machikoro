@@ -74,15 +74,15 @@ export const cafe = {
   cardFn: function(currentPlayer, gameState) {
     // change below to this.diceValue
     if (this.diceValue === gameState.diceValue) {
-        
+
         // Find the player who's turn it is and how much money they have.
         const playerOnTurn = gameState.players[gameState.turn];
         let playerOnTurnMoney = playerOnTurn.money;
-        
+
         // Create an array of the players names in the order they should be paid.
         let playerOrder = [];
         const orderKeys = Object.keys(gameState.turnOrder);
-        
+
         let playerOnTurnIndex;
         orderKeys.forEach((element, index) => {
           if (gameState.turnOrder[element] === gameState.turn) {
@@ -101,7 +101,7 @@ export const cafe = {
         const playerOrderNames = playerOrder.map(element => {
           return gameState.turnOrder[element];
         });
-        
+
         // Amount of money each player should receive in order of turns. In the form of an object with the player's name as the key and a value of an object with how much money they need (assuming the player who's turn it is has infinite money) and how much they will actually get (which is zero for now).
         let playersMoneyNeeded = {};
         for (var k = 0; k < playerOrderNames.length; k++) {
@@ -113,7 +113,7 @@ export const cafe = {
           }
           playersMoneyNeeded[playerOrderNames[k]] = {needs: moneyToCollect, gets: 0};
         }
-        
+
         // Determine how much actual money each player will receive, taking into account how much money the player who's turn it is has.
         while (playerOnTurnMoney > 0) {
           for (var key in playersMoneyNeeded) {
@@ -126,7 +126,7 @@ export const cafe = {
             }
           }
         }
-        
+
       if (gameState.turn !== currentPlayer) {
         // Now return a value that refers to how much money the currentPlayer will gain.
         const gainedAmount = playersMoneyNeeded[currentPlayer].gets;
@@ -331,15 +331,14 @@ export const bodega = {
   cardFn: function(currentPlayer, gameState) {
     // change below to this.diceValue
     if (this.diceValue.includes(gameState.diceValue)) {
-        
+
         // Find the player who's turn it is and how much money they have.
         const playerOnTurn = gameState.players[gameState.turn];
         let playerOnTurnMoney = playerOnTurn.money;
-        
+
         // Create an array of the players names in the order they should be paid.
         let playerOrder = [];
         const orderKeys = Object.keys(gameState.turnOrder);
-   
         let playerOnTurnIndex;
         orderKeys.forEach((element, index) => {
           if (gameState.turnOrder[element] === gameState.turn) {
@@ -358,7 +357,7 @@ export const bodega = {
         const playerOrderNames = playerOrder.map(element => {
           return gameState.turnOrder[element];
         });
-        
+
         // Amount of money each player should receive in order of turns. In the form of an object with the player's name as the key and a value of an object with how much money they need (assuming the player who's turn it is has infinite money) and how much they will actually get (which is zero for now).
         let playersMoneyNeeded = {};
         for (var k = 0; k < playerOrderNames.length; k++) {
@@ -398,7 +397,7 @@ export const bodega = {
   }
   }
 };
-    
+
 export const wineShop = {
   refName: 'wineShop',
   displayName: 'Wine Shop',
