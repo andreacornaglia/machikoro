@@ -6,7 +6,13 @@
 
 const User = require('./user')
 const OAuth = require('./oauth')
+const Game = require('./game')
 
 OAuth.belongsTo(User)
 User.hasOne(OAuth)
-module.exports = {User}
+
+
+Game.belongsToMany(User, {through: 'GameUser' })
+User.belongsToMany(Game, {through: 'GameUser' })
+
+module.exports = {User, Game}
