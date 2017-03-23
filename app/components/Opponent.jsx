@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {cardArray} from '../cards/cards.js';
+import {cardArray, unlockableArray} from '../cards/cards.js';
 
 export default class Opponent extends Component{
   constructor (){
@@ -21,7 +21,7 @@ export default class Opponent extends Component{
     const player = {
       name: 'Player 1',
       money: 10,
-      unlocked: cardArray.slice(0, 4)
+      unlocked: unlockableArray
     }
     return (
       <div id="opponent" onClick = {this.handleOnClick}>
