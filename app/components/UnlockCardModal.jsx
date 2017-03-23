@@ -28,7 +28,7 @@ export default class UnlockCardModal extends Component {
       currentTurnObj.activatedCards[cardType] = true
       unlockSpecialCard(cardType, currentTurn, playerMoney)
       console.log('playermoneyavail', playerMoney)
-      document.getElementById('unlock-button').disabled = true
+
     }
   }
 
@@ -52,9 +52,13 @@ export default class UnlockCardModal extends Component {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button id="unlock-button" disabled={this.props.insufficientFunds}
+          <Button
+            disabled={this.props.insufficientFunds}
             bsStyle="success"
-            onClick={() => this.handleClick(this.props.element)}
+            onClick={() => {
+              this.handleClick(this.props.element)
+              this.props.close()
+            }}
             >Unlock</Button>
         </Modal.Footer>
       </Modal>

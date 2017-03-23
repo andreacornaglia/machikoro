@@ -24,11 +24,12 @@ export default class CardModal extends Component{
       cardQuantity--
       playerCardSupply++
       updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply)
-      document.getElementById('buy-button').disabled = true
+
   }
 
   render() {
     const element = this.props.element
+
     return (
       <Modal
         show={this.props.show}
@@ -51,10 +52,12 @@ export default class CardModal extends Component{
         </Modal.Body>
         <Modal.Footer>
           <Button
-            id="buy-button"
             disabled={this.props.insufficientFunds}
             bsStyle="success"
-            onClick={() => this.handleClick(this.props.element)}
+            onClick={() => {
+              this.handleClick(this.props.element)
+              this.props.close()
+            }}
           >Buy</Button>
         </Modal.Footer>
       </Modal>
