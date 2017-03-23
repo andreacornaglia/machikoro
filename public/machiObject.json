@@ -21,14 +21,30 @@
     "turn": "playerOne",
     "turnOrder":{
       "first": "playerOne",
-      "second": "playerTwo"
+      "second": "playerTwo",
+      "third": "playerThree",
+      "fourth": "playerFour"
     },
+    "phase": "roll",
     "players" : {
       "playerOne": {
         "name": null,
         "cards": {
           "farmersMarket": 1,
-          "bakery": 1
+          "bakery": 1,
+          "river": 0,
+          "cafe": 0,
+          "convenienceStore": 0,
+          "museum": 0,
+          "businessCenter": 0,
+          "stadium": 0,
+          "tvStation": 0,
+          "powerPlant": 0,
+          "touristBus": 0,
+          "theatre": 0,
+          "bodega": 0,
+          "wineShop": 0,
+          "restaurant": 0
         },
         "money": 3,
         "activatedCards": {
@@ -42,7 +58,74 @@
         "name": null,
         "cards": {
           "farmersMarket": 1,
-          "bakery": 1
+          "bakery": 1,
+          "river": 0,
+          "cafe": 0,
+          "convenienceStore": 0,
+          "museum": 0,
+          "businessCenter": 0,
+          "stadium": 0,
+          "tvStation": 0,
+          "powerPlant": 0,
+          "touristBus": 0,
+          "theatre": 0,
+          "bodega": 0,
+          "wineShop": 0,
+          "restaurant": 0
+        },
+        "money": 3,
+        "activatedCards": {
+          "radioTower": false,
+          "shoppingMall": false,
+          "coneyIsland": false,
+          "subwayStation": false
+        }
+      },
+      "playerThree": {
+        "name": null,
+        "cards": {
+          "farmersMarket": 1,
+          "bakery": 1,
+          "river": 0,
+          "cafe": 0,
+          "convenienceStore": 0,
+          "museum": 0,
+          "businessCenter": 0,
+          "stadium": 0,
+          "tvStation": 0,
+          "powerPlant": 0,
+          "touristBus": 0,
+          "theatre": 0,
+          "bodega": 0,
+          "wineShop": 0,
+          "restaurant": 0
+        },
+        "money": 3,
+        "activatedCards": {
+          "radioTower": false,
+          "shoppingMall": false,
+          "coneyIsland": false,
+          "subwayStation": false
+        }
+      },
+      "playerFour": {
+        "name": null,
+        "cards": {
+          "farmersMarket": 1,
+          "bakery": 1,
+          "river": 0,
+          "cafe": 0,
+          "convenienceStore": 0,
+          "museum": 0,
+          "businessCenter": 0,
+          "stadium": 0,
+          "tvStation": 0,
+          "powerPlant": 0,
+          "touristBus": 0,
+          "theatre": 0,
+          "bodega": 0,
+          "wineShop": 0,
+          "restaurant": 0
         },
         "money": 3,
         "activatedCards": {

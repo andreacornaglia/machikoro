@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import SelfDashboard from './SelfDashboard';
 import CardGrid from './CardGrid';
 import Opponent from './Opponent';
+import DiceView from '../components/DiceView';
 import { Col, Row, Tooltip } from 'react-bootstrap';
+import {connect} from 'react-redux'
 
-export default class GamePage extends Component {
+class GamePage extends Component {
   render() {
+    if (this.props.game === null) {
+      return <h1>Loading...</h1>
+    }
     return (
       <div className="global-board">
         <div className="row row-top">
@@ -13,7 +18,12 @@ export default class GamePage extends Component {
           <Col lg={4}>
             <Opponent id='oponent-top'/>
           </Col>
-          <Col lg={4}/>
+
+          <Col lg={2}/>
+
+          <Col lg={2}>
+            <DiceView />
+          </Col>
         </div>
         <div className="row game-page-central">
           <Col lg={2}>
@@ -26,10 +36,16 @@ export default class GamePage extends Component {
             <Opponent id='oponent-right'/>
           </Col>
         </div>
-        <div className="row">
+        <div className="row game-part-opponent">
           <SelfDashboard/>
         </div>
       </div>
     )
   }
 }
+
+export default connect(state => {
+  return {
+    game: state.game
+  }
+})(GamePage)
