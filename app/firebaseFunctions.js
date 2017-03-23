@@ -28,9 +28,6 @@ export const calculateMoney = (currentPlayer, gameState) => {
   return finalMoney;
 }
 
-export const disableButton = () => {
-
-}
 
 export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply) => {
   let updateCardQuantity = {}
@@ -50,5 +47,14 @@ export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, pla
 
 }
 
+export const unlockSpecialCard = (cardType, currentTurn, playerMoney) => {
+  let playersMoneyAvail = ref.child('players').child(currentTurn)
+  playersMoneyAvail.update({
+    money: playerMoney
+  })
 
+  let activateCard = {}
+  activateCard[cardType] = true
+  ref.child('players').child(currentTurn).child('activatedCards').update(activateCard)
 
+}

@@ -13,6 +13,8 @@ class CardGrid extends Component {
       modalElement: {},
       insufficientFunds: true
     }
+    this.handleClick = this.handleClick.bind(this)
+    // this.getQuantity = this.getQuantity.bind(this)
     this.disableButton = this.disableButton.bind(this)
   }
 
@@ -25,10 +27,14 @@ class CardGrid extends Component {
     }
   }
 
+  // getQuantity(element){
+  //   return this.props.game ? this.props.game.cards[element.refName] : null
+  // }
   render() {
     let close = () => this.setState({showCardInfo: false})
 
     return (
+
       <div className="game-grid">
         <CardModal
           game={this.props.game}
