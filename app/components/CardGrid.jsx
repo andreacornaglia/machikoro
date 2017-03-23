@@ -13,8 +13,6 @@ class CardGrid extends Component {
       modalElement: {},
       insufficientFunds: true
     }
-    this.handleClick = this.handleClick.bind(this)
-    // this.getQuantity = this.getQuantity.bind(this)
     this.disableButton = this.disableButton.bind(this)
   }
 
