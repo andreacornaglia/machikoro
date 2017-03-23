@@ -94,11 +94,6 @@ class DiceView extends Component {
                 }}
                 >Roll Dice!</Button>
             </div>
-            <ChooseDiceNumModal
-              rollDice={this.rollDice}
-              show={this.state.show}
-              close={() => this.setState({ show: false})}
-            />
           </div>
 
         )
