@@ -195,11 +195,54 @@ export const businessCenter = {
   diceValue: 6,
   cost: 8,
   industry: 'antenna',
-  cardDescription: "Trade one non [antenna icon] establishment with another player, on your turn only",
+  cardDescription: "Get 5 coins from the player that has the most money, on your turn only",
   imgURL: '/images/wtc.png',
   //placeholder fn, update in the future
-  cardFn: function(currentPlayer, gameState) {
-    return {money:0}
+  cardFn: function (currentPlayer, gameState){
+      if (gameState.diceValue === this.diceValue) {
+        const playerObj = gameState.players[gameState.turn];
+        const moneyRequested = playerObj.cards.businessCenter * 5;
+        const playersArr = Object.keys(gameState.players);
+        if(currentPlayer === gameState.turn){
+          //we want to check which oponent has the max amount of $
+          let maxMoney = 0;
+          let playerWMoney;
+          playersArr.forEach((player, index) => {
+            if(player !== currentPlayer){
+              if(player.money > maxMoney){
+                maxMoney = player.money
+              }
+            }
+          })
+          //now check how much money I get
+          if(maxMoney <= moneyRequested){
+            moneyRequested = maxMoney
+          }
+          return {money: moneyRequested};
+        } else {
+          //check this
+            const playerObj = gameState.players[currentPlayer];
+            let maxMoney = 0;
+            let playerWMoney;
+            playersArr.forEach((player, index) => {
+              if (player !== currentPlayer){
+                if(player.money > maxMoney){
+                  maxMoney = player.money
+                }
+              }
+            })
+            if(playerObj.money > maxMoney){
+              if(playerObj.money >= moneyRequested){
+               return {money: - moneyRequested};
+               }
+              else {
+                return {money: - playerObj.money};
+              }
+            }
+        }
+     } else {
+        return {money: 0}
+    }
   }
 };
 
@@ -250,11 +293,39 @@ export const comedyClub = {
   diceValue: 6,
   cost: 7,
   industry: 'antenna',
-  cardDescription: "Take 2 coins from all players, on your turn only",
+  cardDescription: "Take 3 coins from all players, on your turn only",
   imgURL: '/images/radio-tower.png',
   //placeholder fn, update in the future
-  cardFn: function(currentPlayer, gameState) {
-    return {money:0}
+  cardFn: function (currentPlayer, gameState){
+      if (gameState.diceValue === this.diceValue) {
+        const playerObj = gameState.players[gameState.turn];
+        const moneyRequested = playerObj.cards.comedyClub *3;
+        if(currentPlayer === gameState.turn){
+          const playersArr = Object.keys(gameState.players);
+          let gainedAmount = 0;
+          playersArr.forEach(player => {
+            if (player !== currentPlayer){
+              const money = gameState.players[player].money
+              if(money >= moneyRequested){
+                gainedAmount += moneyRequested;
+              } else{
+                gainedAmount += money;
+              }
+            }
+          })
+          return {money: gainedAmount};
+        } else {
+          const currentPlayerObj = gameState.players[currentPlayer];
+           if(currentPlayerObj.money >= moneyRequested){
+             return {money: - moneyRequested};
+           }
+          else {
+            return {money: - currentPlayerObj.money};
+          }
+        }
+     } else {
+        return {money: 0}
+    }
   }
 };
 
