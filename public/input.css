@@ -263,4 +263,5 @@ div .content-container .slick-slide .slick-active .slick-center {
   background-color: black !important; }
 
 .carousel-img, .slick-slide img {
-  width: 100%; }
+  height: 100%;
+  padding-right: 15px; }
