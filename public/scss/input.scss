@@ -168,11 +168,14 @@ div .content-container .slick-slide .slick-active .slick-center {
   background-size: cover;
   margin: 10px 10px;
   padding-bottom: 20px;
+  filter: grayscale(100%);
 
   .card-cont:hover .card-tooltip{
     visibility: visible;
   }
 }
+
+
 
 #coneyIsland {
   background-image: url("./images/coney-island.png");
@@ -229,6 +232,7 @@ div .content-container .slick-slide .slick-active .slick-center {
   width: 50px;
   height: 50px;
   margin-right: 5px;
+  filter: grayscale(100%);
 }
 
 #opp-summary, #opp-extension {
@@ -305,9 +309,9 @@ div .content-container .slick-slide .slick-active .slick-center {
 
 
 //CARDGRID MODALS
-.modal-container {
-    position: relative;
-}
+// .modal-container {
+//     position: relative;
+// }
 .modal-container .modal, .modal-container .modal-backdrop {
     position: absolute;
 }
@@ -317,6 +321,3 @@ div .content-container .slick-slide .slick-active .slick-center {
 .modal-backdrop {
   background-color:rgba(0, 0, 0, 1) !important;
 }
-
-
-
