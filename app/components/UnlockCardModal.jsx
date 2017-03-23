@@ -1,33 +1,38 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import {updateAfterCardPurchase} from '../firebaseFunctions'
+import {unlockSpecialCard} from '../firebaseFunctions'
 
-export default class CardModal extends Component{
+export default class UnlockCardModal extends Component {
   constructor(){
     super()
     this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick(element){
+
     let game = this.props.game
     let currentTurn = game.turn;
     let currentTurnObj = game.players[currentTurn]
 
-    let cardCost = element.cost
+    let unlockableCardCost = element.cost
     let cardType = element.refName;
-    let cardQuantity = game.cards[element.refName];
 
     let playerMoney = currentTurnObj.money
-    let playerCardSupply = currentTurnObj.cards[element.refName]
 
-      playerMoney -= cardCost
-      cardQuantity--
-      playerCardSupply++
-      updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply)
-      document.getElementById('buy-button').disabled = true
+    console.log('onUnlockableCardClick on:', element)
+
+    if (playerMoney >= unlockableCardCost) {
+      console.log('gotin', playerMoney)
+      console.log('cardtype', cardType)
+      playerMoney -= unlockableCardCost
+      currentTurnObj.activatedCards[cardType] = true
+      unlockSpecialCard(cardType, currentTurn, playerMoney)
+      console.log('playermoneyavail', playerMoney)
+      document.getElementById('unlock-button').disabled = true
+    }
   }
 
-  render() {
+  render(){
     const element = this.props.element
     return (
       <Modal
@@ -43,21 +48,17 @@ export default class CardModal extends Component{
         <Modal.Body>
           <div>
             <p><strong>Function:<br /></strong>{element.cardDescription}</p>
-            <p><strong>Roll value:</strong> {element.diceValue}</p>
             <p><strong>Cost: </strong>{element.cost}</p>
-            <p><strong>Industry: </strong>{element.industry}</p>
-            <p><strong>Qty Remaining: </strong>{this.props.quantity}</p>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            id="buy-button"
-            disabled={this.props.insufficientFunds}
+          <Button id="unlock-button" disabled={this.props.insufficientFunds}
             bsStyle="success"
             onClick={() => this.handleClick(this.props.element)}
-          >Buy</Button>
+            >Unlock</Button>
         </Modal.Footer>
       </Modal>
     )
   }
+
 }
