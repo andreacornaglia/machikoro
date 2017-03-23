@@ -244,7 +244,6 @@ div .content-container .slick-slide .slick-active .slick-center {
 .modal-backdrop {
   background-color: black !important; }
 
-
 #dice-modal {
   z-index: 500;
   position: fixed;
@@ -253,4 +252,3 @@ div .content-container .slick-slide .slick-active .slick-center {
 .carousel-img, .slick-slide img {
   height: 100%;
   padding-right: 15px; }
-
