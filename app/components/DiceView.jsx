@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {updateDiceNum} from '../firebaseFunctions'
 import ChooseDiceNumModal from './ChooseDiceNumModal'
 import firebase from 'firebase'
+import {calculateMoney} from '../firebaseFunctions'
 
 class DiceView extends Component {
     constructor(props){
@@ -52,11 +53,18 @@ class DiceView extends Component {
     }
 
     displayChooseDiceNumModal(){
+      let game = this.props.game
+      //because we still don't have auth, we will harcode a value here
+      //come back after doing oauth and refactor this part
+      let currentPlayer = 'playerOne'
       if (this.checkIfSubwayUnlocked() === true){
         this.setState({ show: true})
       } else {
         let newDiceVal = this.rollDice(1)
+        //use promise to guarantee we use the latest dice value
         updateDiceNum(newDiceVal)
+          .then(()=>calculateMoney(currentPlayer, this.props.game))
+          .catch(console.error)
       }
     }
 

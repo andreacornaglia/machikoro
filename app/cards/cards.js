@@ -196,7 +196,11 @@ export const businessCenter = {
   cost: 8,
   industry: 'antenna',
   cardDescription: "Trade one non [antenna icon] establishment with another player, on your turn only",
-  imgURL: '/images/subway.png'
+  imgURL: '/images/subway.png',
+  //placeholder fn, update in the future
+  cardFn: function(currentPlayer, gameState) {
+    return {money:0}
+  }
 };
 
 export const stadium = {
@@ -216,7 +220,7 @@ export const stadium = {
           let gainedAmount = 0;
           playersArr.forEach(player => {
             if (player !== currentPlayer){
-              const money = player.money
+              const money = gameState.players[player].money
               if(money >= moneyRequested){
                 gainedAmount += moneyRequested;
               } else{
@@ -247,7 +251,11 @@ export const tvStation = {
   cost: 7,
   industry: 'antenna',
   cardDescription: "Take 5 coins from any one player, on your turn only",
-  imgURL: '/images/radio-tower.png'
+  imgURL: '/images/radio-tower.png',
+  //placeholder fn, update in the future
+  cardFn: function(currentPlayer, gameState) {
+    return {money:0}
+  }
 };
 
 export const powerPlant = {
@@ -301,7 +309,7 @@ export const theatre = {
   cardDescription: "Get 5 coins from the bank, on anyone's turn",
   imgURL: '/images/subway.png',
   cardFn: function(currentPlayer, gameState){
-    if (this.diceValue = gameState.diceValue) {
+    if (this.diceValue === gameState.diceValue) {
       const currentPlayerObj = gameState.players[currentPlayer];
       const numCards = currentPlayerObj.cards.theatre;
       const gainedAmount = numCards * 5;

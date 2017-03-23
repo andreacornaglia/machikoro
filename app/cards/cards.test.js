@@ -1,5 +1,6 @@
 import chai, {expect} from 'chai'
 import * as cardFunctions from './cards';
+import {calculateMoney} from '../firebaseFunctions'
 
 describe('Card functions', () => {
 
@@ -164,3 +165,65 @@ describe('Card functions', () => {
     });
 
 });
+
+describe('Calculate money', () => {
+   it('is a function', () => {
+        expect(calculateMoney).to.be.an('function');
+    });
+    
+     const game = {
+          diceValue: 1,
+          turn: 'playerOne',
+          turnOrder: {
+            first: 'playerOne',
+            second: 'playerTwo',
+            third: 'playerThree',
+            fourth: 'playerFour'
+          },
+          players: {
+            playerOne: {
+              cards: {
+                farmersMarket: 1 
+              },
+              activatedCards:{
+                shoppingMall: false
+              },
+              money: 20
+            },
+            playerTwo: {
+              cards: {
+                farmersMarket: 1 
+              },
+              activatedCards:{
+                shoppingMall: false
+              },
+              money: 5
+            },
+            playerThree: {
+              cards: {
+                bodega: 1 
+              },
+              activatedCards:{
+                shoppingMall: false
+              },
+              money: 5
+            },
+            playerFour: {
+              cards: {
+                bodega: 1 
+              },
+              activatedCards:{
+                shoppingMall: true
+              },
+              money: 5
+            }
+          }
+        };
+
+    it('returns correct new amount of money for player based on dice value', () => {
+        //const cardArray = cardFunctions.cardArray;
+        const result = calculateMoney('playerOne', game)
+        expect(result).to.be.equal(21);
+    });
+ 
+})
