@@ -92,7 +92,18 @@ body{
   height: 20vh;
   float: left;
   vertical-align: middle;
+  display: inline-block;
+  div{
+    float: left;
+    width: 20%;
+    img{
+      width: 100%;
+    }
+  }
 }
+
+
+
 
 .center .slick-center h1 {
   color: white;
@@ -299,4 +310,10 @@ div .content-container .slick-slide .slick-active .slick-center {
 }
 .modal-backdrop {
   background-color:rgba(0, 0, 0, 1) !important;
+}
+
+
+.carousel-img, .slick-slide img{
+  height: 100%;
+  padding-right: 15px;
 }

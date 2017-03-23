@@ -5,7 +5,7 @@ export const farmersMarket = {
   cost: 1,
   industry: 'wheat',
   cardDescription: "Get 1 coin from the bank, on anyone's turn",
-  imgURL: '/images/wine-shop.png',
+  imgURL: '/images/farmers-market.png',
   cardFn: function(currentPlayer, gameState){
       if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[currentPlayer];
@@ -25,7 +25,7 @@ export const river = {
   cost: 1,
   industry: 'cow',
   cardDescription: "Get 1 coin from the bank on anyone's turn",
-  imgURL: '/images/subway.png',
+  imgURL: '/images/river.png',
   cardFn: function(currentPlayer, gameState){
       if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[currentPlayer];
@@ -45,7 +45,7 @@ export const bakery = {
   cost: 1,
   industry: 'building',
   cardDescription: "Get 1 coin from the bank, on your turn only",
-  imgURL: '/images/wine-shop.png',
+  imgURL: '/images/bakery.png',
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue.includes(gameState.diceValue)) {
       if (gameState.turn === currentPlayer) {
@@ -70,7 +70,7 @@ export const cafe = {
   cost: 2,
   industry: 'mug',
   cardDescription: "Get 1 coin from the player who rolled the dice",
-  imgURL: '/images/wine-shop.png',
+  imgURL: '/images/restaurant.png',
   cardFn: function(currentPlayer, gameState) {
     // change below to this.diceValue
     if (this.diceValue === gameState.diceValue) {
@@ -151,7 +151,7 @@ export const convenienceStore = {
   cost: 2,
   industry: 'building',
   cardDescription: "Get 3 coins from the bank, on your turn only",
-  imgURL: '/images/subway.png',
+  imgURL: '/images/food-stand.png',
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
@@ -196,7 +196,7 @@ export const businessCenter = {
   cost: 8,
   industry: 'antenna',
   cardDescription: "Trade one non [antenna icon] establishment with another player, on your turn only",
-  imgURL: '/images/subway.png',
+  imgURL: '/images/wtc.png',
   //placeholder fn, update in the future
   cardFn: function(currentPlayer, gameState) {
     return {money:0}
@@ -307,7 +307,7 @@ export const theatre = {
   cost: 6,
   industry: 'gear',
   cardDescription: "Get 5 coins from the bank, on anyone's turn",
-  imgURL: '/images/subway.png',
+  imgURL: '/images/broadway.png',
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       const currentPlayerObj = gameState.players[currentPlayer];
@@ -327,7 +327,7 @@ export const bodega = {
   cost: 3,
   industry: 'mug',
   cardDescription: "Get 2 coins from the player who rolled the dice",
-  imgURL: '/images/coney-island.png',
+  imgURL: '/images/bodega.png',
   cardFn: function(currentPlayer, gameState) {
     // change below to this.diceValue
     if (this.diceValue.includes(gameState.diceValue)) {
@@ -405,7 +405,7 @@ export const wineShop = {
   cost: 3,
   industry: 'wheat',
   cardDescription: "Get 3 coins from the bank,on anyone's turn",
-  imgURL: '/images/tour-bus.png',
+  imgURL: '/images/wine-shop.png',
   cardFn: function(currentPlayer, gameState){
     if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[currentPlayer];
@@ -425,7 +425,7 @@ export const restaurant = {
   cost: 2,
   industry: 'fruit',
   cardDescription: "Get 2 coins from the bank for each [wheat icon] establishment that you own. On your turn only",
-  imgURL: '/images/tour-bus.png',
+  imgURL: '/images/restaurant.png',
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue.includes(gameState.diceValue)) {
       if (gameState.turn === currentPlayer) {
@@ -457,14 +457,14 @@ export const coneyIsland = {
   displayName: 'Coney Island',
   cost: 16,
   cardDescription: 'If you roll doubles, take another turn after this one',
-  imgURL: '/images/radio-tower.png'
+  imgURL: '/images/coney-island.png'
 };
 export const shoppingMall = {
   refName: 'shoppingMall',
   displayName: 'Shopping Mall',
   cost: 10,
   cardDescription: 'Each of your ☕ and 🏢 establishments earn +1 coin',
-  imgURL: '/images/coney-island.png'
+  imgURL: '/images/shopping-mall.png'
 };
 export const subwayStation = {
   refName: 'subwayStation',

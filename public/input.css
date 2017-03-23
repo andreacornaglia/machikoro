@@ -72,7 +72,13 @@ body {
   width: 70%;
   height: 20vh;
   float: left;
-  vertical-align: middle; }
+  vertical-align: middle;
+  display: inline-block; }
+  .carousel-container div {
+    float: left;
+    width: 20%; }
+    .carousel-container div img {
+      width: 100%; }
 
 .center .slick-center h1 {
   color: white;
@@ -229,6 +235,10 @@ div .content-container .slick-slide .slick-active .slick-center {
   margin-left: 20px;
   height: 400px; }
 
+
+.modal-container {
+  position: relative; }
+
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute; }
 
@@ -237,3 +247,7 @@ div .content-container .slick-slide .slick-active .slick-center {
 
 .modal-backdrop {
   background-color: black !important; }
+
+.carousel-img, .slick-slide img {
+  height: 100%;
+  padding-right: 15px; }
