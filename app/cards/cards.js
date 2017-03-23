@@ -201,7 +201,7 @@ export const businessCenter = {
   cardFn: function (currentPlayer, gameState){
       if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[gameState.turn];
-        const moneyRequested = playerObj.cards.businessCenter * 5;
+        let moneyRequested = playerObj.cards.businessCenter * 5;
         const playersArr = Object.keys(gameState.players);
         if(currentPlayer === gameState.turn){
           //we want to check which oponent has the max amount of $
