@@ -37,7 +37,7 @@ class SelfSummary extends Component {
             <div className="summaryContainer">
               <div className="row">
                 <img src='./piggy.png'/>
-                <h3>Andrea <span>${playerMoney}</span></h3>
+                <h3>Andrea<span>${playerMoney}</span></h3>
               </div>
               <div className="unlockableSelf">
 

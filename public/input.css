@@ -136,27 +136,10 @@ div .content-container .slick-slide .slick-active .slick-center {
   margin: 10px 10px;
   padding-bottom: 20px;
   filter: grayscale(100%); }
+  .unlockCards img.grayscale.disabled {
+    filter: none; }
   .unlockCards .card-cont:hover .card-tooltip {
     visibility: visible; }
-
-#coneyIsland {
-  background-image: url("./images/coney-island.png");
-  filter: grayscale(100%); }
-
-#subwayStation {
-  background-image: url("./images/subway.png");
-  filter: grayscale(100%); }
-
-#radioTower {
-  background-image: url("./images/radio-tower.png");
-  filter: grayscale(100%); }
-
-#subwayStation {
-  background-image: url("./images/subway.png");
-  filter: grayscale(100%); }
-
-#wineShop {
-  background-image: url("./images/wine-shop.png"); }
 
 #self-dashboard {
   width: 100%;

@@ -15,7 +15,7 @@ class CardGrid extends Component {
       modalElement: {}
     }
     this.handleClick = this.handleClick.bind(this)
-    this.getQuantity = this.getQuantity.bind(this)
+    // this.getQuantity = this.getQuantity.bind(this)
   }
 
   handleClick(element){
@@ -48,16 +48,16 @@ class CardGrid extends Component {
     }
   }
 
-  getQuantity(element){
-    return this.props.game ? this.props.game.cards[element.refName] : null
-  }
+  // getQuantity(element){
+  //   return this.props.game ? this.props.game.cards[element.refName] : null
+  // }
 
   render() {
 
     let close = () => this.setState({show: false})
 
     return (
-     <div> 
+     <div>
     <div className="game-grid">
       <CardModal
         close={() => close()}
@@ -66,7 +66,7 @@ class CardGrid extends Component {
       />
       {cardArray.map((element, index) => {
         return (
-          <Col lg={4} className="col-lg-5ths card-cont modal-container" key={index} 
+          <Col lg={4} className="col-lg-5ths card-cont modal-container" key={index}
             onClick={(evt) => {
             console.log('ELEMENT', element)
             evt.preventDefault()

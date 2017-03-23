@@ -28,9 +28,6 @@ export const calculateMoney = (currentPlayer, gameState) => {
   return finalMoney;
 }
 
-export const disableButton = () => {
-
-}
 
 export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply) => {
   let updateCardQuantity = {}
