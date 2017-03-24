@@ -356,10 +356,18 @@ div .content-container .slick-slide .slick-active .slick-center {
 }
 
 .provider-login-btn {
-  max-width: 100%;
+  max-width: 45%;
   margin: 0 auto 10px;
+  justify-content: center;
 }
 
 .whoami{
   margin: auto;
+  width: 15%;
+
+  .center-buttons{
+    margin-top: 10px;
+    width: 100%;
+  }
+
 }

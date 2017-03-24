@@ -6,9 +6,11 @@ import {connect} from 'react-redux'
 export const WhoAmI = ({ user, logout }) => (
   <div className="whoami">
     <span className="whoami-user-name">{user && user.name}</span>
-    <LinkContainer to="/">
-      <Button className="center-buttons" onClick={logout}>Logout</Button>
-    </LinkContainer>
+
+      <Button className="center-buttons" bsStyle="success" onClick={logout}>Start Game</Button>
+      <Button className="center-buttons" bsStyle="warning" onClick={logout}>Join Game</Button>
+      
+      <Button className="center-buttons" href="/" onClick={logout}>Logout</Button>
   </div>
 )
 

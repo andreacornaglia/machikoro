@@ -13,32 +13,14 @@ export const Login = ({ login }) => (
   <FormGroup>
     <Col componentClass={ControlLabel} sm={4} />
     <Col sm={4}>
-  <ButtonToolbar>
-    <Button className="buffer provider-login-btn" bsStyle="danger" href="/api/auth/login/google" bsSize="large">Login with Google
-    </Button>
-    <Button className="buffer provider-login-btn" bsStyle="primary" href="/api/auth/login/facebook" bsSize="large" >Login with Facebook
-    </Button>
-   </ButtonToolbar>
- </Col>
+      <ButtonToolbar>
+        <Button className="buffer provider-login-btn" bsStyle="danger" href="/api/auth/login/google" bsSize="small">Login with Google
+        </Button>
+        <Button className="buffer provider-login-btn" bsStyle="primary" href="/api/auth/login/facebook" bsSize="small" >Login with Facebook
+        </Button>
+       </ButtonToolbar>
+     </Col>
  </FormGroup>
-
-  <FormGroup>
-    <Col componentClass={ControlLabel} sm={4} />
-    <Col sm={4}>
-    <Button className="buffer provider-login-btn" bsStyle="danger" href="/api/auth/login/google" bsSize="small" block>Login with Google
-    </Button>
-    </Col>
-    </FormGroup>
-
-
-    <FormGroup>
-      <Col componentClass={ControlLabel} sm={4} />
-      <Col sm={4}>
-      <Button className="buffer provider-login-btn" bsStyle="primary" href="/api/auth/login/facebook" bsSize="small" block>Login with Facebook
-      </Button>
-      </Col>
-      </FormGroup>
-
 
   <FormGroup controlId="formHorizontalEmail">
       <Col componentClass={ControlLabel} sm={4}>
