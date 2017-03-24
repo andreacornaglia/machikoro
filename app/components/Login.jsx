@@ -13,7 +13,7 @@ export const Login = ({ login }) => (
   <FormGroup>
     <Col componentClass={ControlLabel} sm={4} />
     <Col sm={4}>
-      <ButtonToolbar>
+      <ButtonToolbar className="button-toolbar">
         <Button className="buffer provider-login-btn" bsStyle="danger" href="/api/auth/login/google" bsSize="small">Login with Google
         </Button>
         <Button className="buffer provider-login-btn" bsStyle="primary" href="/api/auth/login/facebook" bsSize="small" >Login with Facebook
@@ -21,6 +21,15 @@ export const Login = ({ login }) => (
        </ButtonToolbar>
      </Col>
  </FormGroup>
+
+  <FormGroup controlId="formControlsText">
+     <Col componentClass={ControlLabel} sm={4}>
+       Name
+     </Col>
+     <Col sm={4}>
+       <FormControl type="text" name="name" placeholder="Name" />
+     </Col>
+   </FormGroup>
 
   <FormGroup controlId="formHorizontalEmail">
       <Col componentClass={ControlLabel} sm={4}>
