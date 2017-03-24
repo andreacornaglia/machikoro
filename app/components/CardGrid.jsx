@@ -25,9 +25,6 @@ class CardGrid extends Component {
     }
   }
 
-  // getQuantity(element){
-  //   return this.props.game ? this.props.game.cards[element.refName] : null
-  // }
   render() {
     let close = () => this.setState({showCardInfo: false})
 

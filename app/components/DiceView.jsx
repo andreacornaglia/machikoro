@@ -18,6 +18,7 @@ class DiceView extends Component {
       this.displayChooseDiceNumModal = this.displayChooseDiceNumModal.bind(this)
     }
 
+    //this function generates a new dice value
     rollDice(diceNum){
       let newDiceNum;
       if (diceNum === 1) {
@@ -28,6 +29,7 @@ class DiceView extends Component {
       }
       return newDiceNum;
     }
+
 
     checkIfSubwayUnlocked(){
       let game = this.props.game
@@ -80,7 +82,6 @@ class DiceView extends Component {
 
         return (
           <div>
-
             <div className="diceContainer">
               <p>Player Turn: {game.turn}</p>
               <p>Dice Value: {game.diceValue}</p>

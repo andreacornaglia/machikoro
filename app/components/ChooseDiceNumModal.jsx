@@ -7,26 +7,32 @@ class ChooseDiceNumModal extends Component {
   constructor(){
     super()
     this.rollDice = this.rollDice.bind(this)
+    this.handleButtonClick = this.handleButtonClick.bind(this)
   }
 
+  //function that will generate a new dice value
   rollDice (diceNum){
-  let newDiceNum;
-  if (diceNum === 1) {
-    newDiceNum = Math.floor(Math.random() * (6) + 1);
+    let newDiceNum;
+    if (diceNum === 1) {
+      newDiceNum = Math.floor(Math.random() * (6) + 1);
+    }
+    if (diceNum === 2){
+      newDiceNum = Math.floor(Math.random() * (12) + 1);
+    }
+    return newDiceNum;
   }
-  if (diceNum === 2){
-    newDiceNum = Math.floor(Math.random() * (12) + 1);
+
+  handleButtonClick(num){
+    this.props.closeModal()
+    let diceVal = this.rollDice(num)
+    updateDiceNum(diceVal)
   }
-  return newDiceNum;
-}
 
   render() {
-    console.log('diceprops', this.props)
     return (
       <div id="dice-modal" style={{height: 200}}>
         <Modal
           show={true}
-          onHide={this.props.closeModal}
           container={this}
           aria-labelledby="contained-modal-title"
         >
@@ -35,24 +41,16 @@ class ChooseDiceNumModal extends Component {
           </Modal.Header>
           <Modal.Body>
              <Button onClick={() => {
-                this.props.closeModal()
-                let diceVal = this.rollDice(1)
-                updateDiceNum(diceVal)
+                this.handleButtonClick(1)
               }}>1</Button>
               <Button onClick={() => {
-                this.props.closeModal()
-                let diceVal = this.rollDice(2)
-                updateDiceNum(diceVal)
-                }}>2</Button>
+                this.handleButtonClick(2)
+              }}>2</Button>
           </Modal.Body>
-          <Modal.Footer>
-          </Modal.Footer>
         </Modal>
       </div>
-
     );
   }
-
 }
 
 export default connect(state => {
