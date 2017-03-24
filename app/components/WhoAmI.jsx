@@ -15,7 +15,7 @@ export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => (
             createGame()
           }}>Create Game</Button>
         <Button className="center-buttons" href="/" onClick={logout}>Logout</Button>
-        <h1>{game && '/game/' + game.gameLink}</h1>
+        <h1>{game && 'http://nyuyoku.herokuapp.com/game/' + game.gameLink}</h1>
 
     </div>
   </div>
