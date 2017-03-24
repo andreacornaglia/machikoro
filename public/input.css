@@ -270,11 +270,6 @@ div .content-container .slick-slide .slick-active .slick-center {
   background-image: url("./images/new-york-background.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
-  .lobby-container h1 {
-    text-align: center;
-    color: white;
-    margin: 10vh;
-    text-shadow: 0px 3px 0px #b2a98f, 0px 14px 10px rgba(0, 0, 0, 0.15), 0px 24px 2px rgba(0, 0, 0, 0.1), 0px 34px 30px rgba(0, 0, 0, 0.1); }
 
 .button-toolbar {
   width: 100%;
@@ -284,9 +279,27 @@ div .content-container .slick-slide .slick-active .slick-center {
     margin: 0 auto 10px;
     justify-content: center; }
 
+.login-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; }
+  .login-container h1 {
+    text-align: center;
+    color: white;
+    margin: 10vh;
+    text-shadow: 0px 3px 0px #b2a98f, 0px 14px 10px rgba(0, 0, 0, 0.15), 0px 24px 2px rgba(0, 0, 0, 0.1), 0px 34px 30px rgba(0, 0, 0, 0.1); }
+
 .whoami {
   margin: auto;
   width: 15%; }
   .whoami .center-buttons {
     margin-top: 10px;
     width: 100%; }
+
+.lobby-title {
+  width: 100%; }
+  .lobby-title h1 {
+    text-align: center;
+    color: white;
+    margin: 10vh;
+    text-shadow: 0px 3px 0px #b2a98f, 0px 14px 10px rgba(0, 0, 0, 0.15), 0px 24px 2px rgba(0, 0, 0, 0.1), 0px 34px 30px rgba(0, 0, 0, 0.1); }

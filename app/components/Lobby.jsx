@@ -13,7 +13,6 @@ class Lobby extends Component {
   render(){
     return(
       <div className="lobby-container">
-        <h1>Welcome to Machi Koro</h1>
           <nav>
             {this.props.user ?
               <WhoAmI

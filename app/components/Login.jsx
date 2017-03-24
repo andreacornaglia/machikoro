@@ -5,6 +5,8 @@ import {connect} from 'react-redux'
 
 
 export const Login = ({ login }) => (
+  <div className="login-container">
+    <h1>Welcome to Nyūyōku</h1>
   <Form horizontal onSubmit={evt => {
     evt.preventDefault()
     login(evt.target.email.value, evt.target.password.value)
@@ -63,6 +65,7 @@ export const Login = ({ login }) => (
       </Col>
     </FormGroup>
   </Form>
+</div>  
 )
 
 
