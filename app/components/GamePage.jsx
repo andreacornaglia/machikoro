@@ -37,7 +37,7 @@ closeModal(){
         <div className="row row-top">
           <Col sm={4}/>
           <Col sm={4}>
-            <Opponent id='oponent-top' player={player2}/>
+            <Opponent id='oponent-top' player={player2} avatar={'/images/avatar2.png'}/>
           </Col>
 
           <Col sm={2}/>
@@ -50,13 +50,13 @@ closeModal(){
         </div>
         <div className="row game-page-central">
           <Col sm={2}>
-            <Opponent id='oponent-left' player={player3}/>
+            <Opponent id='oponent-left' player={player3} avatar={'/images/avatar3.png'}/>
           </Col>
           <Col sm={8}>
             <CardGrid id="center"/>
           </Col>
           <Col sm={2}>
-            <Opponent id='oponent-right' player={player4}/>
+            <Opponent id='oponent-right' player={player4} avatar={'/images/avatar4.png'}/>
           </Col>
         </div>
         <div className="row game-part-opponent">
