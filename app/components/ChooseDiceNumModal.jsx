@@ -30,7 +30,7 @@ class ChooseDiceNumModal extends Component {
           container={this}
           aria-labelledby="contained-modal-title"
         >
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title id="contained-modal-title">Would you like to roll 1 die or 2 dice?</Modal.Title>
           </Modal.Header>
           <Modal.Body>
