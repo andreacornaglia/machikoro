@@ -5,8 +5,6 @@ import {createGame, fetchGame} from '../reducers/game'
 import {connect} from 'react-redux'
 
 export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => (
-
-// export const WhoAmI = (props) => (
   <div>
     <div className="lobby-title">
       <h1>Hi, {user && user.name}!</h1>
@@ -23,16 +21,6 @@ export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => (
   </div>
 )
 
-// const mapState = (state) => {
-//   return {
-//     game: state.game,
-//     user: state.auth
-//   }
-// }
-//
-// export default connect ((mapState),
-//   {logout, createGame, fetchGame}
-// ) (WhoAmI)
 
 export default connect (
   ({ auth, game }) => ({ user: auth, game }),
