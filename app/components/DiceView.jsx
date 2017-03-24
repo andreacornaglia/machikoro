@@ -80,26 +80,18 @@ class DiceView extends Component {
 
     render() {
       let game = this.props.game
-
         return (
-          <div>
-            <div className="diceContainer">
-              <p>Player Turn: {game.turn}</p>
-              <p>Dice Value: {game.diceValue}</p>
-              <Button
-                bsSize="xsmall"
-                bsStyle="success"
-                onClick={() => {
-                  this.displayChooseDiceNumModal()
-                }}
-                >Roll Dice!</Button>
-            </div>
-          </div>
-
+            <Button
+              bsSize="xsmall"
+              bsStyle="success"
+              onClick={() => {
+                this.displayChooseDiceNumModal()
+              }}>
+             Roll Dice!
+             </Button>
         )
     }
 }
-
 
 export default connect(state => {
   return {

@@ -17,12 +17,25 @@ class CardGrid extends Component {
   }
 
   disableButton(element){
-    if (this.props.game.players[this.props.game.turn].money < element.cost){
-      this.setState({insufficientFunds: true})
-    }
-    else {
-      this.setState({insufficientFunds: false})
-    }
+  //check if enough money
+    /*
+     if(this.props.game.turn !== 'playerOne'){
+       this.setState({insufficientFunds: true})
+     } else{
+       this.setState({insufficientFunds: false})
+     }
+    
+     if(this.props.game.phase !== 'buy'){
+       this.setState({insufficientFunds: true})
+     } else{
+       this.setState({insufficientFunds: false})
+     }
+     */
+     if(this.props.game.players[this.props.game.turn].money < element.cost){
+        this.setState({insufficientFunds: true})
+     } else{
+       this.setState({insufficientFunds: false})
+     } 
   }
 
   render() {

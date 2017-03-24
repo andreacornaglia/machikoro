@@ -19,12 +19,10 @@ export default class CardModal extends Component{
 
     let playerMoney = currentTurnObj.money
     let playerCardSupply = currentTurnObj.cards[element.refName]
-
       playerMoney -= cardCost
       cardQuantity--
       playerCardSupply++
       updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply)
-
   }
 
   render() {
