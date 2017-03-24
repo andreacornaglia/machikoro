@@ -10,7 +10,6 @@ class DiceView extends Component {
     constructor(props){
       super(props)
       this.state = {
-        diceModal: false,
         showRollAgain: false
       }
       this.rollDice = this.rollDice.bind(this)
@@ -19,6 +18,7 @@ class DiceView extends Component {
       this.displayChooseDiceNumModal = this.displayChooseDiceNumModal.bind(this)
     }
 
+    //this function generates a new dice value
     rollDice(diceNum){
       let newDiceNum;
       if (diceNum === 1) {
@@ -29,6 +29,7 @@ class DiceView extends Component {
       }
       return newDiceNum;
     }
+
 
     checkIfSubwayUnlocked(){
       let game = this.props.game
@@ -57,8 +58,7 @@ class DiceView extends Component {
       //because we still don't have auth, we will harcode a value here
       //come back after doing oauth and refactor this part
       let currentPlayer = 'playerOne'
-      if (this.checkIfSubwayUnlocked() === true){
-        // this.setState({ diceModal: true})
+      if (this.checkIfSubwayUnlocked()){
         this.props.showModal()
       } else {
         let newDiceVal = this.rollDice(1)
@@ -82,7 +82,6 @@ class DiceView extends Component {
 
         return (
           <div>
-
             <div className="diceContainer">
               <p>Player Turn: {game.turn}</p>
               <p>Dice Value: {game.diceValue}</p>
