@@ -1,7 +1,8 @@
 body {
   background-color: #fefefe !important;
   width: 100%;
-  height: 100vh; }
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif !important; }
 
 .game-grid {
   padding-top: 10px;
@@ -134,7 +135,8 @@ div .content-container .slick-slide .slick-active .slick-center {
   .summaryContainer img {
     width: 50px;
     height: 50px;
-    float: left; }
+    float: left;
+    margin-right: 15px; }
   .summaryContainer h3 {
     margin: 10px; }
   .summaryContainer span {
@@ -151,12 +153,12 @@ div .content-container .slick-slide .slick-active .slick-center {
   height: 140px;
   width: 20%;
   background-size: cover;
-  padding-bottom: 20px;
-  filter: grayscale(100%); }
-  .unlockCards img.grayscale.disabled {
-    filter: none; }
+  padding-bottom: 20px; }
   .unlockCards .card-cont:hover .card-tooltip {
     visibility: visible; }
+
+.locked {
+  filter: grayscale(100%); }
 
 #self-dashboard {
   width: 100%;
@@ -172,24 +174,29 @@ div .content-container .slick-slide .slick-active .slick-center {
   background: white; }
 
 #avatar {
-  background-image: url("./piggy.png");
   width: 80px;
   height: 80px;
-  border-radius: 25px;
-  background-size: cover;
   margin: 0 auto; }
+  #avatar img {
+    width: 100%; }
 
-#unlockables img, #opp-extension img {
+.card-opp {
   width: 50px;
   height: 50px;
-  margin-right: 5px;
-  filter: grayscale(100%); }
+  margin-right: 5px; }
+
+.opp-name {
+  font-size: 18px; }
+
+.opp-money {
+  font-weight: 600; }
 
 #opp-summary, #opp-extension {
   padding: 10px;
   float: left; }
 
 #opp-summary {
+  text-align: center;
   color: rgba(0, 0, 0, 0.870588);
   background-color: white;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -262,3 +269,31 @@ div .content-container .slick-slide .slick-active .slick-center {
 
 .carousel-img, .slick-slide img {
   height: 100%; }
+
+.lobby-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("./images/new-york-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .lobby-container h1 {
+    text-align: center;
+    color: white;
+    margin: 10vh;
+    text-shadow: 0px 3px 0px #b2a98f, 0px 14px 10px rgba(0, 0, 0, 0.15), 0px 24px 2px rgba(0, 0, 0, 0.1), 0px 34px 30px rgba(0, 0, 0, 0.1); }
+
+.button-toolbar {
+  width: 100%;
+  margin: auto; }
+  .button-toolbar .provider-login-btn {
+    width: 49%;
+    margin: 0 auto 10px;
+    justify-content: center; }
+
+.whoami {
+  margin: auto;
+  width: 15%; }
+  .whoami .center-buttons {
+    margin-top: 10px;
+    width: 100%; }

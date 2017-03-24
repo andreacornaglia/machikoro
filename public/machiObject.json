@@ -28,7 +28,7 @@
     "phase": "roll",
     "players" : {
       "playerOne": {
-        "name": null,
+        "name": "Anne",
         "cards": {
           "farmersMarket": 1,
           "bakery": 1,
@@ -55,7 +55,7 @@
         }
       },
       "playerTwo": {
-        "name": null,
+        "name": "Andrea",
         "cards": {
           "farmersMarket": 1,
           "bakery": 1,
@@ -82,7 +82,7 @@
         }
       },
       "playerThree": {
-        "name": null,
+        "name": "Susan",
         "cards": {
           "farmersMarket": 1,
           "bakery": 1,
@@ -109,7 +109,7 @@
         }
       },
       "playerFour": {
-        "name": null,
+        "name": "Raina",
         "cards": {
           "farmersMarket": 1,
           "bakery": 1,
