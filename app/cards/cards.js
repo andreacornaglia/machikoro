@@ -197,54 +197,103 @@ export const businessCenter = {
   industry: 'antenna',
   cardDescription: "Get 5 coins from the player that has the most money, on your turn only",
   imgURL: '/images/wtc.png',
-  //placeholder fn, update in the future
-  cardFn: function (currentPlayer, gameState){
-      if (gameState.diceValue === this.diceValue) {
-        const playerObj = gameState.players[gameState.turn];
-        let moneyRequested = playerObj.cards.businessCenter * 5;
-        const playersArr = Object.keys(gameState.players);
-        if(currentPlayer === gameState.turn){
-          //we want to check which oponent has the max amount of $
-          let maxMoney = 0;
-          let playerWMoney;
-          playersArr.forEach((player, index) => {
-            if(player !== currentPlayer){
-              if(player.money > maxMoney){
-                maxMoney = player.money
-              }
-            }
-          })
-          //now check how much money I get
-          if(maxMoney <= moneyRequested){
-            moneyRequested = maxMoney
-          }
-          return {money: moneyRequested};
-        } else {
-          //check this
-            const playerObj = gameState.players[currentPlayer];
-            let maxMoney = 0;
-            let playerWMoney;
-            playersArr.forEach((player, index) => {
-              if (player !== currentPlayer){
-                if(player.money > maxMoney){
-                  maxMoney = player.money
-                }
-              }
-            })
-            if(playerObj.money > maxMoney){
-              if(playerObj.money >= moneyRequested){
-               return {money: - moneyRequested};
-               }
-              else {
-                return {money: - playerObj.money};
-              }
-            }
+  // The function I wrote that determines who has the most separately for each business card the player who's rolling has (ensures they get the most possible coins, for example if the person who rolled has two business center cards and the other people have 5 and 6 coins, the player who rolled will get 10 coins (5 from each person) instead of just 6 from one person).
+  cardFn: function (currentPlayer, gameState) {
+    if (gameState.diceValue === this.diceValue) {
+      // Find out how many business center cards the person who is rolling has.
+      const playerTurnObj = gameState.players[gameState.turn];
+      const playerTurnCardNum = playerTurnObj.cards.businessCenter;
+      let sumForPlayerTurn = 0;
+      // Create an object of how much money each player (besides the one who's turn it is) will give. Initialize it with each player's name and a value of 0 to start.
+      let whoGivesMoneyObj = {};
+      const playerNameArr = Object.keys(gameState.players);
+      playerNameArr.forEach(player => {
+        if (player !== gameState.turn) {
+          whoGivesMoneyObj[player] = 0;
         }
-     } else {
-        return {money: 0}
+      });
+      for (var i = 0; i < playerTurnCardNum; i++) {
+        // Create an object with player's names and their money.
+        let playersMoney = {};
+        const playersObj = gameState.players;
+        for (var key in playersObj) {
+          let playerName = key;
+          if (playerName !== gameState.turn) {
+            playersMoney[playerName] = playersObj[key].money;
+          }
+        }
+        // Find the person with the most money and how much they have.
+        let playerWithMost = null;
+        let playerWithMostMoney = 0;
+        for (var key2 in playersMoney) {
+          if (playersMoney[key2] > playerWithMostMoney) {
+            playerWithMost = key2;
+            playerWithMostMoney = playersMoney[key2];
+          }
+        }
+        // Find what the person with the most will give.
+        if (playerWithMostMoney >= 5) {
+          playerWithMostMoney = 5;
+        }
+        //If no one has money, break out of loop.
+        if (playerWithMost === null) {
+          break;
+        }
+        // Add this person and how much they are giving to the whoGivesMoneyObj.
+        whoGivesMoneyObj[playerWithMost] += playerWithMostMoney;
+        sumForPlayerTurn += playerWithMostMoney;
+        // Now modify the gameState in the function to reflect this change in player's money.
+        gameState.players[playerWithMost].money -= playerWithMostMoney;
+      }
+      // Now return the proper amount depending on who is the currentPlayer.
+      if (currentPlayer === gameState.turn) {
+        return { money: sumForPlayerTurn };
+      } else {
+        return { money: -whoGivesMoneyObj[currentPlayer] };
+      }
+    } else {
+      return { money: 0 };
     }
   }
 };
+  /* Alternative business center function, if you want to just take it all from one person, no matter whether they still have the most after you take the first five.
+  cardFn: function (currentPlayer, gameState){
+      if (gameState.diceValue === this.diceValue) {
+        // An object of the player who's turn it is.
+        const playerObj = gameState.players[gameState.turn];
+        // How much money the person who rolled should earn ideally.
+        let moneyRequested = playerObj.cards.businessCenter * 5;
+        // An array of all the players names
+        const playersArr = Object.keys(gameState.players);
+          //We want to check which opponent has the max amount of $
+          let maxMoney = 0;
+          let playerWMoney;
+          playersArr.forEach((player, index) => {
+            if(player !== gameState.turn){
+              if(gameState.players[player].money > maxMoney){
+                maxMoney = gameState.players[player].money;
+                playerWMoney = player;
+              }
+            }
+          });
+          // Check how much money the current player gets.
+          if(maxMoney <= moneyRequested){
+            moneyRequested = maxMoney;
+          }
+          console.log(playerWMoney);
+          if (currentPlayer === gameState.turn) {
+            return { money: moneyRequested };
+          } else if (currentPlayer === playerWMoney) {
+            return { money: -moneyRequested };
+          } else {
+            return { money: 0 };
+          }
+     } else {
+        return {money: 0};
+    }
+  }
+};
+*/
 
 export const stadium = {
   refName: 'stadium',
