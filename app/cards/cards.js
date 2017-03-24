@@ -63,9 +63,9 @@ export const bakery = {
   }
 };
 
-export const cafe = {
-  refName: 'cafe',
-  displayName: 'Cafe',
+export const bar = {
+  refName: 'bar',
+  displayName: 'Bar',
   diceValue: 3,
   cost: 2,
   industry: 'mug',
@@ -106,10 +106,10 @@ export const cafe = {
         let playersMoneyNeeded = {};
         for (var k = 0; k < playerOrderNames.length; k++) {
           let player = gameState.players[playerOrderNames[k]];
-          let numCafes = player.cards.cafe;
-          let moneyToCollect = numCafes;
+          let numBars = player.cards.bar;
+          let moneyToCollect = numBars;
           if (player.activatedCards.shoppingMall === true) {
-            moneyToCollect += numCafes;
+            moneyToCollect += numBars;
           }
           playersMoneyNeeded[playerOrderNames[k]] = {needs: moneyToCollect, gets: 0};
         }
@@ -144,9 +144,9 @@ export const cafe = {
   }
 };
 
-export const convenienceStore = {
-  refName: 'convenienceStore',
-  displayName: 'Convenience Store',
+export const foodStand = {
+  refName: 'foodStand',
+  displayName: 'Food Stand',
   diceValue: 4,
   cost: 2,
   industry: 'building',
@@ -156,10 +156,10 @@ export const convenienceStore = {
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
         const currentPlayerObj = gameState.players[currentPlayer];
-        const numConvStore= currentPlayerObj.cards.convenienceStore;
-        let gainedAmount = numConvStore * 3;
+        const numFoodStand= currentPlayerObj.cards.foodStand;
+        let gainedAmount = numFoodStand * 3;
         if(currentPlayerObj.activatedCards.shoppingMall){
-          gainedAmount += numConvStore
+          gainedAmount += numFoodStand
         }
         return { money: gainedAmount }
       }
@@ -244,13 +244,13 @@ export const stadium = {
   }
 };
 
-export const tvStation = {
-  refName: 'tvStation',
-  displayName: 'TV Station',
+export const comedyClub = {
+  refName: 'comedyClub',
+  displayName: 'Comedy club',
   diceValue: 6,
   cost: 7,
   industry: 'antenna',
-  cardDescription: "Take 5 coins from any one player, on your turn only",
+  cardDescription: "Take 2 coins from all players, on your turn only",
   imgURL: '/images/radio-tower.png',
   //placeholder fn, update in the future
   cardFn: function(currentPlayer, gameState) {
@@ -291,7 +291,7 @@ export const touristBus = {
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
         const currentPlayerObj = gameState.players[currentPlayer];
-        const gainedAmount = (currentPlayerObj.cards.museum + currentPlayerObj.cards.theatre) * 3 * currentPlayerObj.cards.touristBus;
+        const gainedAmount = (currentPlayerObj.cards.museum + currentPlayerObj.cards.broadway) * 3 * currentPlayerObj.cards.touristBus;
         return { money: gainedAmount }
       }
     } else {
@@ -300,9 +300,9 @@ export const touristBus = {
   }
 };
 
-export const theatre = {
-  refName: 'theatre',
-  displayName: 'Theatre',
+export const broadway = {
+  refName: 'broadway',
+  displayName: 'Broadway',
   diceValue: 9,
   cost: 6,
   industry: 'gear',
@@ -311,7 +311,7 @@ export const theatre = {
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       const currentPlayerObj = gameState.players[currentPlayer];
-      const numCards = currentPlayerObj.cards.theatre;
+      const numCards = currentPlayerObj.cards.broadway;
       const gainedAmount = numCards * 5;
       return { money: gainedAmount }
     } else {
@@ -440,7 +440,7 @@ export const restaurant = {
   }
 };
 
-export const cardArray = [farmersMarket, river, bakery, cafe, convenienceStore, museum, businessCenter, stadium, tvStation, powerPlant, touristBus, theatre, bodega, wineShop, restaurant]
+export const cardArray = [farmersMarket, river, bakery, bar, foodStand, museum, businessCenter, stadium, comedyClub, powerPlant, touristBus, broadway, bodega, wineShop, restaurant]
 
 
 //UNLOCKABLE CARDS BELOW
