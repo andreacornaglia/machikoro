@@ -19,7 +19,7 @@ class Carousel extends Component {
     //traverse cards object to find which card the user has, and how many
     cardKeys.forEach(card => {
       if(cards[card] > 0){
-        //find card position in cardArray
+        //find card information from our cardArray
         var imgURL;
         cardArray.forEach(element => {
           if(element.refName === card){
