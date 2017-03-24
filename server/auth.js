@@ -122,7 +122,7 @@ passport.use(new (require('passport-local').Strategy) (
 auth.get('/whoami', (req, res) => res.send(req.user))
 
 // POST requests for local login:
-auth.post('/login/local', passport.authenticate('local', { successRedirect: '/', }))
+auth.post('/login/local', passport.authenticate('local', { successRedirect: '/' }))
 
 // GET requests for OAuth login:
 // Register this route as a callback URL with OAuth provider
@@ -139,5 +139,32 @@ auth.post('/logout', (req, res, next) => {
   res.redirect('/api/auth/whoami')
 })
 
-module.exports = auth
 
+// POST requests for local signup:
+auth.post('/signup/local', function(req, res, next){
+    User.findOrCreate({
+      where: {
+        name: req.body.name,
+        email: req.body.email
+      },
+      defaults: { // if the user doesn't exist, create including this info
+        password: req.body.password
+      }
+    })
+    .spread((user, created) => {
+      if (created) {
+        // with Passport:
+        req.logIn(user, function (err) {
+          if (err) return next(err);
+          res.json(user);
+        });
+        // // before, without Passport:
+        // req.session.userId = user.id;
+        // res.json(user);
+      } else {
+        res.sendStatus(401); // this user already exists, you cannot sign up
+      }
+    });
+});
+
+module.exports = auth

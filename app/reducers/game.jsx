@@ -43,10 +43,10 @@ export const createGame = () => {
       })
       .catch(console.error)
 }
-//
+
 // export const fetchGame = (game) => {
 //   return dispatch =>
-//     axios.get(`/api/lobby/${game.gameLink}`)
+//     axios.get(`/api/game/${game.gameLink}`)
 //       .then((game) => {
 //         dispatch(fetchingGame(game))
 //         console.log('am i in here fetching game')

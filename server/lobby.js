@@ -2,30 +2,17 @@ const db = require('APP/db')
 const { Game, User } = require('../db/models')
 const api = module.exports = require('express').Router()
 
-
-api.get('/:id', (req, res, next) => {
-  Game.findOne({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(game => {
-    console.log('gettingGame', game)
-    res.send(game)
-  })
-  .catch(next)
-})
-
 api.post('/', (req, res, next) => {
-  console.log('am in here')
   return Game.create({
-    status: 'ongoing'
+    status: 'ongoing',
+    owner: req.user.name
   })
   .then(game => {
-  console.log('game', game)
-    // game.setUsers
+    // creating user association for person creating the game in join table
+    game.setUsers(req.user.id)
     res.send(game)
-
   })
   .catch(next)
 })
+
+// need to create association for people joining a game that has already been created -- GET request

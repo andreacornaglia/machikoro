@@ -12,7 +12,8 @@ import {settingGame} from './reducers/game'
 
 import GamePage from './components/GamePage'
 import HomePage from './components/HomePage'
-
+import Login from './components/Login'
+import Signup from './components/Signup'
 import AppContainer from './containers/AppContainer'
 
 const setGame = () => {
@@ -26,10 +27,12 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
-        <IndexRedirect to="/login" />
-        <Route path="/login" component={HomePage} />
+        <IndexRedirect to="/home" />
+        <Route path="/home" component={HomePage} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
         <Route path="/lobby" component={HomePage} />
-        <Route path="/game" component={GamePage} onEnter={setGame}/>
+        <Route path="/game/:gameLink" component={GamePage} onEnter={setGame}/>
       </Route>
     </Router>
   </Provider>,
