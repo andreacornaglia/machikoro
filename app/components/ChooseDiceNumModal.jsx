@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Modal, Button} from 'react-bootstrap';
 import {connect} from 'react-redux'
-import {updateDiceNum} from '../firebaseFunctions'
+import {updateDiceNum, calculateMoney} from '../firebaseFunctions'
 
 class ChooseDiceNumModal extends Component {
   constructor(){
@@ -23,9 +23,14 @@ class ChooseDiceNumModal extends Component {
   }
 
   handleButtonClick(num){
+
+    // change hardcode
+    let currentPlayer = 'playerOne'
     this.props.closeModal()
     let diceVal = this.rollDice(num)
     updateDiceNum(diceVal)
+    .then(()=>calculateMoney(currentPlayer, this.props.game))
+    .catch(console.error)
   }
 
   render() {
