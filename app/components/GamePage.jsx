@@ -12,17 +12,17 @@ class GamePage extends Component {
 constructor(){
   super()
   this.state = {
-    diceModal: false,
+    diceModal: false
   }
-  this.showModal = this.showModal.bind(this)
-  this.closeModal = this.closeModal.bind(this)
-}
+  this.showModal = this.showModal.bind(this);
+  this.closeModal = this.closeModal.bind(this);
+  }
 
-showModal(){
-  this.setState({diceModal: true})
-}
-closeModal(){
-  this.setState({diceModal: false});
+  showModal(){
+    this.setState({diceModal: true});
+  }
+  closeModal(){
+    this.setState({diceModal: false});
 }
 
   render() {
@@ -39,14 +39,7 @@ closeModal(){
           <Col sm={4}>
             <Opponent id='oponent-top' player={player2} avatar={'/images/avatar2.png'}/>
           </Col>
-
-          <Col sm={2}/>
-
-          <Col sm={2}>
-            <DiceView
-              showModal={this.showModal}
-            />
-          </Col>
+          <Col sm={4}/>
         </div>
         <div className="row game-page-central">
           <Col sm={2}>
