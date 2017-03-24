@@ -30,7 +30,7 @@ class ChooseDiceNumModal extends Component {
           container={this}
           aria-labelledby="contained-modal-title"
         >
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title id="contained-modal-title">Would you like to roll 1 die or 2 dice?</Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -60,28 +60,3 @@ export default connect(state => {
     game: state.game
   }
 })(ChooseDiceNumModal)
-
-      // <div id="dice-modal" style={{height: 200}}>
-      //   <Modal
-      //     show={this.props.show}
-      //     onHide={close}
-      //     container={this}
-      //     aria-labelledby="contained-modal-title"
-      //   >
-      //     <Modal.Header closeButton>
-      //       <Modal.Title id="contained-modal-title">Would you like to roll one die or two dice?</Modal.Title>
-      //     </Modal.Header>
-      //     <Modal.Body>
-      //       <Button onClick={() => {
-      //           this.props.close()
-      //           let diceVal = this.props.rollDice(1)
-      //           updateDiceNum(diceVal)
-      //         }}>1</Button>
-      //         <Button onClick={() => {
-      //             this.props.close()
-      //             let diceVal = this.props.rollDice(2)
-      //             updateDiceNum(diceVal)
-      //           }}>2</Button>
-      //     </Modal.Body>
-      //   </Modal>
-      // </div>
