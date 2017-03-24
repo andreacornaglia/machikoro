@@ -57,6 +57,7 @@ class DiceView extends Component {
       let game = this.props.game
       //because we still don't have auth, we will harcode a value here
       //come back after doing oauth and refactor this part
+      // let currentPlayer = game.players['playerOne']
       let currentPlayer = 'playerOne'
       if (this.checkIfSubwayUnlocked()){
         this.props.showModal()
