@@ -1,4 +1,4 @@
-import firebaseKeys from '../machikey'
+import firebaseKeys from '../machiKeyPublic'
 import firebase from 'firebase'
 import machiObject from '../public/machiObject.json'
 
