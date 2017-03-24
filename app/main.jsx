@@ -11,7 +11,7 @@ import {ref} from './firebase'
 import {settingGame} from './reducers/game'
 
 import GamePage from './components/GamePage'
-import Lobby from './components/Lobby'
+import HomePage from './components/HomePage'
 
 import AppContainer from './containers/AppContainer'
 
@@ -21,24 +21,14 @@ const setGame = () => {
   })
 }
 
-// const LoginPage = connect(
-//   ({ auth }) => ({ user: auth })
-// ) (
-//   ({ user, children }) =>
-//     <div>
-//     <h1>Welcome to Machi Koro</h1>
-//       <nav>
-//         {user ? <WhoAmI /> : <Login />}
-//       </nav>
-//     </div>
-// )
 
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
         <IndexRedirect to="/login" />
-        <Route path="/login" component={Lobby} />
+        <Route path="/login" component={HomePage} />
+        <Route path="/lobby" component={HomePage} />
         <Route path="/game" component={GamePage} onEnter={setGame}/>
       </Route>
     </Router>
