@@ -15,7 +15,6 @@ class SelfSummary extends Component {
       diceModal: false
     }
     this.disableButton = this.disableButton.bind(this);
-    this.showModal = this.showModal.bind(this);
   }
 
   disableButton(element){
@@ -24,10 +23,6 @@ class SelfSummary extends Component {
     } else {
       this.setState({insufficientFunds: false})
     }
-  }
-  
-  showModal(){
-    this.setState({diceModal: true})
   }
 
   render() {
@@ -43,7 +38,7 @@ class SelfSummary extends Component {
               <div className="row">
                 <img src='./images/avatar1.png'/>
                 <h3>Andrea<span>${playerMoney}</span></h3>
-                 <DiceView showModal={this.showModal}/>
+                 <DiceView showModal={this.props.showModal}/>
               </div>
               <div className="unlockableSelf">
                 <UnlockCardModal

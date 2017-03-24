@@ -53,7 +53,7 @@ constructor(){
           </Col>
         </div>
         <div className="row game-part-opponent">
-          <SelfDashboard/>
+          <SelfDashboard showModal={this.showModal}/>
         </div>
         {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeModal} /> : null}
       </div>
