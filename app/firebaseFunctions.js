@@ -65,8 +65,6 @@ export const unlockSpecialCard = (cardType, currentTurn, playerMoney, turnOrder)
 function changeTurn(currentTurn, turnOrder){
   //see who is next turnOrder - make it into an array, traverse the array
   const turnArr = Object.keys(turnOrder);
-  console.log(currentTurn === turnOrder[turnArr[0]]);
-  console.log('turnArr is:', turnArr);
   let playerOnTurnIndex;
   let nextPlayer;
   //loop to find current turn position in array
@@ -76,7 +74,7 @@ function changeTurn(currentTurn, turnOrder){
      }
   }
   //if position less than 3, we add 1, else go back to 0
-  if(playerOnTurnIndex<3){
+  if(playerOnTurnIndex < turnArr.length - 1){
     nextPlayer = turnOrder[turnArr[playerOnTurnIndex+1]]
   } else {
     nextPlayer = turnOrder[turnArr[0]]

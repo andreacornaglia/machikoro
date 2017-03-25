@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {cardArray, unlockableArray} from '../cards/cards.js';
+import {connect} from 'react-redux'
 
-export default class Opponent extends Component{
+class Opponent extends Component{
   constructor (){
     super()
     this.handleOnClick = this.handleOnClick.bind(this)
@@ -18,18 +19,23 @@ export default class Opponent extends Component{
   }
 
   render(){
-    let unlockCards = this.props.player.activatedCards;
+    const player = this.props.game.players[this.props.player];
+    let unlockCards = player.activatedCards;
     let cardKeys = Object.keys(unlockCards);
-    let playerTurn = this.props.player
-    console.log(unlockCards)
+    let turn = this.props.game.turn;
+    const playerTurn = this.props.game.players[turn];
+    const classNametoDiv = (player.name === playerTurn.name) ? 'highlight' : '';
+    //the player.name is not the same as turn
+    console.log(player.name, turn)
     return (
-      <div id="opponent" onClick ={this.handleOnClick}>
+      <div id="opponent" className={classNametoDiv} onClick ={this.handleOnClick}>
         <div id="opp-summary">
           <div id="avatar"><img src={this.props.avatar}/></div>
           <div className="opp-details">
-            <p className="opp-name">{this.props.player.name}</p>
-            <p className="opp-turn"></p>
-            <p className="opp-money">$ {this.props.player.money}</p>
+            <p className="opp-name">{player.name}</p>
+            {player.name === playerTurn.name ? <p className="opp-turn">TURN</p> : null}
+            
+            <p className="opp-money">$ {player.money}</p>
           </div>
           <div id="unlockables">
             <p>Unlocked cards:</p>
@@ -63,3 +69,9 @@ export default class Opponent extends Component{
     )
   }
 }
+
+export default connect(state => {
+  return {
+    game: state.game
+  }
+})(Opponent)

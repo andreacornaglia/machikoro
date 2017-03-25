@@ -1,5 +1,4 @@
 body {
-  background-color: #fefefe !important;
   width: 100%;
   height: 100vh;
   font-family: 'Montserrat', sans-serif !important; }
@@ -199,7 +198,6 @@ div .content-container .slick-slide .slick-active .slick-center {
 #opp-summary {
   text-align: center;
   color: rgba(0, 0, 0, 0.870588);
-  background-color: white;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
@@ -322,3 +320,6 @@ div .content-container .slick-slide .slick-active .slick-center {
     color: white;
     margin: 10vh;
     text-shadow: 0px 3px 0px #b2a98f, 0px 14px 10px rgba(0, 0, 0, 0.15), 0px 24px 2px rgba(0, 0, 0, 0.1), 0px 34px 30px rgba(0, 0, 0, 0.1); }
+
+.highlight {
+  background-color: #6DCEF8 !important; }

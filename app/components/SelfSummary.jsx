@@ -37,7 +37,7 @@ class SelfSummary extends Component {
             <div className="summaryContainer">
               <div className="row">
                 <img src='./images/avatar1.png'/>
-                <h3>Andrea
+                <h3>${currentUser.name}
                   <span>${playerMoney}</span>
                   {(this.props.game.turn === 'playerOne' && this.props.game.phase !== 'roll') ? <span>You rolled: {this.props.game.diceValue}</span> : null}
                   {(this.props.game.turn === 'playerOne' && this.props.game.phase === 'roll') ? <DiceView showModal={this.props.showModal}/> : null }
