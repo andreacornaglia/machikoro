@@ -62,7 +62,7 @@ export const unlockSpecialCard = (cardType, currentTurn, playerMoney, turnOrder)
 
 }
 
-function changeTurn(currentTurn, turnOrder){
+export const changeTurn = (currentTurn, turnOrder) => {
   //see who is next turnOrder - make it into an array, traverse the array
   const turnArr = Object.keys(turnOrder);
   let playerOnTurnIndex;
