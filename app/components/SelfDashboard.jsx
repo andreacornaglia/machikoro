@@ -7,7 +7,7 @@ export default class SelfDashboard extends Component {
         return (
             <div id="self-dashboard">
                 <SelfCarousel />
-                <SelfSummary />
+                <SelfSummary showModal={this.props.showModal}/>
             </div>
         )
     }

@@ -152,19 +152,137 @@ describe('Card functions', () => {
             const gainedAmount = cardFunctions.bodega.cardFn('playerFour', game);
             expect(gainedAmount.money).to.be.equal(2);
         });
-        
-        it('should return { money: 3 } when other player rolls 9-10 and current player has bodega cards', () => {
-          //need to change game turn to playerOne
-            //game.turn = 'playerOne';
-            const gainedAmount = cardFunctions.bodega.cardFn('playerFour', game);
-            expect(gainedAmount.money).to.be.equal(3);
-        });
-      
-      
-    ///////
     });
 
+
+    describe('Business Center', () => {
+
+        it('has an action function', () => {
+            expect(cardFunctions.businessCenter.cardFn).to.be.a('function');
+        });
+
+            const game = {
+                diceValue: 6,
+                turn: 'playerTwo',
+                players: {
+                    playerOne: {
+                    cards: {
+                        bodega: 1 
+                    },
+                    activatedCards:{
+                        shoppingMall: false
+                    },
+                    money: 0
+                    },
+                    playerTwo: {
+                    cards: {
+                        bodega: 2,
+                        businessCenter: 2
+                    },
+                    activatedCards:{
+                        shoppingMall: false
+                    },
+                    money: 5
+                    },
+                    playerThree: {
+                    cards: {
+                        bodega: 1 
+                    },
+                    activatedCards:{
+                        shoppingMall: false
+                    },
+                    money: 0
+                    }
+                }
+            };
+
+        it('should return { money: 0 } when no players have money', () => {
+            const gainedAmount = cardFunctions.businessCenter.cardFn('playerTwo', game);
+            expect(gainedAmount.money).to.be.equal(0);
+        });
+
+            const game2 = {
+                diceValue: 6,
+                turn: 'playerTwo',
+                players: {
+                    playerOne: {
+                    cards: {
+                        bodega: 1 
+                    },
+                    activatedCards:{
+                        shoppingMall: false
+                    },
+                    money: 6
+                    },
+                    playerTwo: {
+                    cards: {
+                        bodega: 2,
+                        businessCenter: 2
+                    },
+                    activatedCards:{
+                        shoppingMall: false
+                    },
+                    money: 5
+                    },
+                    playerThree: {
+                    cards: {
+                        bodega: 1 
+                    },
+                    activatedCards:{
+                        shoppingMall: false
+                    },
+                    money: 5
+                    }
+                }
+            };
+
+        it('should return { money: 10 } when the current player is the one whose turn it is, they have two business cards, and the other two players have 5 and 6 coins.', () => {
+            const gainedAmount = cardFunctions.businessCenter.cardFn('playerTwo', game2);
+            expect(gainedAmount.money).to.be.equal(10);
+        });
+
+            const game3 = {
+                diceValue: 6,
+                turn: 'playerTwo',
+                players: {
+                    playerOne: {
+                    cards: {
+                        bodega: 1 
+                    },
+                    activatedCards:{
+                        shoppingMall: false
+                    },
+                    money: 6
+                    },
+                    playerTwo: {
+                    cards: {
+                        bodega: 2,
+                        businessCenter: 2
+                    },
+                    activatedCards:{
+                        shoppingMall: false
+                    },
+                    money: 5
+                    },
+                    playerThree: {
+                    cards: {
+                        bodega: 1 
+                    },
+                    activatedCards:{
+                        shoppingMall: false
+                    },
+                    money: 5
+                    }
+                }
+            };
+
+        it('should return { money: -5 } when the current player is the one whose turn it is, they have two business cards, and the other two players have 5 and 6 coins.', () => {
+            const gainedAmount = cardFunctions.businessCenter.cardFn('playerThree', game3);
+            expect(gainedAmount.money).to.be.equal(-5);
+        });
+
 });
+
 
 describe('Calculate money', () => {
    it('is a function', () => {
@@ -225,5 +343,6 @@ describe('Calculate money', () => {
         const result = calculateMoney('playerOne', game)
         expect(result).to.be.equal(21);
     });
- 
+  
+  })
 })

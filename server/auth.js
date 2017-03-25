@@ -139,7 +139,6 @@ auth.post('/logout', (req, res, next) => {
   res.redirect('/api/auth/whoami')
 })
 
-
 // POST requests for local signup:
 auth.post('/signup/local', function(req, res, next){
     User.findOrCreate({
