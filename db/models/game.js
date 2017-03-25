@@ -5,7 +5,26 @@ const Game = db.define('games', {
   // this is for creating a game code for unique game
   gameLink: Sequelize.STRING,
   status: Sequelize.ENUM('ongoing', 'completed'),
-  winner: Sequelize.STRING
+  winner: Sequelize.STRING,
+  owner: Sequelize.STRING
+}, {
+  hooks: {
+    beforeCreate: function(game){
+      let code = Math.floor(Math.random() * 1000000);
+      game.gameLink = code;
+
+      // Game.findOne({
+      //   where: {
+      //     gameLink: code
+      //   }
+      // })
+      // .then(gameInst => {
+      //   if (gameInst === null) game.gameLink = code;
+      // })
+      // .catch(console.error)
+
+    }
+  }
 })
 
 module.exports = Game
