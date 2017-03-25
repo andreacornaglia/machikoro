@@ -1,5 +1,6 @@
-import {ref} from './firebase'
+import {database, ref} from './firebase'
 import {cardArray} from './cards/cards'
+import {machiObject} from './machiObjectTemplate'
 
 
 export const updateDiceNum = (num) => {
@@ -44,7 +45,6 @@ export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, pla
   playersMoneyAvail.update({
     money: playerMoney
   })
-  
   changeTurn(currentTurn, turnOrder)
 }
 
@@ -86,4 +86,10 @@ function changeTurn(currentTurn, turnOrder){
     phase: 'roll',
     turn: nextPlayer
   })
+}
+
+export const addNewGame = (machiObject, game) => {
+  // creating new game instance in firebase (with gameLink as unique keys)
+  let gameLink = (game.data.id).toString()
+  database.child(gameLink).set(machiObject)
 }
