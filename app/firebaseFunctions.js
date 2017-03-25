@@ -29,7 +29,7 @@ export const calculateMoney = (currentPlayer, gameState) => {
 }
 
 
-export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply) => {
+export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply, turnOrder) => {
   let updateCardQuantity = {}
   updateCardQuantity[cardType] = cardQuantity
   ref.child('cards').update(updateCardQuantity)
@@ -45,14 +45,10 @@ export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, pla
     money: playerMoney
   })
   
-  //change phase to roll & turn to next
-  ref.update({
-    phase: 'roll',
-    turn: 'playerTwo'
-  })
+  changeTurn(currentTurn, turnOrder)
 }
 
-export const unlockSpecialCard = (cardType, currentTurn, playerMoney) => {
+export const unlockSpecialCard = (cardType, currentTurn, playerMoney, turnOrder) => {
   let playersMoneyAvail = ref.child('players').child(currentTurn)
   playersMoneyAvail.update({
     money: playerMoney
@@ -61,5 +57,33 @@ export const unlockSpecialCard = (cardType, currentTurn, playerMoney) => {
   let activateCard = {}
   activateCard[cardType] = true
   ref.child('players').child(currentTurn).child('activatedCards').update(activateCard)
+  
+  changeTurn(currentTur, turnOrder)
 
+}
+
+function changeTurn(currentTurn, turnOrder){
+  //see who is next turnOrder - make it into an array, traverse the array
+  const turnArr = Object.keys(turnOrder);
+  let playerOnTurnIndex;
+  let nextPlayer;
+  //loop to find current turn position in array
+  for(let i = 0; i < turnArr.length - 1; i++){
+    if(currentTurn === turnOrder[turnArr[i]]){
+        playerOnTurnIndex = i
+     }
+  }
+  //if position less than 3, we add 1, else go back to 0
+  if(playerOnTurnIndex < turnArr.length - 1){
+    nextPlayer = turnOrder[turnArr[playerOnTurnIndex+1]]
+  } else {
+    nextPlayer = turnOrder[turnArr[0]]
+  }
+  
+  console.log('new player is:', nextPlayer);
+  //then update firebase with the new player turn
+  ref.update({
+    phase: 'roll',
+    turn: nextPlayer
+  })
 }

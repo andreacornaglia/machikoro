@@ -14,12 +14,11 @@ export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => (
             evt.preventDefault()
             createGame()
           }}>Create Game</Button>
+         <h1>{game && 'localhost:1337/game/' + game.gameLink}</h1>
         <Button className="center-buttons" href="/" onClick={(evt) => {
             evt.preventDefault()
             logout()
           }}>Logout</Button>
-        <h1>{game && 'localhost:1337/game/' + game.gameLink}</h1>
-
     </div>
   </div>
 )

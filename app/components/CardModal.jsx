@@ -12,8 +12,8 @@ export default class CardModal extends Component{
     let game = this.props.game
     let currentTurn = game.turn;
     let currentTurnObj = game.players[currentTurn]
-
-    let cardCost = element.cost
+    let turnOrder = game.turnOrder;
+    let cardCost = element.cost;
     let cardType = element.refName;
     let cardQuantity = game.cards[element.refName];
 
@@ -22,7 +22,7 @@ export default class CardModal extends Component{
       playerMoney -= cardCost
       cardQuantity--
       playerCardSupply++
-      updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply)
+      updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply, turnOrder)
   }
 
   render() {

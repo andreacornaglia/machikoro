@@ -13,7 +13,7 @@ export default class UnlockCardModal extends Component {
     let game = this.props.game
     let currentTurn = game.turn;
     let currentTurnObj = game.players[currentTurn]
-
+    let turnOrder = game.turnOrder;
     let unlockableCardCost = element.cost
     let cardType = element.refName;
 
@@ -26,7 +26,7 @@ export default class UnlockCardModal extends Component {
       console.log('cardtype', cardType)
       playerMoney -= unlockableCardCost
       currentTurnObj.activatedCards[cardType] = true
-      unlockSpecialCard(cardType, currentTurn, playerMoney)
+      unlockSpecialCard(cardType, currentTurn, playerMoney, turnOrder)
       console.log('playermoneyavail', playerMoney)
 
     }
