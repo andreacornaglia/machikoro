@@ -10,10 +10,10 @@ class Carousel extends Component {
   }
   
   checkUserCards(){
-    let game = this.props.game
+    let game = this.props.game;
     //check with oauth username, here harcoded, come and fix later
-    let currentUser = game.players['playerOne']
-    let cards = currentUser.cards
+    let currentUser = game.players['playerOne'];
+    let cards = currentUser.cards;
     let cardKeys = Object.keys(cards);
     let info = []
     //traverse cards object to find which card the user has, and how many
