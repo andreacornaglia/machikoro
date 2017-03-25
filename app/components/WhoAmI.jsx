@@ -18,7 +18,7 @@ export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => (
             evt.preventDefault()
             logout()
           }}>Logout</Button>
-        <h1>{game && 'http://nyuyoku.herokuapp.com/game/' + game.gameLink}</h1>
+        <h1>{game && 'localhost:1337/game/' + game.gameLink}</h1>
 
     </div>
   </div>
