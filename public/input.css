@@ -138,7 +138,8 @@ div .content-container .slick-slide .slick-active .slick-center {
     float: left;
     margin-right: 15px; }
   .summaryContainer h3 {
-    margin: 10px; }
+    margin: 10px;
+    font-size: 15px; }
   .summaryContainer span {
     padding: 0 20px; }
   .summaryContainer .unlockableSelf {

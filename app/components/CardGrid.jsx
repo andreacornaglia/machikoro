@@ -17,19 +17,34 @@ class CardGrid extends Component {
   }
 
   disableButton(element){
-    if (this.props.game.players[this.props.game.turn].money < element.cost){
+    //check if:
+    //is their turn
+    //need to fix this with oauth
+    if(this.props.game.turn !== 'playerOne'){
       this.setState({insufficientFunds: true})
-    }
-    else {
-      this.setState({insufficientFunds: false})
-    }
+    } else {
+        //they are on buy phase
+        if(this.props.game.phase !== 'buy'){
+          this.setState({insufficientFunds: true})
+        } else {
+            //they have enough money - if so, all conditions are met
+            //and user can buy card
+            const turn = this.props.game.turn
+            const turnPlayer = this.props.game.players[turn]
+            const turnPlayerMoney = turnPlayer.money
+            if(turnPlayerMoney < element.cost){
+              this.setState({insufficientFunds: true})
+            } else{
+               this.setState({insufficientFunds: false})
+            } 
+         }
+      }
   }
 
   render() {
     let close = () => this.setState({showCardInfo: false})
 
     return (
-
       <div className="game-grid">
         <CardModal
           game={this.props.game}

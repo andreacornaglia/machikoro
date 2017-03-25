@@ -44,7 +44,12 @@ export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, pla
   playersMoneyAvail.update({
     money: playerMoney
   })
-
+  
+  //change phase to roll & turn to next
+  ref.update({
+    phase: 'roll',
+    turn: 'playerTwo'
+  })
 }
 
 export const unlockSpecialCard = (cardType, currentTurn, playerMoney) => {
