@@ -9,7 +9,7 @@ api.post('/', (req, res, next) => {
   })
   .then(game => {
     // creating user association for person creating the game in join table
-    game.setUsers(req.user.id)
+    // game.setUsers(req.user.id)
     res.send(game)
   })
   .catch(next)

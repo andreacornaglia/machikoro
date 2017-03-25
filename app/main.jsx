@@ -8,7 +8,7 @@ import store from './store'
 // import Login from './components/Login'
 // import {WhoAmI} from './components/WhoAmI'
 import {ref} from './firebase'
-import {settingGame} from './reducers/game'
+import {settingGame, fetchGame} from './reducers/game'
 
 import GamePage from './components/GamePage'
 import HomePage from './components/HomePage'
@@ -21,6 +21,7 @@ const setGame = () => {
     store.dispatch(settingGame(snap.val()))
   })
 }
+
 
 
 render (
