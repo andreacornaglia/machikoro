@@ -20,10 +20,10 @@
     "diceValue": 1,
     "turn": "playerOne",
     "turnOrder":{
-      "first": "playerOne",
-      "second": "playerTwo",
-      "third": "playerThree",
-      "fourth": "playerFour"
+      "turn1": "playerOne",
+      "turn2": "playerTwo",
+      "turn3": "playerThree",
+      "turn4": "playerFour"
     },
     "phase": "roll",
     "players" : {
