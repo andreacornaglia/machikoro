@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import {updateAfterCardPurchase} from '../firebaseFunctions'
+import {createStatus} from '../reducers/statusMsg'
 
 export default class CardModal extends Component{
   constructor(){
@@ -22,6 +23,7 @@ export default class CardModal extends Component{
       playerMoney -= cardCost
       cardQuantity--
       playerCardSupply++
+      createStatus(`bought a ${cardType} card`)
       updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply, turnOrder)
   }
 

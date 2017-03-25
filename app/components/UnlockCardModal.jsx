@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import {unlockSpecialCard} from '../firebaseFunctions'
+import {createStatus} from '../reducers/statusMsg'
 
 export default class UnlockCardModal extends Component {
   constructor(){
@@ -26,6 +27,7 @@ export default class UnlockCardModal extends Component {
       console.log('cardtype', cardType)
       playerMoney -= unlockableCardCost
       currentTurnObj.activatedCards[cardType] = true
+      createStatus(`unlocked their ${cardType} card`)
       unlockSpecialCard(cardType, currentTurn, playerMoney, turnOrder)
       console.log('playermoneyavail', playerMoney)
 
