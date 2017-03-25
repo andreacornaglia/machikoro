@@ -19,6 +19,7 @@ class CardGrid extends Component {
   disableButton(element){
     //check if:
     //is their turn
+    //need to fix this with oauth
     if(this.props.game.turn !== 'playerOne'){
       this.setState({insufficientFunds: true})
     } else {

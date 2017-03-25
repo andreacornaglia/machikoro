@@ -20,6 +20,7 @@ export default class Opponent extends Component{
   render(){
     let unlockCards = this.props.player.activatedCards;
     let cardKeys = Object.keys(unlockCards);
+    let playerTurn = this.props.player
     console.log(unlockCards)
     return (
       <div id="opponent" onClick ={this.handleOnClick}>
@@ -27,6 +28,7 @@ export default class Opponent extends Component{
           <div id="avatar"><img src={this.props.avatar}/></div>
           <div className="opp-details">
             <p className="opp-name">{this.props.player.name}</p>
+            <p className="opp-turn"></p>
             <p className="opp-money">$ {this.props.player.money}</p>
           </div>
           <div id="unlockables">
