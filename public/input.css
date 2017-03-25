@@ -282,6 +282,8 @@ div .content-container .slick-slide .slick-active .slick-center {
     text-align: center;
     color: white;
     margin: 10vh; }
+  .lobby-container h2 {
+    text-align: center; }
   .lobby-container .start-buttons {
     width: 20%;
     margin: 0 auto;
