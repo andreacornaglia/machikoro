@@ -55,8 +55,9 @@ export default class CardModal extends Component{
             disabled={this.props.insufficientFunds}
             bsStyle="success"
             onClick={() => {
-              this.handleClick(this.props.element)
               this.props.close()
+              this.handleClick(this.props.element)
+              this.props.showStatus()
             }}
           >Buy</Button>
         </Modal.Footer>

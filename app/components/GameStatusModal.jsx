@@ -9,9 +9,10 @@ class GameStatusModal extends Component {
 
   render() {
     let close = () => this.setState({show: false})
+    console.log("STATUS", this.props.status)
     return (
       <Modal
-        show={this.props.show}
+        show={true}
         onHide={close}
         container={this}
         aria-labelledby="contained-modal-title"
@@ -24,7 +25,7 @@ class GameStatusModal extends Component {
           <p>Next Player's Turn! The previous player {this.props.status}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={close}>Ok</Button>
+          <Button bsStyle="info" onClick={this.props.closeModal}>Ok</Button>
         </Modal.Footer>
       </Modal>
     )
@@ -36,4 +37,4 @@ export default connect(state => {
     game: state.game,
     status: state.status
   }
-})(ChooseDiceNumModal)
+})(GameStatusModal)

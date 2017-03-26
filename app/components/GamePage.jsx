@@ -5,7 +5,7 @@ import CardGrid from './CardGrid';
 import Opponent from './Opponent';
 import DiceView from '../components/DiceView';
 import ChooseDiceNumModal from './ChooseDiceNumModal';
-import GameStatusModal from './GameStautsModal';
+import GameStatusModal from './GameStatusModal';
 import { Col, Row, Tooltip } from 'react-bootstrap';
 import {connect} from 'react-redux'
 
@@ -33,7 +33,6 @@ constructor(){
   showStatusModal(){
     this.setState({statusModal: true});
   }
-
   closeStatusModal(){
     this.setState({statusModal: false});
   }
@@ -81,7 +80,7 @@ constructor(){
             <Opponent id='oponent-left' player={oponent[2]} avatar={'/images/avatar3.png'}/>
           </Col>
           <Col sm={8}>
-            <CardGrid id="center"/>
+            <CardGrid id="center" showStatus={this.showStatusModal} />
           </Col>
           <Col sm={2}>
             <Opponent id='oponent-right' player={oponent[0]} avatar={'/images/avatar4.png'}/>

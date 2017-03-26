@@ -36,14 +36,13 @@ class CardGrid extends Component {
               this.setState({insufficientFunds: true})
             } else{
                this.setState({insufficientFunds: false})
-            } 
+            }
          }
       }
   }
 
   render() {
     let close = () => this.setState({showCardInfo: false})
-
     return (
       <div className="game-grid">
         <CardModal
@@ -53,6 +52,7 @@ class CardGrid extends Component {
           insufficientFunds={this.state.insufficientFunds}
           element={this.state.modalElement}
           quantity={this.props.game.cards[this.state.modalElement.refName]}
+          showStatus={this.props.showStatus}
         />
         {cardArray.map((element, index) => {
           return (

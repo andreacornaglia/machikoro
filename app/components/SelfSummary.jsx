@@ -4,7 +4,6 @@ import { Tooltip, Col } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import UnlockCardModal from './UnlockCardModal';
 import DiceView from '../components/DiceView';
-import {}
 
 class SelfSummary extends Component {
   constructor(){
@@ -14,14 +13,8 @@ class SelfSummary extends Component {
       modalElement: {},
       insufficientFunds: true,
       diceModal: false,
-      gameStatus: ''
     }
     this.disableButton = this.disableButton.bind(this);
-    this.produceGameStatus = this.produceGameStatus.bind(this)
-  }
-
-  produceGameStatus(str){
-    this.setState({gameStatus: str})
   }
 
   disableButton(element){
