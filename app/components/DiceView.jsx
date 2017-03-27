@@ -81,14 +81,14 @@ class DiceView extends Component {
     render() {
       let game = this.props.game
         return (
-            <Button
-              bsSize="xsmall"
-              bsStyle="success"
-              onClick={() => {
-                this.displayChooseDiceNumModal()
-              }}>
-             Roll Dice!
-             </Button>
+          <Button
+            bsSize="xsmall"
+            bsStyle="success"
+            onClick={() => {
+              this.displayChooseDiceNumModal()
+            }}>
+            Roll Dice!
+            </Button>
         )
     }
 }

@@ -280,6 +280,8 @@ div .content-container .slick-slide .slick-active .slick-center {
     text-align: center;
     color: white;
     margin: 10vh; }
+  .lobby-container h2 {
+    text-align: center; }
   .lobby-container .start-buttons {
     width: 20%;
     margin: 0 auto; }
@@ -320,3 +322,13 @@ div .content-container .slick-slide .slick-active .slick-center {
 
 .highlight {
   background-color: #6DCEF8 !important; }
+
+#end-turn-btn {
+  margin-left: 8%; }
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    vertical-align: middle; }
+
+    .lobby-container .start-buttons button {
+      width: 100%; }

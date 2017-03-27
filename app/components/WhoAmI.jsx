@@ -6,20 +6,18 @@ import {connect} from 'react-redux'
 
 export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => (
   <div className="lobby-container">
-    <div className="lobby-title">
       <h1>Hi, {user && user.name}!</h1>
-      </div>
-      <div className="whoami">
-        <Button className="center-buttons" bsStyle="success" onClick={(evt) => {
+      <div className="start-buttons">
+        <Button bsStyle="success" bsSize="large" block onClick={(evt) => {
             evt.preventDefault()
             createGame()
           }}>Create Game</Button>
-         <h1>{game && 'localhost:1337/game/' + game.gameLink}</h1>
-        <Button className="center-buttons" href="/" onClick={(evt) => {
+        <Button href="/" bsSize="large" block onClick={(evt) => {
             evt.preventDefault()
             logout()
           }}>Logout</Button>
     </div>
+      <h2>{game && 'localhost:1337/game/' + game.gameLink}</h2>
   </div>
 )
 

@@ -357,7 +357,9 @@ div .content-container .slick-slide .slick-active .slick-center {
     color: white;
     margin: 10vh;
   }
-
+  h2{
+    text-align: center;
+  }
   .start-buttons{
     width: 20%;
     margin: 0 auto;
@@ -388,33 +390,40 @@ div .content-container .slick-slide .slick-active .slick-center {
     text-align: center;
     color: white;
     margin: 10vh;
+    background-color: white;
+    padding: 30px;
+    vertical-align: middle;
+
+    button{
+      width: 100%;
+    }
   }
 }
 
+.form-container {
+    padding: 20px;
+    margin: 0 auto;
 
-
-.whoami{
-  margin: auto;
-  width: 15%;
-
-
-  .center-buttons{
-    margin-top: 10px;
+  .button-toolbar{
     width: 100%;
-  }
+    margin: 0 auto;
 
-}
-
-.lobby-title{
-    width: 100%;
 
     h1{
       text-align: center;
       color: white;
       margin: 10vh;
     }
+    .provider-login-btn {
+      width: 49%;
+    }
+  }
 }
 
 .highlight{
   background-color: #6DCEF8 !important;
+}
+
+#end-turn-btn {
+  margin-left: 8%;
 }
