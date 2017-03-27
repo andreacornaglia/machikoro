@@ -18,12 +18,12 @@ class Lobby extends Component {
       /> : <div className="lobby-container">
         <h1>Welcome to Nyūyōku</h1>
           <div className="start-buttons">
-            <Button bsStyle="info" bsSize="large" block onClick={(e) => {
+            <Button className="btn-login" bsStyle="info" bsSize="large" block onClick={(e) => {
                   e.preventDefault()
                   browserHistory.push('/login')
                 }
               }>Login</Button>
-            <Button bsStyle="warning" bsSize="large" block onClick={(e) => {
+            <Button className="btn-link" bsSize="large" block onClick={(e) => {
                   e.preventDefault()
                   browserHistory.push('/signup')
                 }}>Create an account</Button>
