@@ -57,12 +57,11 @@ constructor(){
   }
 
   render() {
-    if (this.props.game === null) {
+    console.log('props', this.props)
+    if (this.props.firebaseRef === null) {
       return <h1>Loading...</h1>
     }
-    if (!this.props.user){
-      browserHistory.push('/home')
-    }
+
     //check who is this computer's player
     const oponent = this.oponentsOrder()
     //check on the pla
@@ -98,6 +97,7 @@ constructor(){
 
 export default connect(state => {
   return {
+    firebaseRef: state.firebaseRef,
     game: state.game,
     user: state.auth
     //find user here via oauth

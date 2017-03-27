@@ -1,7 +1,8 @@
 import axios from 'axios'
-import {createRef} from './firebase';
+import {createRef, connectToGame} from './firebase';
+import {whoami} from './auth'
 import {machiObject} from '../machiObjectTemplate'
-// import { browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 
 const reducer = (state=null, action) => {
@@ -44,9 +45,9 @@ export const createGame = () => {
     axios.post('/api/lobby/')
       .then((game) => {
         const gameData = game.data
-        dispatch(createRef(game.data.id));
-        console.log('data', gameData)
+        dispatch(createRef(gameData.id));
         dispatch(creatingNewGame(gameData))
+        browserHistory.push(`/lobby/${gameData.gameLink}`)
       })
       .catch(console.error)
 }
@@ -67,5 +68,27 @@ export const fetchGame = (game) => {
       .catch(console.error)
   }
 }
+
+export const addUserToGame = (link) => {
+  return dispatch => {
+    // dispatch(whoami())
+    axios.get(`/api/lobby/${link}`)
+      .then((uniqueGame) => {
+        dispatch(connectToGame(uniqueGame.data.id))
+      })
+      .catch(console.error)
+  }
+};
+
+export const findOwner = (link) => {
+  return dispatch => {
+    axios.get(`/api/lobby/owner/${link}`)
+      .then((user) => {
+        console.log('uniquegame', user.data)
+        // dispatch(connectToGame(uniqueGame.data.id))
+      })
+      .catch(console.error)
+  }
+};
 
 export default reducer

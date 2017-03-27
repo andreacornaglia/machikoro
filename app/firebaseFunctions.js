@@ -2,8 +2,10 @@ import store from './store';
 import {cardArray} from './cards/cards'
 import {machiObject} from './machiObjectTemplate'
 
+const firebaseRef = store.getState().firebaseRef;
+
 export const updateDiceNum = (num) => {
-  return store.getState().firebaseRef.update({
+  return firebaseRef.update({
     diceValue: num
   })
 }

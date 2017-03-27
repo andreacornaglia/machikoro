@@ -10,16 +10,6 @@ api.get('/:gameLink', (req, res, next) => {
       gameLink: req.params.gameLink
     }
   })
-    .then(game => {
-      return game.getUsers();
-    })
-    .then(users => {
-      if (users.length < 4) {
-        return game.addUser(req.user.id)
-      } else {
-        throw new Error('Game is full');
-      }
-    })
     .then(game => res.send(game))
     .catch(next)
 })

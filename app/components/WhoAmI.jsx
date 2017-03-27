@@ -17,7 +17,7 @@ export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => (
             logout()
           }}>Logout</Button>
     </div>
-      <h2>{game && 'localhost:1337/game/' + game.gameLink}</h2>
+      <h2>{game && 'localhost:1337/lobby/' + game.gameLink}</h2>
   </div>
 )
 
