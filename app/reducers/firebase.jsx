@@ -1,6 +1,7 @@
 import firebaseKeys from '../../machiKeyPublic'
 import firebase from 'firebase'
 import {machiObject} from '../machiObjectTemplate.js'
+import {setGame} from './game';
 
 firebase.initializeApp(firebaseKeys)
 
@@ -22,6 +23,9 @@ const setConnection = gameRef => ({
 
 export const connectToGame = dispatch => gameId => {
   const ref = database.child(gameId);
+  ref.on('value', snap => {
+      dispatch(settingGame(snap.val()));
+  });
   dispatch(setConnection(ref));
 };
 
