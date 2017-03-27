@@ -13,7 +13,7 @@ class SelfSummary extends Component {
       show: false,
       modalElement: {},
       insufficientFunds: true,
-      diceModal: false
+      diceModal: false,
     }
     this.disableButton = this.disableButton.bind(this);
   }
@@ -37,7 +37,7 @@ class SelfSummary extends Component {
         return (
             <div className="summaryContainer">
               <div className="row">
-                <img src='./images/avatar1.png'/>
+                <img src='/images/avatar1.png'/>
                 <h3>${currentUser.name}
                   <span>${playerMoney}</span>
                   {(this.props.game.turn === 'playerOne' && this.props.game.phase !== 'roll') ? <span>You rolled: {this.props.game.diceValue}
@@ -59,6 +59,7 @@ class SelfSummary extends Component {
                   show={this.state.show}
                   insufficientFunds={this.state.insufficientFunds}
                   element={this.state.modalElement}
+                  showStatus={this.props.showStatus}
                 />
                 {cardKeys.map((card, index) => {
                   //get if the card is active or not, and change css property accordingly to show if active or not
@@ -78,20 +79,19 @@ class SelfSummary extends Component {
                 return (
                   <div className="unlockCards card-cont modal-container" key={index}
                     onClick={(evt) => {
-                    console.log('ELEMENT', element)
-                    evt.preventDefault()
-                    this.setState({
-                      show: true,
-                      modalElement: element
-                    })
-                    this.disableButton(element)
-                  }}>
+                      console.log('ELEMENT', element)
+                      evt.preventDefault()
+                      this.setState({
+                        show: true,
+                        modalElement: element
+                      })
+                      this.disableButton(element)
+                    }}>
                     {this.state.show ? <UnlockCardModal close={close.bind(this)} element={element} /> : null}
                     <img src={element.imgURL} className={classFordiv} />
                   </div>
                 )
               })}
-
             </div>
           </div>
         )
