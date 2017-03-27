@@ -22,7 +22,7 @@ class GameStatusModal extends Component {
           <Modal.Title id="contained-modal-title"></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Next Player's Turn! The previous player {this.props.status}</p>
+          <p>Next Player's Turn!<br /><br />The previous player {this.props.status}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button bsStyle="info" onClick={this.props.closeModal}>Ok</Button>

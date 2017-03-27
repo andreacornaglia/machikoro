@@ -67,10 +67,6 @@ class CardModal extends Component{
   }
 }
 
-const mapStateToProps = state => {
-  return {}
-}
-
 const mapDispatchToProps = dispatch => {
   return {
     settingStatus: (msg) => dispatch(settingStatus(msg))
@@ -78,4 +74,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardModal)
+export default connect(null, mapDispatchToProps)(CardModal)
