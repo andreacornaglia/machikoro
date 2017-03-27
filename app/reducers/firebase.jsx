@@ -8,7 +8,7 @@ firebase.initializeApp(firebaseKeys)
 let database = firebase.database().ref();
 
 export default (state = null, action) => {
-    switch (action) {
+    switch (action.type) {
       case 'SET_GAME_REF':
         return action.gameRef;
     }

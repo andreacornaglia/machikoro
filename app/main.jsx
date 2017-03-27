@@ -32,6 +32,15 @@ const onEnterAddUser = (nextState) => {
   store.dispatch(findOwner(routeGameLink))
 }
 
+const onGameEnter = (nextState) => {
+  let routeGameLink = nextState.params.gameLink
+  axios.get(`/api/game/${routeGameLink}`)
+    .then(game => {
+      store.dispatch(connectToGame(game.data.id))
+    })
+    .catch(console.error)
+}
+
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -41,7 +50,7 @@ render (
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/lobby" component={HomePage} />
-        <Route path="/game/:gameLink" component={GamePage} onEnter={(route) => createRef(route.params.gameLink)} />
+        <Route path="/game/:gameLink" component={GamePage} onEnter={onGameEnter} />
         <Route path="/lobby/:gameLink" component={WaitingForGame} onEnter={onEnterAddUser}/>
       </Route>
     </Router>

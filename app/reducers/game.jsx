@@ -80,6 +80,7 @@ export const addUserToGame = (link) => {
   }
 };
 
+//get from redux store
 export const findOwner = (link) => {
   return dispatch => {
     axios.get(`/api/lobby/owner/${link}`)
