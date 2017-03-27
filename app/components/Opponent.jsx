@@ -58,15 +58,6 @@ class Opponent extends Component{
             })}
           </div>
         </div>
-        <div id="opp-extension">
-          //currently hardcoded, should get from db
-          {cardArray.map((card, index) => (
-            <div key={index} className="opp-cards">
-              <img src={card.imgURL}/>
-              <p>1</p>
-          </div>
-          ))}
-        </div>
       </div>
     )
   }
