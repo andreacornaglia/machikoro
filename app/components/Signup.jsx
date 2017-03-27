@@ -7,6 +7,8 @@ import {connect} from 'react-redux'
 export const Signup = ({ signup }) => (
   <div className="lobby-container">
     <h1>Welcome to Nyūyōku</h1>
+
+  <div className="form-container">
   <Form horizontal onSubmit={evt => {
     evt.preventDefault()
     signup(evt.target.name.value, evt.target.email.value, evt.target.password.value)
@@ -16,9 +18,9 @@ export const Signup = ({ signup }) => (
     <Col componentClass={ControlLabel} sm={4} />
     <Col sm={4}>
       <ButtonToolbar className="button-toolbar">
-        <Button className="buffer provider-signup-btn" bsStyle="danger" href="/api/auth/signup/google" bsSize="small">Sign Up with Google
+        <Button className="buffer provider-login-btn" bsStyle="danger" href="/api/auth/signup/google" bsSize="small">Sign Up with Google
         </Button>
-        <Button className="buffer provider-signup-btn" bsStyle="primary" href="/api/auth/signup/facebook" bsSize="small" >Sign Up with Facebook
+        <Button className="buffer provider-login-btn" bsStyle="primary" href="/api/auth/signup/facebook" bsSize="small" >Sign Up with Facebook
         </Button>
        </ButtonToolbar>
      </Col>
@@ -65,6 +67,7 @@ export const Signup = ({ signup }) => (
       </Col>
     </FormGroup>
   </Form>
+</div>
 </div>
 )
 
