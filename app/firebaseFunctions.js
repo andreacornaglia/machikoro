@@ -57,8 +57,8 @@ export const unlockSpecialCard = (cardType, currentTurn, playerMoney, turnOrder)
   let activateCard = {}
   activateCard[cardType] = true
   ref.child('players').child(currentTurn).child('activatedCards').update(activateCard)
-  
-  changeTurn(currentTur, turnOrder)
+
+  changeTurn(currentTurn, turnOrder)
 
 }
 
@@ -79,7 +79,7 @@ function changeTurn(currentTurn, turnOrder){
   } else {
     nextPlayer = turnOrder[turnArr[0]]
   }
-  
+
   console.log('new player is:', nextPlayer);
   //then update firebase with the new player turn
   ref.update({

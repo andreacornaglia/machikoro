@@ -16,11 +16,4 @@ export const settingStatus = msg => ({
   type: SET_STATUS, msg
 })
 
-export const createStatus = message => {
-  return dispatch => {
-    console.log("In Create Status")
-    dispatch(settingStatus(message))
-  }
-}
-
 export default reducer

@@ -50,6 +50,7 @@ class SelfSummary extends Component {
                   show={this.state.show}
                   insufficientFunds={this.state.insufficientFunds}
                   element={this.state.modalElement}
+                  showStatus={this.props.showStatus}
                 />
                 {cardKeys.map((card, index) => {
                   //get if the card is active or not, and change css property accordingly to show if active or not

@@ -24,8 +24,8 @@ class CardModal extends Component{
       playerMoney -= cardCost
       cardQuantity--
       playerCardSupply++
-      this.props.settingStatus(`bought a(n) ${element.displayName} card`)
       updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply, turnOrder)
+      this.props.settingStatus(`bought a ${element.displayName} card`)
       this.props.showStatus()
   }
 

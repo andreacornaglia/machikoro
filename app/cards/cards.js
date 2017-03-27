@@ -41,13 +41,13 @@ export const river = {
 export const bakery = {
   refName: 'bakery',
   displayName: 'Bakery',
-  diceValue: [2,3] ,
+  diceValue: 3,
   cost: 1,
   industry: 'building',
   cardDescription: "Get 1 coin from the bank, on your turn only",
   imgURL: '/images/bakery.png',
   cardFn: function(currentPlayer, gameState){
-    if (this.diceValue.includes(gameState.diceValue)) {
+    if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
         const currentPlayerObj = gameState.players[currentPlayer];
         const numBakery= currentPlayerObj.cards.bakery;
@@ -443,14 +443,14 @@ export const broadway = {
 export const bodega = {
   refName: 'bodega',
   displayName: 'Bodega',
-  diceValue: [9, 10],
+  diceValue: 10,
   cost: 3,
   industry: 'mug',
   cardDescription: "Get 2 coins from the player who rolled the dice",
   imgURL: '/images/bodega.png',
   cardFn: function(currentPlayer, gameState) {
     // change below to this.diceValue
-    if (this.diceValue.includes(gameState.diceValue)) {
+    if (this.diceValue === gameState.diceValue) {
 
         // Find the player who's turn it is and how much money they have.
         const playerOnTurn = gameState.players[gameState.turn];
@@ -521,7 +521,7 @@ export const bodega = {
 export const wineShop = {
   refName: 'wineShop',
   displayName: 'Wine Shop',
-  diceValue: 10,
+  diceValue: 11,
   cost: 3,
   industry: 'wheat',
   cardDescription: "Get 3 coins from the bank,on anyone's turn",
@@ -541,13 +541,13 @@ export const wineShop = {
 export const restaurant = {
   refName: 'restaurant',
   displayName: 'Restaurant',
-  diceValue: [11, 12],
+  diceValue: 12,
   cost: 2,
   industry: 'fruit',
   cardDescription: "Get 2 coins from the bank for each [wheat icon] establishment that you own. On your turn only",
   imgURL: '/images/restaurant.png',
   cardFn: function(currentPlayer, gameState){
-    if (this.diceValue.includes(gameState.diceValue)) {
+    if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
         const currentPlayerObj = gameState.players[currentPlayer];
         const numWheat = currentPlayerObj.cards.farmersMarket + currentPlayerObj.cards.wineShop;

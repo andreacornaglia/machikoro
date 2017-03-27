@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import {unlockSpecialCard} from '../firebaseFunctions'
-import {createStatus} from '../reducers/statusMsg'
+import {connect} from 'react-redux'
+import {settingStatus} from '../reducers/statusMsg'
 
-export default class UnlockCardModal extends Component {
+class UnlockCardModal extends Component {
   constructor(){
     super()
     this.handleClick = this.handleClick.bind(this)
@@ -27,9 +28,9 @@ export default class UnlockCardModal extends Component {
       console.log('cardtype', cardType)
       playerMoney -= unlockableCardCost
       currentTurnObj.activatedCards[cardType] = true
-      createStatus(`unlocked their ${cardType} card`)
       unlockSpecialCard(cardType, currentTurn, playerMoney, turnOrder)
-      console.log('playermoneyavail', playerMoney)
+      this.props.settingStatus(`unlocked a ${element.displayName} card`)
+      this.props.showStatus()
 
     }
   }
@@ -58,8 +59,8 @@ export default class UnlockCardModal extends Component {
             disabled={this.props.insufficientFunds}
             bsStyle="success"
             onClick={() => {
-              this.handleClick(this.props.element)
               this.props.close()
+              this.handleClick(this.props.element)
             }}
             >Unlock</Button>
         </Modal.Footer>
@@ -68,3 +69,16 @@ export default class UnlockCardModal extends Component {
   }
 
 }
+
+const mapStateToProps = state => {
+  return {}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    settingStatus: (msg) => dispatch(settingStatus(msg))
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(UnlockCardModal)
