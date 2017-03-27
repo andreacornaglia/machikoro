@@ -28,12 +28,14 @@ class Opponent extends Component{
     //the player.name is not the same as turn
     console.log(player.name, turn)
     return (
-      <div id="opponent" className={classNametoDiv} onClick ={this.handleOnClick}>
-        <div id="opp-summary">
+      <div id="opponent" onClick ={this.handleOnClick}>
+        <div id="opp-summary" className={classNametoDiv}>
           <div id="avatar"><img src={this.props.avatar}/></div>
           <div className="opp-details">
             <p className="opp-name">{player.name}</p>
-            {player.name === playerTurn.name ? <p className="opp-turn">TURN</p> : null}
+            {player.name === playerTurn.name && this.props.game.phase === "roll"? <p className="opp-turn">Rolling...</p> : null}
+            {/* Not sure if the code below that shows what the player rolled is working, can't test it until we are able to play with multiple players */}
+            {player.name === playerTurn.name && this.props.game.phase === "buy" ? <p className="opp-turn">Rolled: {this.props.game.diceValue}</p> : null}
             
             <p className="opp-money">$ {player.money}</p>
           </div>

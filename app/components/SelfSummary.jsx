@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {unlockableArray} from '../cards/cards.js';
-import { Tooltip, Col } from 'react-bootstrap';
+import { Tooltip, Col, Button } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import UnlockCardModal from './UnlockCardModal';
 import DiceView from '../components/DiceView';
+import {changeTurn} from '../firebaseFunctions'
 
 class SelfSummary extends Component {
   constructor(){
@@ -39,7 +40,15 @@ class SelfSummary extends Component {
                 <img src='./images/avatar1.png'/>
                 <h3>${currentUser.name}
                   <span>${playerMoney}</span>
-                  {(this.props.game.turn === 'playerOne' && this.props.game.phase !== 'roll') ? <span>You rolled: {this.props.game.diceValue}</span> : null}
+                  {(this.props.game.turn === 'playerOne' && this.props.game.phase !== 'roll') ? <span>You rolled: {this.props.game.diceValue}
+                    <Button 
+                        id="end-turn-btn"
+                        bsSize="xsmall" 
+                        bsStyle="warning"
+                        onClick={() => {
+                          changeTurn(this.props.game.turn, this.props.game.turnOrder)
+                        }} 
+                    >End Turn</Button></span>  : null}
                   {(this.props.game.turn === 'playerOne' && this.props.game.phase === 'roll') ? <DiceView showModal={this.props.showModal}/> : null }
                 </h3>
               </div>
