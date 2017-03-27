@@ -17,18 +17,21 @@ api.get('/:gameLink', (req, res, next) => {
       return game.getUsers()
         .then(users => {
           // users is an array of objects
-          const checkIfUserDoesntExist = () => {
-            users.forEach(user => {
-              if (user.id === req.user.id) return true
+          // use array.SOME - go through every element that returns true/false
+          const UserAlreadyInGame = () => {
+            return users.some(user => {
+              return user.id === req.user.id
             })
-            return false;
           }
+          console.log('useringame', UserAlreadyInGame())
           // check if user is not in game or if total number of players is less than 4. if they're not, add to game
-          if (users.length < 4 && !checkIfUserDoesntExist()) {
+          if (users.length < 4 && !UserAlreadyInGame()) {
             game.addUser(req.user.id)
-            res.send(game)
+              .then(game => {
+                res.send(game)
+              })
           } else {
-            throw new Error('Game is full');
+            res.send(game)
           }
         })
     })
