@@ -70,7 +70,7 @@ export const bar = {
   cost: 2,
   industry: 'mug',
   cardDescription: "Get 1 coin from the player who rolled the dice",
-  imgURL: '/images/restaurant.png',
+  imgURL: '/images/bar.png',
   cardFn: function(currentPlayer, gameState) {
     // change below to this.diceValue
     if (this.diceValue === gameState.diceValue) {
@@ -302,7 +302,7 @@ export const stadium = {
   cost: 6,
   industry: 'antenna',
   cardDescription: "Get 2 coins from all players, on your turn only",
-  imgURL: '/images/museum.png',
+  imgURL: '/images/stadium.png',
   cardFn: function (currentPlayer, gameState){
       if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[gameState.turn];
@@ -343,7 +343,7 @@ export const comedyClub = {
   cost: 7,
   industry: 'antenna',
   cardDescription: "Take 3 coins from all players, on your turn only",
-  imgURL: '/images/radio-tower.png',
+  imgURL: '/images/comedy-club.png',
   //placeholder fn, update in the future
   cardFn: function (currentPlayer, gameState){
       if (gameState.diceValue === this.diceValue) {
