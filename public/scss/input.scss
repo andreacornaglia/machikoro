@@ -360,10 +360,17 @@ div .content-container .slick-slide .slick-active .slick-center {
   h2{
     text-align: center;
   }
-  .start-buttons{
-    width: 20%;
-    margin: 0 auto;
-  }
+    .start-buttons{
+      width: 20%;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      vertical-align: middle;
+
+    button{
+      width: 100%;
+    }
+  }  
 }
 
 
@@ -378,27 +385,6 @@ div .content-container .slick-slide .slick-active .slick-center {
   }
 }
 
-.lobby-container {
-  width:100%;
-  height: 100vh;
-  overflow: hidden;
-  background-image: url('./images/intro.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  h1{
-    text-align: center;
-    color: white;
-    margin: 10vh;
-    background-color: white;
-    padding: 30px;
-    vertical-align: middle;
-
-    button{
-      width: 100%;
-    }
-  }
-}
 
 .form-container {
     padding: 20px;
@@ -408,12 +394,6 @@ div .content-container .slick-slide .slick-active .slick-center {
     width: 100%;
     margin: 0 auto;
 
-
-    h1{
-      text-align: center;
-      color: white;
-      margin: 10vh;
-    }
     .provider-login-btn {
       width: 49%;
     }
