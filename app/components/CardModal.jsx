@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import {updateAfterCardPurchase} from '../firebaseFunctions'
-import {createStatus} from '../reducers/statusMsg'
+import {connect} from 'react-redux'
+import {settingStatus} from '../reducers/statusMsg'
 
-export default class CardModal extends Component{
+class CardModal extends Component{
   constructor(){
     super()
     this.handleClick = this.handleClick.bind(this)
@@ -23,8 +24,9 @@ export default class CardModal extends Component{
       playerMoney -= cardCost
       cardQuantity--
       playerCardSupply++
-      createStatus(`bought a ${cardType} card`)
+      this.props.settingStatus(`bought a(n) ${element.displayName} card`)
       updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply, turnOrder)
+      this.props.showStatus()
   }
 
   render() {
@@ -57,7 +59,6 @@ export default class CardModal extends Component{
             onClick={() => {
               this.props.close()
               this.handleClick(this.props.element)
-              this.props.showStatus()
             }}
           >Buy</Button>
         </Modal.Footer>
@@ -65,3 +66,16 @@ export default class CardModal extends Component{
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    settingStatus: (msg) => dispatch(settingStatus(msg))
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardModal)
