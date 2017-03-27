@@ -7,8 +7,9 @@ import {connect, Provider} from 'react-redux'
 import store from './store'
 // import Login from './components/Login'
 // import {WhoAmI} from './components/WhoAmI'
-import {ref} from './firebase'
 import {settingGame, fetchGame} from './reducers/game'
+import {connectToGame} from './reducers/firebase';
+import axios from 'axios';
 
 import GamePage from './components/GamePage'
 import HomePage from './components/HomePage'
@@ -22,7 +23,24 @@ const setGame = () => {
   })
 }
 
+const addUserToGame = () => {
 
+};
+
+class WaitingForGame extends React.Component {
+  componentDidMount() {
+    axios.get(`/api/game/${this.props.params.gameLink}`)
+      .then(res => res.data)
+      .then(game => {
+        console.log(store.getState());
+        store.dispatch(connectToGame(game.id));
+        console.log(store.getState());
+      });
+  }
+  render() {
+    return <h1>You are waiting for a game</h1>;
+  }
+}
 
 render (
   <Provider store={store}>
@@ -34,6 +52,7 @@ render (
         <Route path="/login" component={Login} />
         <Route path="/lobby" component={HomePage} />
         <Route path="/game/:gameLink" component={GamePage} onEnter={setGame}/>
+        <Route path="/lobby/:gameLink" component={WaitingForGame} />
       </Route>
     </Router>
   </Provider>,

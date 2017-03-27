@@ -1,6 +1,5 @@
 import axios from 'axios'
-import {database} from '../firebase'
-import {addNewGame} from '../firebaseFunctions'
+import {createRef} from './firebase';
 import {machiObject} from '../machiObjectTemplate'
 // import { browserHistory } from 'react-router';
 
@@ -45,8 +44,7 @@ export const createGame = () => {
     axios.post('/api/lobby/')
       .then((game) => {
         const gameData = game.data
-        addNewGame(machiObject, game)
-
+        dispatch(createRef(game.data.id));
         console.log('data', gameData)
         dispatch(creatingNewGame(gameData))
       })
@@ -60,6 +58,7 @@ export const fetchGame = (game) => {
         let id = uniqueGame.data.id
 
         database.child(id).on('value', snap => {
+          console.warn('called');
           dispatch(fetchingGame(snap.val()))
         })
         // dispatch(fetchingGame(uniqueGame))
