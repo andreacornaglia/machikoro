@@ -47,7 +47,7 @@ export const getDBGame = (gameLink) => {
     axios.get(`/api/lobby/${gameLink}`)
     .then(res => res.data)
     .then(game => {
-      dispatch(connectToGame(game.id))
+      dispatch(connectToGame(game.gameLink))
       dispatch(receivingDBGame(game))
     })
     .catch(console.error)

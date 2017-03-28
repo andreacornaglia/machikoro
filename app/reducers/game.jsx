@@ -25,9 +25,10 @@ const reducer = (state=null, action) => {
 
 const SET_GAME = 'SET_GAME'
 
-export const settingGame = game => ({
-  type: SET_GAME, game
-})
+export const settingGame = game => {
+  console.trace('set game');
+  return { type: SET_GAME, game };
+}
 
 // const CREATE_NEW_GAME = 'CREATE_NEW_GAME'
 //

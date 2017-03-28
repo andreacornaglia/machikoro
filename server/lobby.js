@@ -24,7 +24,8 @@ api.get('/:gameLink', (req, res, next) => {
           if (users.length < 4 && !UserAlreadyInGame()) {
             return game.addUser(req.user.id)
               .then(newGame => {
-                res.send(newGame)
+                // CR: Requery for the game
+                res.send(game)
               })
               .catch(next)
           } else {
