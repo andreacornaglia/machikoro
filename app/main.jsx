@@ -29,10 +29,7 @@ const setGame = () => {
 
 const onEnterAddUser = (nextState) => {
   let routeGameLink = nextState.params.gameLink
-
-  store.dispatch(addUserToGame(routeGameLink))
-    store.dispatch(getDBGame(routeGameLink))
-
+  store.dispatch(getDBGame(routeGameLink))
 
 }
 
@@ -40,7 +37,7 @@ const onGameEnter = (nextState) => {
   let routeGameLink = nextState.params.gameLink
   axios.get(`/api/game/${routeGameLink}`)
     .then(game => {
-      store.dispatch(connectToGame(game.data.id))
+      store.dispatch(connectToGame(routeGameLink))
     })
     .catch(console.error)
 }

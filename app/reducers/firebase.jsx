@@ -20,17 +20,16 @@ const setConnection = gameRef => ({
   gameRef
 });
 
-export const connectToGame = gameId => dispatch => {
-  console.log('gameid', gameId)
-  let ref = database.child(gameId);
+export const connectToGame = gameLink => dispatch => {
+  let ref = database.child(gameLink);
   ref.on('value', snap => {
       dispatch(settingGame(snap.val()));
   });
   dispatch(setConnection(ref));
 };
 
-export const createRef = gameId => dispatch => {
-  let gameRef = database.child(gameId);
+export const createRef = gameLink => dispatch => {
+  let gameRef = database.child(gameLink);
   dispatch(setConnection(gameRef));
   gameRef.set(machiObject);
 };
