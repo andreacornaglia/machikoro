@@ -2,10 +2,9 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import {logout} from '../reducers/auth'
 import {createGame} from '../reducers/gameServer'
-// import {createGame} from '../reducers/game'
 import {connect} from 'react-redux'
 
-export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => {
+export const WhoAmI = ({ user, game, logout, createGame}) => {
   const classForDiv = game ? '' :  'hidden';
   const classForBtn = game ? 'hidden' : '';
   return(
@@ -42,5 +41,5 @@ export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => {
 
 export default connect (
   ({ auth, game }) => ({ user: auth, game }),
-  {logout, createGame, fetchGame}
+  {logout, createGame}
 ) (WhoAmI)
