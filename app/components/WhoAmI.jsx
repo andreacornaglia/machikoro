@@ -35,21 +35,12 @@ export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => {
             logout()
           }}>Logout</Button>
     </div>
-<<<<<<< HEAD
-=======
       <h2>{game && 'localhost:1337/lobby/' + game.gameLink}</h2>
->>>>>>> 880e76e9d57252a08437eba5dd0bf43429de582f
   </div>
 )}
 
 
 export default connect (
-<<<<<<< HEAD
   ({ auth, game }) => ({ user: auth, game }),
   {logout, createGame, fetchGame}
 ) (WhoAmI)
-=======
-  ({ auth, game}) => ({ user: auth, game}),
-  {logout, createGame }
-) (WhoAmI)
->>>>>>> 880e76e9d57252a08437eba5dd0bf43429de582f
