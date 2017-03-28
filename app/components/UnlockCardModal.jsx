@@ -70,10 +70,6 @@ class UnlockCardModal extends Component {
 
 }
 
-const mapStateToProps = state => {
-  return {}
-}
-
 const mapDispatchToProps = dispatch => {
   return {
     settingStatus: (msg) => dispatch(settingStatus(msg))
@@ -81,4 +77,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UnlockCardModal)
+export default connect(null, mapDispatchToProps)(UnlockCardModal)

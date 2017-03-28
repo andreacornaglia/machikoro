@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import UnlockCardModal from './UnlockCardModal';
 import DiceView from '../components/DiceView';
 import {changeTurn} from '../firebaseFunctions'
+import {settingStatus} from '../reducers/statusMsg'
 
 class SelfSummary extends Component {
   constructor(){
@@ -41,13 +42,15 @@ class SelfSummary extends Component {
                 <h3>${currentUser.name}
                   <span>${playerMoney}</span>
                   {(this.props.game.turn === 'playerOne' && this.props.game.phase !== 'roll') ? <span>You rolled: {this.props.game.diceValue}
-                    <Button 
+                    <Button
                         id="end-turn-btn"
-                        bsSize="xsmall" 
+                        bsSize="xsmall"
                         bsStyle="warning"
                         onClick={() => {
                           changeTurn(this.props.game.turn, this.props.game.turnOrder)
-                        }} 
+                          this.props.settingStatus(`decided to take no action during their turn`)
+                          this.props.showStatus()
+                        }}
                     >End Turn</Button></span>  : null}
                   {(this.props.game.turn === 'playerOne' && this.props.game.phase === 'roll') ? <DiceView showModal={this.props.showModal}/> : null }
                 </h3>
@@ -104,4 +107,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(SelfSummary)
+const mapDispatchToProps = dispatch => {
+  return {
+    settingStatus: (msg) => dispatch(settingStatus(msg))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelfSummary)
