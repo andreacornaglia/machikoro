@@ -279,25 +279,52 @@ div .content-container .slick-slide .slick-active .slick-center {
   .lobby-container h1 {
     text-align: center;
     color: white;
-    margin: 10vh; }
+    margin: 10vh;
+    text-shadow: 0px 3px 0px #b2a98f, 0px 12px 10px rgba(0, 0, 0, 0.15), 0px 4px 2px rgba(0, 0, 0, 0.1), 0px 3px 3px rgba(0, 0, 0, 0.1); }
   .lobby-container h2 {
     text-align: center; }
   .lobby-container .start-buttons {
-    width: 20%;
+    width: 30%;
     margin: 0 auto;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    border-radius: 2px;
     padding: 30px;
     vertical-align: middle; }
     .lobby-container .start-buttons button {
       width: 100%; }
 
+.btn-login {
+  background-color: #85CFC2; }
+
+.login-area {
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+  border-radius: 2px;
+  padding: 30px;
+  vertical-align: middle; }
+  .login-area .btn {
+    margin-top: 10px; }
+
+.form-horizontal .form-group {
+  margin: 0 !important; }
+
+.btn-link {
+  color: #85CFC2;
+  background-color: transparent;
+  border: none; }
+
 .button-toolbar {
   width: 100%;
   margin: auto; }
   .button-toolbar .provider-login-btn {
-    width: 49%;
+    width: 35%;
     margin: 0 auto 10px;
     justify-content: center; }
+
+.login-form {
+  padding: 30px; }
 
 .form-container {
   padding: 20px;
@@ -306,10 +333,34 @@ div .content-container .slick-slide .slick-active .slick-center {
     width: 100%;
     margin: 0 auto; }
     .form-container .button-toolbar .provider-login-btn {
-      width: 49%; }
+      width: 35%; }
 
 .highlight {
   background-color: #6DCEF8 !important; }
 
 #end-turn-btn {
   margin-left: 8%; }
+
+.input-group {
+  display: table; }
+  .input-group input:first-child, .input-group .input-group-button:first-child .btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+  .input-group input, .input-group .input-group-button {
+    display: table-cell; }
+  .input-group input {
+    position: relative;
+    width: 100%; }
+
+.game-link {
+  padding: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  font-size: 17px; }
+
+.game-players {
+  padding: 0px; }
+  .game-players li {
+    list-style: none;
+    margin-left: 10px; }
