@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {ref} from '../firebase'
 import CardModal from './CardModal'
 import { Col, Row, Tooltip, Modal, Button } from 'react-bootstrap';
 import {cardArray} from '../cards/cards.js';

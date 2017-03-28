@@ -18,9 +18,9 @@ export const Signup = ({ signup }) => (
     <Col componentClass={ControlLabel} sm={4} />
     <Col sm={4}>
       <ButtonToolbar className="button-toolbar">
-        <Button className="buffer provider-login-btn" bsStyle="danger" href="/api/auth/signup/google" bsSize="small">Sign Up with Google
+        <Button className="buffer provider-login-btn" bsStyle="danger" href="/api/auth/login/google" bsSize="small">Sign Up with Google
         </Button>
-        <Button className="buffer provider-login-btn" bsStyle="primary" href="/api/auth/signup/facebook" bsSize="small" >Sign Up with Facebook
+        <Button className="buffer provider-login-btn" bsStyle="primary" href="/api/auth/login/facebook" bsSize="small" >Sign Up with Facebook
         </Button>
        </ButtonToolbar>
      </Col>
