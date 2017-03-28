@@ -45,7 +45,7 @@ export const createGame = () => {
     axios.post('/api/lobby/')
       .then((game) => {
         const gameData = game.data
-        dispatch(createRef(gameData.id));
+        dispatch(createRef(gameData.gameLink));
         dispatch(creatingNewGame(gameData))
         browserHistory.push(`/lobby/${gameData.gameLink}`)
       })
