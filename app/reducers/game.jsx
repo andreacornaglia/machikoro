@@ -80,16 +80,5 @@ export const addUserToGame = (link) => {
   }
 };
 
-//get from redux store
-export const findOwner = (link) => {
-  return dispatch => {
-    axios.get(`/api/lobby/owner/${link}`)
-      .then((user) => {
-        // console.log('uniquegame', user.data)
-        // dispatch(connectToGame(uniqueGame.data.id))
-      })
-      .catch(console.error)
-  }
-};
 
 export default reducer

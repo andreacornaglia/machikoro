@@ -1,23 +1,30 @@
 import axios from 'axios'
 
 const reducer = (state=null, action) => {
-  const newState = Object.assign({}, state)
 
   switch (action.type) {
-    case "RECEIVE_OWNER":
-      newState.players = action.players
-      break;
-
-    default: return state;
+    case "RECEIVE_DBGAME":
+      return action.game
     }
-  return newState
+  return state
 }
 
 //ACTION CREATORS
 
-export const receivePlayers = (players) => ({
-  type: "RECEIVE_PLAYERS", players
+export const receivingDBGame = (game) => ({
+  type: "RECEIVE_DBGAME", game
 })
+
+export const getDBGame = (gameLink) => {
+  return dispatch => {
+    axios.get(`/api/lobby/${gameLink}`)
+    .then(res => res.data)
+    .then(game => {
+      dispatch(receivingDBGame(game))
+    })
+    .catch(console.error)
+  }
+}
 
 
 export default reducer

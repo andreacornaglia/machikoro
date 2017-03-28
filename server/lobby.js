@@ -18,42 +18,20 @@ api.get('/:gameLink', (req, res, next) => {
               return user.id === req.user.id
             })
           }
-          console.log('useringame', UserAlreadyInGame())
           // check if user is not in game or if total number of players is less than 4. if they're not, add to game
           if (users.length < 4 && !UserAlreadyInGame()) {
             game.addUser(req.user.id)
               .then(game => {
                 res.send(game)
               })
+              .catch(next)
           } else {
             res.send(game)
           }
         })
+        .catch(next)
     })
     .catch(next)
-
-
-})
-
-api.get('/owner/:gameLink', (req, res, next) => {
-    Game.findOne({
-      where: {
-        gameLink: req.params.gameLink
-      }
-    })
-    .then(game => {
-      let owner = game.owner
-      return User.findOne({
-        where: {
-          name: owner
-        }
-      })
-    })
-    .then(user => {
-      res.send(user)
-    })
-    .catch(next)
-
 })
 
 api.post('/', (req, res, next) => {

@@ -7,7 +7,8 @@ import {connect, Provider} from 'react-redux'
 import store from './store'
 // import Login from './components/Login'
 // import {WhoAmI} from './components/WhoAmI'
-import {settingGame, fetchGame, addUserToGame, findOwner} from './reducers/game'
+import {settingGame, fetchGame, addUserToGame} from './reducers/game'
+import {getDBGame} from './reducers/gameServer'
 import {connectToGame, createRef} from './reducers/firebase';
 import axios from 'axios';
 
@@ -28,8 +29,9 @@ const setGame = () => {
 
 const onEnterAddUser = (nextState) => {
   let routeGameLink = nextState.params.gameLink
+  store.dispatch(getDBGame(routeGameLink))
   store.dispatch(addUserToGame(routeGameLink))
-  store.dispatch(findOwner(routeGameLink))
+
 }
 
 const onGameEnter = (nextState) => {
