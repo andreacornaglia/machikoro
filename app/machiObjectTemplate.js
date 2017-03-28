@@ -27,7 +27,7 @@ export const machiObject = {
     "phase": "roll",
     "players" : {
       "playerOne": {
-        "name": "Anne",
+        "name": "",
         "cards": {
           "farmersMarket": 1,
           "bakery": 1,
@@ -54,7 +54,7 @@ export const machiObject = {
         }
       },
       "playerTwo": {
-        "name": "Andrea",
+        "name": "",
         "cards": {
           "farmersMarket": 1,
           "bakery": 1,
@@ -81,7 +81,7 @@ export const machiObject = {
         }
       },
       "playerThree": {
-        "name": "Susan",
+        "name": "",
         "cards": {
           "farmersMarket": 1,
           "bakery": 1,
@@ -108,7 +108,7 @@ export const machiObject = {
         }
       },
       "playerFour": {
-        "name": "Raina",
+        "name": "",
         "cards": {
           "farmersMarket": 1,
           "bakery": 1,

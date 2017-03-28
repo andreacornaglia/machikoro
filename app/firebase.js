@@ -1,15 +1,15 @@
-import firebaseKeys from '../machiKeyPublic'
-import firebase from 'firebase'
-import machiObject from '../public/machiObject.json'
+// import firebaseKeys from '../machiKeyPublic'
+// import firebase from 'firebase'
+// import machiObject from '../public/machiObject.json'
 
-firebase.initializeApp(firebaseKeys)
+// firebase.initializeApp(firebaseKeys)
 
-let database = firebase.database().ref()
-// database.set(machiObject)
+// let database = firebase.database().ref()
+// // database.set(machiObject)
 
-let ref = database.child('game')
+// let ref = database.child('game')
 
-let auth = firebase.auth()
+// let auth = firebase.auth()
 
-// export default firebase
-module.exports = { firebase, database, auth, ref }
+// // export default firebase
+// module.exports = { firebase, database, auth, ref }

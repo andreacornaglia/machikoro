@@ -1,13 +1,14 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import {logout} from '../reducers/auth'
-import {createGame, fetchGame} from '../reducers/game'
+import {createGame} from '../reducers/gameServer'
 import {connect} from 'react-redux'
 
-export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => {
+export const WhoAmI = ({ user, game, logout, createGame}) => {
   const classForDiv = game ? '' :  'hidden';
   const classForBtn = game ? 'hidden' : '';
   return(
+
   <div className="lobby-container">
       <h1>Hi, {user && user.name}!</h1>
       <div className="start-buttons">
@@ -33,11 +34,12 @@ export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => {
             logout()
           }}>Logout</Button>
     </div>
+      <h2>{game && 'localhost:1337/lobby/' + game.gameLink}</h2>
   </div>
 )}
 
 
 export default connect (
   ({ auth, game }) => ({ user: auth, game }),
-  {logout, createGame, fetchGame}
+  {logout, createGame}
 ) (WhoAmI)

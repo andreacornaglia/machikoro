@@ -44,6 +44,9 @@ export const whoami = () =>
         const user = response.data
         dispatch(authenticated(user))
       })
-      .catch(failed => dispatch(authenticated(null)))
+      .catch(failed => {
+        dispatch(authenticated(null))
+        browserHistory.push('/')
+      })
 
 export default reducer

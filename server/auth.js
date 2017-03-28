@@ -2,6 +2,7 @@ const app = require('APP'), {env} = app
 const debug = require('debug')(`${app.name}:auth`)
 const passport = require('passport')
 
+const Game = require('APP/db/models/game')
 const User = require('APP/db/models/user')
 const OAuth = require('APP/db/models/oauth')
 const auth = require('express').Router()
@@ -119,7 +120,9 @@ passport.use(new (require('passport-local').Strategy) (
   }
 ))
 
-auth.get('/whoami', (req, res) => res.send(req.user))
+auth.get('/whoami', (req, res) => {
+  res.send(req.user)
+})
 
 // POST requests for local login:
 auth.post('/login/local', passport.authenticate('local', { successRedirect: '/' }))

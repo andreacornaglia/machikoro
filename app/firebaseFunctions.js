@@ -1,11 +1,30 @@
-import {database, ref} from './firebase'
+import store from './store';
 import {cardArray} from './cards/cards'
 import {machiObject} from './machiObjectTemplate'
+import {browserHistory} from 'react-router'
 
+const getRef = () => {
+  return store.getState().firebaseRef
+}
+
+export const updatePlayers = (game) => {
+  const gameLink = game.gameLink
+  console.log('GameLink: ', gameLink)
+  const users = game.users;
+  const players = ['playerOne', 'playerTwo', 'playerThree', 'playerFour'];
+  users.forEach((element, index) => {
+    getRef().child('players').child('playerOne').update({
+      name: element.name
+    })
+  })
+  // Now delete players where name is null
+  // Update turn order to only contain players who are playing
+  // Redirect players to game
+  browserHistory.push(`/game/${gameLink}`)
+}
 
 export const updateDiceNum = (num) => {
-  console.log('this is the new dice', num)
-  return ref.update({
+  return getRef().update({
     diceValue: num
   })
 }
@@ -20,10 +39,10 @@ export const calculateMoney = (currentPlayer, gameState) => {
     finalMoney += money.money
     console.log('getting this amount of $:', finalMoney)
   })
-  ref.update({
+  getRef().update({
     phase: "buy"
   })
-  ref.child(`players/${currentPlayer}`).update({
+  getRef().child(`players/${currentPlayer}`).update({
     money : finalMoney
   })
   return finalMoney;
@@ -33,15 +52,15 @@ export const calculateMoney = (currentPlayer, gameState) => {
 export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply, turnOrder) => {
   let updateCardQuantity = {}
   updateCardQuantity[cardType] = cardQuantity
-  ref.child('cards').update(updateCardQuantity)
+  getRef().child('cards').update(updateCardQuantity)
 
   console.log('cardtypefb', updateCardQuantity)
 
   let updatePlayerCardSupply = {}
   updatePlayerCardSupply[cardType] = playerCardSupply
-  ref.child('players').child(currentTurn).child('cards').update(updatePlayerCardSupply)
+  getRef().child('players').child(currentTurn).child('cards').update(updatePlayerCardSupply)
 
-  let playersMoneyAvail = ref.child('players').child(currentTurn)
+  let playersMoneyAvail = getRef().child('players').child(currentTurn)
   playersMoneyAvail.update({
     money: playerMoney
   })
@@ -49,14 +68,14 @@ export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, pla
 }
 
 export const unlockSpecialCard = (cardType, currentTurn, playerMoney, turnOrder) => {
-  let playersMoneyAvail = ref.child('players').child(currentTurn)
+  let playersMoneyAvail = getRef().child('players').child(currentTurn)
   playersMoneyAvail.update({
     money: playerMoney
   })
 
   let activateCard = {}
   activateCard[cardType] = true
-  ref.child('players').child(currentTurn).child('activatedCards').update(activateCard)
+  getRef().child('players').child(currentTurn).child('activatedCards').update(activateCard)
 
   changeTurn(currentTurn, turnOrder)
 
@@ -82,14 +101,8 @@ export const changeTurn = (currentTurn, turnOrder) => {
 
   console.log('new player is:', nextPlayer);
   //then update firebase with the new player turn
-  ref.update({
+  getRef().update({
     phase: 'roll',
     turn: nextPlayer
   })
-}
-
-export const addNewGame = (machiObject, game) => {
-  // creating new game instance in firebase (with gameLink as unique keys)
-  let gameLink = (game.data.id).toString()
-  database.child(gameLink).set(machiObject)
 }
