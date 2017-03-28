@@ -6,7 +6,7 @@ const Game = db.define('games', {
   gameLink: Sequelize.STRING,
   status: Sequelize.ENUM('ongoing', 'completed'),
   winner: Sequelize.STRING,
-  owner: Sequelize.STRING
+  owner: Sequelize.INTEGER
 }, {
   hooks: {
     beforeCreate: function(game){

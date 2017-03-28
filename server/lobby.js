@@ -59,7 +59,7 @@ api.get('/owner/:gameLink', (req, res, next) => {
 api.post('/', (req, res, next) => {
   return Game.create({
     status: 'ongoing',
-    owner: req.user.name
+    owner: req.user.id
   })
   .then(game => {
     // creating user association for person creating the game in join table

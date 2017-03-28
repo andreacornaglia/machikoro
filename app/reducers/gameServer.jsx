@@ -4,7 +4,7 @@ const reducer = (state=null, action) => {
   const newState = Object.assign({}, state)
 
   switch (action.type) {
-    case "RECEIVE_PLAYERS":
+    case "RECEIVE_OWNER":
       newState.players = action.players
       break;
 
