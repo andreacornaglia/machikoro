@@ -23,6 +23,6 @@ export const WhoAmI = ({ user, game, logout, createGame, fetchGame }) => (
 
 
 export default connect (
-  ({ auth, game }) => ({ user: auth, game }),
+  ({ auth, game, players }) => ({ user: auth, game, players }),
   {logout, createGame, fetchGame}
 ) (WhoAmI)

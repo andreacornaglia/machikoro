@@ -3,11 +3,6 @@ const { Game, User } = require('../db/models')
 const api = module.exports = require('express').Router()
 
 api.get('/:gameLink', (req, res, next) => {
-  // console.log('user', req.user)
-  // if (req.user === ""){
-  //  res.redirect('/lobby')
-  // }
-  // else {
     Game.findOne({
       where: {
         gameLink: req.params.gameLink
@@ -36,7 +31,7 @@ api.get('/:gameLink', (req, res, next) => {
         })
     })
     .catch(next)
-  // }
+
 
 })
 
