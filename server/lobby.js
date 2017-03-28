@@ -4,6 +4,7 @@ const api = module.exports = require('express').Router()
 
 api.get('/:gameLink', (req, res, next) => {
     Game.findOne({
+      include: [{model: User}],
       where: {
         gameLink: req.params.gameLink
       }
@@ -11,6 +12,7 @@ api.get('/:gameLink', (req, res, next) => {
     .then(game => {
       return game.getUsers()
         .then(users => {
+          console.log('users', users)
           // users is an array of objects
           // use array.SOME - go through every element that returns true/false
           const UserAlreadyInGame = () => {
