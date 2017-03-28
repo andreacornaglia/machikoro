@@ -1,9 +1,26 @@
 import store from './store';
 import {cardArray} from './cards/cards'
 import {machiObject} from './machiObjectTemplate'
+import {browserHistory} from 'react-router'
 
 const getRef = () => {
   return store.getState().firebaseRef
+}
+
+export const updatePlayers = (game) => {
+  const gameLink = game.gameLink
+  console.log('GameLink: ', gameLink)
+  const users = game.users;
+  const players = ['playerOne', 'playerTwo', 'playerThree', 'playerFour'];
+  users.forEach((element, index) => {
+    getRef().child('players').child('playerOne').update({
+      name: element.name
+    })
+  })
+  // Now delete players where name is null
+  // Update turn order to only contain players who are playing
+  // Redirect players to game
+  browserHistory.push(`/game/${gameLink}`)
 }
 
 export const updateDiceNum = (num) => {

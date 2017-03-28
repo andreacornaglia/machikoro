@@ -35,11 +35,13 @@ const onEnterAddUser = (nextState) => {
 
 const onGameEnter = (nextState) => {
   let routeGameLink = nextState.params.gameLink
-  axios.get(`/api/game/${routeGameLink}`)
-    .then(game => {
-      store.dispatch(connectToGame(routeGameLink))
-    })
-    .catch(console.error)
+  if (!store.getState().firebaseRef) {
+    axios.get(`/api/game/${routeGameLink}`)
+      .then(game => {
+        store.dispatch(connectToGame(game.data.gameLink))
+      })
+      .catch(console.error)
+  }
 }
 
 render (

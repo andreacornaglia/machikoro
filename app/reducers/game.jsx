@@ -13,11 +13,8 @@ const reducer = (state=null, action) => {
     case 'SET_GAME':
       return action.game
 
-    // case 'CREATE_NEW_GAME':
+    // case 'FETCH_GAME':
     //   return action.game
-
-    case 'FETCH_GAME':
-      return action.game
   }
 
   return state
@@ -26,7 +23,6 @@ const reducer = (state=null, action) => {
 const SET_GAME = 'SET_GAME'
 
 export const settingGame = game => {
-  console.trace('set game');
   return { type: SET_GAME, game };
 }
 
