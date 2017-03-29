@@ -12,19 +12,18 @@ class WaitingForGame extends React.Component {
     super(props);
     this.redirectToGame = this.redirectToGame.bind(this);
   }
-  
+
   componentDidMount(){
   //update users in game state every 2 seconds to see who joined the game
    this.interval  = setInterval( () => {
      const gameLink = this.props.gameServer.gameLink;
-     console.log('users are:', this.props)
      this.props.retrieveUsers(gameLink)
      if(this.props.gameServer.status === 'started') {
        browserHistory.push(`/game/${gameLink}`)
      }
    } ,1000)
   }
-  
+
   componentWillUnmount(){
     clearInterval(this.interval)
   }
@@ -39,10 +38,12 @@ class WaitingForGame extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
+    // debugger;
+    const gameLink = this.props.params.gameLink
     if (!nextProps.user){
-      browserHistory.push('/home')
+      // browserHistory.push('/home/')
+      browserHistory.push(`/login?gameLink=${gameLink}`)
     }
-
   }
 
   render(){
