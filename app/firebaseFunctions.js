@@ -65,6 +65,7 @@ export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, pla
   playersMoneyAvail.update({
     money: playerMoney
   })
+
   changeTurn(currentTurn, turnOrder)
 }
 
@@ -106,4 +107,8 @@ export const changeTurn = (currentTurn, turnOrder) => {
     phase: 'roll',
     turn: nextPlayer
   })
+}
+
+export const changeGameStatus = (status) => {
+  getRef().update({status: status})
 }

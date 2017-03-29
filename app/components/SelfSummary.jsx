@@ -4,7 +4,7 @@ import { Tooltip, Col, Button } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import UnlockCardModal from './UnlockCardModal';
 import DiceView from '../components/DiceView';
-import {changeTurn} from '../firebaseFunctions'
+import {changeTurn, changeGameStatus} from '../firebaseFunctions'
 import {settingStatus} from '../reducers/statusMsg'
 
 class SelfSummary extends Component {
@@ -30,8 +30,7 @@ class SelfSummary extends Component {
   render() {
         let close = () => this.setState({show: false})
         let game = this.props.game;
-
-        let turn = this.props.game.turn
+        let turn = this.props.game.turn;
         let players = this.props.game.players
         let user = this.props.user.name
 
@@ -42,7 +41,7 @@ class SelfSummary extends Component {
             currentPlayer = player
           }
         })
-
+        let currentTurnObj = game.players[turn]
         let currentUser = game.players[currentPlayer]
         let playerMoney = currentUser.money
         let playerUnlocked = currentUser.activatedCards
@@ -61,8 +60,7 @@ class SelfSummary extends Component {
                         bsStyle="warning"
                         onClick={() => {
                           changeTurn(this.props.game.turn, this.props.game.turnOrder)
-                          this.props.settingStatus(`decided to take no action during their turn`)
-                          this.props.showStatus()
+                          changeGameStatus(`${currentTurnObj.name} decided to take no action`)
                         }}
                     >End Turn</Button></span>  : null}
                   {(this.props.game.turn === currentPlayer && this.props.game.phase === 'roll') ? <DiceView showModal={this.props.showModal}/> : null }

@@ -37,12 +37,12 @@ constructor(){
     this.setState({statusModal: false});
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   console.log('nextprops', nextProps)
-  //   if (nextProps.game) {
-  //     this.oponentsOrder()
-  //   }
-  // }
+  componentWillReceiveProps(nextProps){
+    console.log('nextprops', nextProps)
+     if (this.props.game.phase === 'buy' && nextProps.game.phase === 'roll') {
+        this.showStatusModal()
+     }
+  }
 
   oponentsOrder(){
       let turnOrder = this.props.game.turnOrder;
@@ -94,16 +94,17 @@ constructor(){
             <Opponent id='oponent-left' player={oponent[2]} avatar={'/images/avatar3.png'}/>
           </Col>
           <Col sm={8}>
-            <CardGrid id="center" showStatus={this.showStatusModal} />
+            <CardGrid id="center"/>
           </Col>
           <Col sm={2}>
             <Opponent id='oponent-right' player={oponent[0]} avatar={'/images/avatar4.png'}/>
           </Col>
         </div>
         <div className="row game-part-opponent">
-          <SelfDashboard showStatus={this.showStatusModal} showModal={this.showDiceModal}/>
+          <SelfDashboard showModal={this.showDiceModal}/>
         </div>
         {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeDiceModal} /> : null}
+        
         {this.state.statusModal ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
       </div>
     )

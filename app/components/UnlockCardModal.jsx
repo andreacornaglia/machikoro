@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import {unlockSpecialCard} from '../firebaseFunctions'
+import {unlockSpecialCard, changeGameStatus} from '../firebaseFunctions'
 import {connect} from 'react-redux'
 import {settingStatus} from '../reducers/statusMsg'
 
@@ -29,9 +29,7 @@ class UnlockCardModal extends Component {
       playerMoney -= unlockableCardCost
       currentTurnObj.activatedCards[cardType] = true
       unlockSpecialCard(cardType, currentTurn, playerMoney, turnOrder)
-      this.props.settingStatus(`unlocked a ${element.displayName} card`)
-      this.props.showStatus()
-
+      changeGameStatus(`${currentTurnObj.name} unlocked a ${element.displayName} card`)
     }
   }
 

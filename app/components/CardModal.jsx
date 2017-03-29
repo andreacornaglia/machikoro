@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import {updateAfterCardPurchase} from '../firebaseFunctions'
+import {updateAfterCardPurchase, changeGameStatus} from '../firebaseFunctions'
 import {connect} from 'react-redux'
 import {settingStatus} from '../reducers/statusMsg'
 
@@ -25,8 +25,7 @@ class CardModal extends Component{
       cardQuantity--
       playerCardSupply++
       updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply, turnOrder)
-      this.props.settingStatus(`bought a ${element.displayName} card`)
-      this.props.showStatus()
+      changeGameStatus(`${currentTurnObj.name} bought a ${element.displayName} card`)
   }
 
   render() {
