@@ -18,6 +18,13 @@ class DiceView extends Component {
       this.displayChooseDiceNumModal = this.displayChooseDiceNumModal.bind(this)
     }
 
+    // componentWillReceiveProps(nextProps){
+    //   console.log('in will receive props: ', this.props.game)
+    //   if (this.props.game.phase === 'roll' && nextProps.game.phase === 'buy') {
+    //     calculateMoney(this.props.user.name, nextProps.game);
+    //   }
+    // }
+
     //this function generates a new dice value
     rollDice(diceNum){
       let newDiceNum;

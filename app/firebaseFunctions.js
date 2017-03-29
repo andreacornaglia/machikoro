@@ -40,6 +40,7 @@ export const calculateMoney = (currentName, gameState) => {
     }
   }
   console.log('currentPlayer in calculateMoney: ', currentPlayer);
+  console.log('gameState.players: ', gameState.players)
   let currentPlayerInitMoney = gameState.players[currentPlayer].money
   let finalMoney = currentPlayerInitMoney
   console.log('dicevalue for calculate money is', gameState.diceValue)
@@ -55,6 +56,7 @@ export const calculateMoney = (currentName, gameState) => {
   getRef().child(`players/${currentPlayer}`).update({
     money : finalMoney
   })
+  console.log('DONE!!!')
   return finalMoney;
 }
 
