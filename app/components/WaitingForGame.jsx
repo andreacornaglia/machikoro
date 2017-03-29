@@ -3,14 +3,27 @@ import { Button } from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {updatePlayers} from '../firebaseFunctions'
 import {browserHistory} from 'react-router'
+import {startGame, retrieveUsers} from '../reducers/gameServer'
 
 class WaitingForGame extends React.Component {
   constructor(props) {
     super(props);
     this.redirectToGame = this.redirectToGame.bind(this);
   }
+  
+  componentDidMount(){
+  //update users in game state every 2 seconds to see who joined the game
+   this.interval  = setInterval( this.props.retrieveUsers(this.props.gameServer.gameLink) ,2000)
+  }
+  
+  componentWillUnmount(){
+    clearInterval(this.interval)
+  }
 
   redirectToGame() {
+    //we need an axios request to change the game status
+    startGame(this.props.gameServer.gameLink)
+    //players need to listen to game change to get redirected
     const game = this.props.gameServer;
     updatePlayers(game);
   }
@@ -46,5 +59,5 @@ class WaitingForGame extends React.Component {
 
 
 export default connect (
-  ({ auth, game, gameServer }) => ({ user: auth, game, gameServer })
+  ({ auth, game, gameServer }) => ({ user: auth, game, gameServer }), (dispatch) => ({retrieveUsers: (gameLink) => dispatch(retrieveUsers(gameLink)) })
 ) (WaitingForGame)
