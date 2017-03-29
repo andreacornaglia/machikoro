@@ -24,7 +24,7 @@ body {
     width: 100%;
     margin-bottom: 10px; }
 
-.game-grid .card:hover, .summaryContainer img:hover, .carousel-img:hover {
+.game-grid .card:hover, .summaryContainer .card:hover {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 10px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
   cursor: pointer; }
 
@@ -336,7 +336,7 @@ div .content-container .slick-slide .slick-active .slick-center {
       width: 35%; }
 
 .highlight {
-  background-color: #6DCEF8 !important; }
+  background-color: #E8BE86 !important; }
 
 #end-turn-btn {
   margin-left: 8%; }
@@ -367,3 +367,27 @@ div .content-container .slick-slide .slick-active .slick-center {
     font-size: 18px;
     margin-left: 20px;
     margin-top: 10px; }
+
+.modal-on-card .modal-card-img, .unlockcard-modal-card img {
+  width: 100%;
+  padding-bottom: 15px; }
+
+.modal-on-card .modal-card-btn, .unlockcard-modal-card btn {
+  width: 100%; }
+
+.modal-on-card .modal-card-div, .unlockcard-modal-card div {
+  text-align: center; }
+
+.modal-on-card .modal-body, .unlockcard-modal-card .modal-body {
+  padding: 0 !important; }
+
+.modal-on-card .modal-header, .unlockcard-modal-card .modal-header {
+  border-bottom: none !important; }
+
+.modal-on-card .modal-card-desc, .unlockcard-modal-card .modal-card-desc {
+  padding: 10px 10px 0 10px; }
+
+.carousel-container p {
+  text-align: center;
+  font-weight: bold;
+  background-color: #ccc; }

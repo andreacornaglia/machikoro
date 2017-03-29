@@ -38,28 +38,28 @@ class CardModal extends Component{
         container={this}
         aria-labelledby="contained-modal-title"
         bsSize="sm"
+        className="modal-on-card"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title">{element.displayName}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div>
-            <p><strong>Function:<br /></strong>{element.cardDescription}</p>
-            <p><strong>Roll value:</strong> {element.diceValue}</p>
-            <p><strong>Cost: </strong>{element.cost}</p>
-            <p><strong>Industry: </strong>{element.industry}</p>
-            <p><strong>Qty Remaining: </strong>{this.props.quantity}</p>
+          <div className="modal-card-div">
+            <p><strong>Roll value:</strong> {element.diceValue} <span>&nbsp;&nbsp;</span><strong>Cost: </strong>{element.cost}</p>
+            <img className="modal-card-img" src={element.imgURL}/>
+            <p className="modal-card-desc">{element.cardDescription}</p>
           </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
             disabled={this.props.insufficientFunds}
-            bsStyle="success"
+            className="modal-card-btn"
+            bsStyle="info"
             onClick={() => {
               this.props.close()
               this.handleClick(this.props.element)
             }}
-          >Buy</Button>
+          >Buy ({this.props.quantity} left)</Button>
         </Modal.Footer>
       </Modal>
     )
