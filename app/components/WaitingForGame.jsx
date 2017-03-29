@@ -13,7 +13,9 @@ class WaitingForGame extends React.Component {
   
   componentDidMount(){
   //update users in game state every 2 seconds to see who joined the game
-   this.interval  = setInterval( this.props.retrieveUsers(this.props.gameServer.gameLink) ,2000)
+   this.interval  = setInterval( () => {
+     console.log('users are:', this.props)
+     this.props.retrieveUsers(this.props.gameServer.gameLink)} ,2000)
   }
   
   componentWillUnmount(){
