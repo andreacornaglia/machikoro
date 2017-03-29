@@ -24,7 +24,7 @@ body {
     width: 100%;
     margin-bottom: 10px; }
 
-.game-grid .card:hover, .summaryContainer img:hover, .carousel-img:hover {
+.game-grid .card:hover, .summaryContainer .card:hover {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 10px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
   cursor: pointer; }
 
@@ -336,7 +336,7 @@ div .content-container .slick-slide .slick-active .slick-center {
       width: 35%; }
 
 .highlight {
-  background-color: #6DCEF8 !important; }
+  background-color: #E8BE86 !important; }
 
 #end-turn-btn {
   margin-left: 8%; }
@@ -368,11 +368,3 @@ div .content-container .slick-slide .slick-active .slick-center {
     margin-left: 20px;
     margin-top: 10px; }
 
-#instructions {
-  position: absolute;
-  top: 30px;
-  right: 90px;
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  font-size: 30px; }
