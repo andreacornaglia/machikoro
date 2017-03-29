@@ -6,6 +6,7 @@ import Opponent from './Opponent';
 import DiceView from '../components/DiceView';
 import ChooseDiceNumModal from './ChooseDiceNumModal';
 import GameStatusModal from './GameStatusModal';
+import InstructionButton from './Instructions'
 import { Col, Row, Tooltip } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {calculateMoney} from '../firebaseFunctions';
@@ -88,7 +89,9 @@ constructor(){
           <Col sm={4}>
             <Opponent id='oponent-top' player={oponent[1]} avatar={'/images/avatar2.png'}/>
           </Col>
-          <Col sm={4}/>
+          <Col sm={4}>
+            <InstructionButton />
+          </Col>
         </div>
         <div className="row game-page-central">
           <Col sm={2}>
