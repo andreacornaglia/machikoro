@@ -9,7 +9,6 @@ const getRef = () => {
 
 export const updatePlayers = (game) => {
   const gameLink = game.gameLink
-  console.log('GameLink: ', gameLink)
   const users = game.users;
   const players = ['playerOne', 'playerTwo', 'playerThree', 'playerFour'];
 

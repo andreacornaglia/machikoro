@@ -16,10 +16,21 @@ class CardGrid extends Component {
   }
 
   disableButton(element){
-    //check if:
-    //is their turn
-    //need to fix this with oauth
-    if(this.props.game.turn !== 'playerOne'){
+    let turn = this.props.game.turn
+    let players = this.props.game.players
+    let user = this.props.user.name
+    const playersObj = Object.keys(players)
+
+    let currentPlayer;
+    playersObj.forEach(player => {
+      if (players[player].name === user) {
+        currentPlayer = player
+      }
+    })
+
+    // console.log('playerOrder', playerOrder)
+
+    if(turn !== currentPlayer){
       this.setState({insufficientFunds: true})
     } else {
         //they are on buy phase
@@ -57,7 +68,6 @@ class CardGrid extends Component {
           return (
             <Col sm={4} className="col-lg-5ths card-cont modal-container" key={index}
               onClick={(evt) => {
-              console.log('ELEMENT', element)
               evt.preventDefault()
               this.setState({
                 showCardInfo: true,
@@ -77,7 +87,8 @@ class CardGrid extends Component {
 
 const mapStateToProps = state => {
   return {
-    game: state.game
+    game: state.game,
+    user: state.auth
   }
 }
 

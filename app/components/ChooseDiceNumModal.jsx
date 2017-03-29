@@ -23,9 +23,18 @@ class ChooseDiceNumModal extends Component {
   }
 
   handleButtonClick(num){
+    let turn = this.props.game.turn
+    let players = this.props.game.players
+    let user = this.props.user.name
+    const playersObj = Object.keys(players)
 
-    // change hardcode
-    let currentPlayer = 'playerOne'
+    let currentPlayer;
+    playersObj.forEach(player => {
+      if (players[player].name === user) {
+        currentPlayer = player
+      }
+    })
+
     this.props.closeModal()
     let diceVal = this.rollDice(num)
     updateDiceNum(diceVal)
@@ -60,6 +69,7 @@ class ChooseDiceNumModal extends Component {
 
 export default connect(state => {
   return {
-    game: state.game
+    game: state.game,
+    user: state.auth
   }
 })(ChooseDiceNumModal)

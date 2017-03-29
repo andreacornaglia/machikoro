@@ -55,17 +55,25 @@ class DiceView extends Component {
 
     displayChooseDiceNumModal(){
       let game = this.props.game
-      //because we still don't have auth, we will harcode a value here
-      //come back after doing oauth and refactor this part
-      // let currentPlayer = game.players['playerOne']
-      let currentPlayer = 'playerOne'
+      let turn = this.props.game.turn
+      let players = this.props.game.players
+      let user = this.props.user.name
+      const playersObj = Object.keys(players)
+
+      let currentPlayer;
+      playersObj.forEach(player => {
+        if (players[player].name === user) {
+          currentPlayer = player
+        }
+      })
+
       if (this.checkIfSubwayUnlocked()){
         this.props.showModal()
       } else {
         let newDiceVal = this.rollDice(1)
         //use promise to guarantee we use the latest dice value
         updateDiceNum(newDiceVal)
-          .then(()=>calculateMoney(currentPlayer, this.props.game))
+          .then(()=>calculateMoney(currentPlayer, game))
           .catch(console.error)
       }
     }
@@ -79,7 +87,6 @@ class DiceView extends Component {
     // }
 
     render() {
-      let game = this.props.game
         return (
           <Button
             bsSize="xsmall"
@@ -95,6 +102,7 @@ class DiceView extends Component {
 
 export default connect(state => {
   return {
-    game: state.game
+    game: state.game,
+    user: state.auth
   }
 })(DiceView)
