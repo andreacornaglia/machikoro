@@ -7,7 +7,8 @@ import DiceView from '../components/DiceView';
 import ChooseDiceNumModal from './ChooseDiceNumModal';
 import GameStatusModal from './GameStatusModal';
 import { Col, Row, Tooltip } from 'react-bootstrap';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {calculateMoney} from '../firebaseFunctions';
 
 class GamePage extends Component {
 
@@ -37,12 +38,12 @@ constructor(){
     this.setState({statusModal: false});
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   console.log('nextprops', nextProps)
-  //   if (nextProps.game) {
-  //     this.oponentsOrder()
-  //   }
-  // }
+  // This function checks to see if the phase has just changed from 'roll' to 'buy'. If it has, that means some player has just rolled and every player will call the calculateMoney function with their own userName and the game state to get their own change in money.
+  componentWillReceiveProps(nextProps){
+    if (this.props.game.phase === 'roll' && nextProps.game.phase === 'buy') {
+      calculateMoney(this.props.user.name, nextProps.game);
+    }
+  }
 
   oponentsOrder(){
       let turnOrder = this.props.game.turnOrder;

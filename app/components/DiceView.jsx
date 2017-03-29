@@ -73,8 +73,10 @@ class DiceView extends Component {
         let newDiceVal = this.rollDice(1)
         //use promise to guarantee we use the latest dice value
         updateDiceNum(newDiceVal)
-          .then(()=>calculateMoney(currentPlayer, game))
-          .catch(console.error)
+          // .then(() => {
+          //   calculateMoney(this.props.user.name, this.props.game)
+          // })
+          // .catch(console.error)
       }
     }
 
