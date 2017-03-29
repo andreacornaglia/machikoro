@@ -4,7 +4,7 @@ const db = require('APP/db')
 const Game = db.define('games', {
   // this is for creating a game code for unique game
   gameLink: Sequelize.STRING,
-  status: Sequelize.ENUM('ongoing', 'completed'),
+  status: Sequelize.ENUM('created', 'started'),
   winner: {
     type: Sequelize.STRING,
     allowNull: true
