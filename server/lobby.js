@@ -25,7 +25,14 @@ api.get('/:gameLink', (req, res, next) => {
             return game.addUser(req.user.id)
               .then(newGame => {
                 // CR: Requery for the game
-                res.send(game)
+                 Game.findOne({
+                    include: [{model: User}],
+                    where: {
+                      gameLink: req.params.gameLink
+                    }
+                  })
+                  .then((updatedGame) => res.send(updatedGame))
+                
               })
               .catch(next)
           } else {
@@ -39,7 +46,7 @@ api.get('/:gameLink', (req, res, next) => {
 
 api.post('/', (req, res, next) => {
   Game.create({
-    status: 'ongoing',
+    status: 'created',
     owner: req.user.id
   })
   // .then(game => {
@@ -52,4 +59,22 @@ api.post('/', (req, res, next) => {
   // .catch(next)
 })
 
-// need to create association for people joining a game that has already been created -- GET request
+api.put('/:gameLink', (req, res, next) => {
+    Game.findOne({
+      include: [{model: User}],
+      where: {
+        gameLink: req.params.gameLink
+      }
+    })
+  .then(game => game.update({status: 'started'}))
+  .then(updatedGame => (
+    Game.findOne({
+      include: [{model: User}],
+      where: {
+        gameLink: req.params.gameLink
+      }
+    })
+  ))
+  .then((requeryGame) => res.send(requeryGame))  
+  .catch(console.error)
+})
