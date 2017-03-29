@@ -45,11 +45,12 @@ class WaitingForGame extends React.Component {
   }
 
   render(){
+    const path = (process.env.IS_HEROKU === 'true') ? 'https://nyuyoku.herokuapp.com/lobby/' : 'localhost:1337/lobby/'
     return (
       <div className="lobby-container">
         <h1>Waiting for players to join</h1>
         <div className="start-buttons">
-          <p id="game-link" className="game-link">{this.props.gameServer && 'localhost:1337/lobby/' + this.props.gameServer.gameLink}</p>
+          <p id="game-link" className="game-link">{this.props.gameServer && {path} + this.props.gameServer.gameLink}</p>
           <p>Copy this link and send to your friends to play together!</p>
           <ul className="game-players">
             Friends that joined so far:

@@ -368,3 +368,35 @@ div .content-container .slick-slide .slick-active .slick-center {
     margin-left: 20px;
     margin-top: 10px; }
 
+#instructions {
+  position: absolute;
+  top: 30px;
+  right: 90px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  font-size: 30px; }
+
+.modal-on-card .modal-card-img, .unlockcard-modal-card img {
+  width: 100%;
+  padding-bottom: 15px; }
+
+.modal-on-card .modal-card-btn, .unlockcard-modal-card btn {
+  width: 100%; }
+
+.modal-on-card .modal-card-div, .unlockcard-modal-card div {
+  text-align: center; }
+
+.modal-on-card .modal-body, .unlockcard-modal-card .modal-body {
+  padding: 0 !important; }
+
+.modal-on-card .modal-header, .unlockcard-modal-card .modal-header {
+  border-bottom: none !important; }
+
+.modal-on-card .modal-card-desc, .unlockcard-modal-card .modal-card-desc {
+  padding: 10px 10px 0 10px; }
+
+.carousel-container p {
+  text-align: center;
+  font-weight: bold;
+  background-color: #ccc; }
