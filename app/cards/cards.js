@@ -50,12 +50,14 @@ export const bakery = {
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
         const currentPlayerObj = gameState.players[currentPlayer];
-        const numBakery= currentPlayerObj.cards.bakery;
+        const numBakery = currentPlayerObj.cards.bakery;
         let gainedAmount = numBakery
         if(currentPlayerObj.activatedCards.shoppingMall){
           gainedAmount += numBakery
         }
         return { money: gainedAmount }
+      } else {
+        return {money: 0}
       }
     } else {
        return {money: 0}
@@ -89,6 +91,7 @@ export const bar = {
             playerOnTurnIndex = index;
           }
         });
+
         for (let i = playerOnTurnIndex + 1; i < orderKeys.length; i++) {
           playerOrder.push(orderKeys[i]);
         }
@@ -104,6 +107,7 @@ export const bar = {
 
         // Amount of money each player should receive in order of turns. In the form of an object with the player's name as the key and a value of an object with how much money they need (assuming the player who's turn it is has infinite money) and how much they will actually get (which is zero for now).
         let playersMoneyNeeded = {};
+        let totalMoneyGiven = 0;
         for (var k = 0; k < playerOrderNames.length; k++) {
           let player = gameState.players[playerOrderNames[k]];
           let numBars = player.cards.bar;
@@ -111,17 +115,22 @@ export const bar = {
           if (player.activatedCards.shoppingMall === true) {
             moneyToCollect += numBars;
           }
+          totalMoneyGiven += moneyToCollect;
           playersMoneyNeeded[playerOrderNames[k]] = {needs: moneyToCollect, gets: 0};
         }
 
         // Determine how much actual money each player will receive, taking into account how much money the player who's turn it is has.
-        while (playerOnTurnMoney > 0) {
+        while (totalMoneyGiven > 0 && playerOnTurnMoney > 0) {
           for (var key in playersMoneyNeeded) {
             if (playerOnTurnMoney === 0) {
               break;
             }
+            if (totalMoneyGiven === 0) {
+              break;
+            }
             if (playersMoneyNeeded[key].needs > playersMoneyNeeded[key].gets) {
-              playersMoneyNeeded[key].gets += 1;
+              playersMoneyNeeded[key].gets += 1; 
+              totalMoneyGiven -= 1;
               playerOnTurnMoney -= 1;
             }
           }
@@ -153,6 +162,7 @@ export const foodStand = {
   cardDescription: "Get 3 coins from the bank, on your turn only",
   imgURL: '/images/food-stand.png',
   cardFn: function(currentPlayer, gameState){
+    console.log('in foodStand!');
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
         const currentPlayerObj = gameState.players[currentPlayer];
@@ -161,7 +171,10 @@ export const foodStand = {
         if(currentPlayerObj.activatedCards.shoppingMall){
           gainedAmount += numFoodStand
         }
+        console.log('gainedAmount: ', gainedAmount)
         return { money: gainedAmount }
+      } else {
+        return {money: 0}
       }
     } else {
       return {money: 0}
@@ -480,6 +493,7 @@ export const bodega = {
 
         // Amount of money each player should receive in order of turns. In the form of an object with the player's name as the key and a value of an object with how much money they need (assuming the player who's turn it is has infinite money) and how much they will actually get (which is zero for now).
         let playersMoneyNeeded = {};
+        let totalMoneyGiven = 0;
         for (var k = 0; k < playerOrderNames.length; k++) {
           let player = gameState.players[playerOrderNames[k]];
           let numBodegas = player.cards.bodega;
@@ -487,12 +501,16 @@ export const bodega = {
           if (player.activatedCards.shoppingMall === true) {
             moneyToCollect += numBodegas;
           }
+          totalMoneyGiven += moneyToCollect;
           playersMoneyNeeded[playerOrderNames[k]] = {needs: moneyToCollect, gets: 0};
         }
         // Determine how much actual money each player will receive, taking into account how much money the player who's turn it is has.
-        while (playerOnTurnMoney > 0) {
+        while (totalMoneyGiven > 0 && playerOnTurnMoney > 0) {
           for (var key in playersMoneyNeeded) {
             if (playerOnTurnMoney === 0) {
+              break;
+            }
+            if (totalMoneyGiven === 0) {
               break;
             }
             if (playersMoneyNeeded[key].needs > playersMoneyNeeded[key].gets) {
