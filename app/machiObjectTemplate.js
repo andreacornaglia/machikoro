@@ -25,6 +25,7 @@ export const machiObject = {
       "turn4": "playerFour"
     },
     "phase": "roll",
+    "status": "",
     "players" : {
       "playerOne": {
         "name": "",

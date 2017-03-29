@@ -53,7 +53,7 @@ class Carousel extends Component {
           return(
             <div key={index}>
               <img className="carousel-img" src={card.imgURL}/>
-              <p>{card.amount}</p>
+              <p>x {card.amount}</p>
             </div>
           )
         })}

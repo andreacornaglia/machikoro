@@ -41,9 +41,13 @@ constructor(){
 
   // This function checks to see if the phase has just changed from 'roll' to 'buy'. If it has, that means some player has just rolled and every player will call the calculateMoney function with their own userName and the game state to get their own change in money.
   componentWillReceiveProps(nextProps){
-      if (this.props.game.phase === 'roll' && nextProps.game.phase === 'buy') {
-        calculateMoney(this.props.user.name, nextProps.game);
-      }
+
+    if (this.props.game.phase === 'roll' && nextProps.game.phase === 'buy') {
+      calculateMoney(this.props.user.name, nextProps.game);
+    }
+    if (this.props.game.phase === 'buy' && nextProps.game.phase === 'roll') {
+        this.showStatusModal()
+     }
   }
 
   oponentsOrder(){
@@ -98,16 +102,17 @@ constructor(){
             <Opponent id='oponent-left' player={oponent[2]} avatar={'/images/avatar3.png'}/>
           </Col>
           <Col sm={8}>
-            <CardGrid id="center" showStatus={this.showStatusModal} />
+            <CardGrid id="center"/>
           </Col>
           <Col sm={2}>
             <Opponent id='oponent-right' player={oponent[0]} avatar={'/images/avatar4.png'}/>
           </Col>
         </div>
         <div className="row game-part-opponent">
-          <SelfDashboard showStatus={this.showStatusModal} showModal={this.showDiceModal}/>
+          <SelfDashboard showModal={this.showDiceModal}/>
         </div>
         {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeDiceModal} /> : null}
+        
         {this.state.statusModal ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
       </div>
     )

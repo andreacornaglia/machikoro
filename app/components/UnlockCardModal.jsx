@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import {unlockSpecialCard} from '../firebaseFunctions'
+import {unlockSpecialCard, changeGameStatus} from '../firebaseFunctions'
 import {connect} from 'react-redux'
 import {settingStatus} from '../reducers/statusMsg'
 
@@ -29,9 +29,7 @@ class UnlockCardModal extends Component {
       playerMoney -= unlockableCardCost
       currentTurnObj.activatedCards[cardType] = true
       unlockSpecialCard(cardType, currentTurn, playerMoney, turnOrder)
-      this.props.settingStatus(`unlocked a ${element.displayName} card`)
-      this.props.showStatus()
-
+      changeGameStatus(`${currentTurnObj.name} unlocked a ${element.displayName} card`)
     }
   }
 
@@ -44,20 +42,22 @@ class UnlockCardModal extends Component {
         container={this}
         aria-labelledby="contained-modal-title"
         bsSize="sm"
+        className="unlockcard-modal-card"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title">{element.displayName}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>
-            <p><strong>Function:<br /></strong>{element.cardDescription}</p>
             <p><strong>Cost: </strong>{element.cost}</p>
+            <img src={element.imgURL}/>
+            <p className="modal-card-desc">{element.cardDescription}</p>
           </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
             disabled={this.props.insufficientFunds}
-            bsStyle="success"
+            bsStyle="info"
             onClick={() => {
               this.props.close()
               this.handleClick(this.props.element)
