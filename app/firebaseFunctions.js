@@ -22,7 +22,7 @@ export const updatePlayers = (game) => {
   // Now delete players where name is null
   // Update turn order to only contain players who are playing
   // Redirect players to game
-  browserHistory.push(`/game/${gameLink}`)
+  //browserHistory.push(`/game/${gameLink}`)
 }
 
 export const updateDiceNum = (num) => {

@@ -14,8 +14,13 @@ class WaitingForGame extends React.Component {
   componentDidMount(){
   //update users in game state every 2 seconds to see who joined the game
    this.interval  = setInterval( () => {
+     const gameLink = this.props.gameServer.gameLink;
      console.log('users are:', this.props)
-     this.props.retrieveUsers(this.props.gameServer.gameLink)} ,2000)
+     this.props.retrieveUsers(gameLink)
+     if(this.props.gameServer.status === 'started') {
+       browserHistory.push(`/game/${gameLink}`)
+     }
+   } ,1000)
   }
   
   componentWillUnmount(){
@@ -24,7 +29,7 @@ class WaitingForGame extends React.Component {
 
   redirectToGame() {
     //we need an axios request to change the game status
-    startGame(this.props.gameServer.gameLink)
+    this.props.startGame(this.props.gameServer.gameLink)
     //players need to listen to game change to get redirected
     const game = this.props.gameServer;
     updatePlayers(game);
@@ -61,5 +66,7 @@ class WaitingForGame extends React.Component {
 
 
 export default connect (
-  ({ auth, game, gameServer }) => ({ user: auth, game, gameServer }), (dispatch) => ({retrieveUsers: (gameLink) => dispatch(retrieveUsers(gameLink)) })
+  ({ auth, game, gameServer }) => ({ user: auth, game, gameServer }), (dispatch) => (
+    {retrieveUsers: (gameLink) => dispatch(retrieveUsers(gameLink)),
+     startGame: (gameLink) => dispatch(startGame(gameLink))                                             })
 ) (WaitingForGame)
