@@ -16,13 +16,13 @@ const InstructionModal = (props) => {
           <h4>Landmarks</h4>
           <p>These cards are pre-supplied to each player, and may be unlocked by the player at their disgression, provided they have enough money to do so. When you unlock a landmark, you also gain access to the benefit described in the card description. Whichever player unlocks all four landmarks first wins the game</p>
           <h4>Money</h4>
-          <p>All players are provided 3 units of money at the start of the game. Each player use money to buy establishments and landmarks</p>
+          <p>All players are provided 3 units of money at the start of the game. Each player uses money to buy establishments and landmarks</p>
           <h3>Game Flow</h3>
           <p>Players take turns. A turn consists of the following three phases: <br />    1. Roll Dice<br />    2. Earn Income<br />    3. Purchase Establishment or Landmark</p>
           <h3>Roll Dice</h3>
           <p>To begin their turn a player rolls the dice. At the start of the game each player will roll a single die. Once a player has built their Subway Station, they may roll one or two dice on their turn. When rolling two dice, the dice are always summed together.</p>
           <h3>Earn Income</h3>
-          <p>Players earn income based on the dice roll and the effects of the Establishments that they own that match the dice roll. If a playeres owns multiple copies of a single Establishment, the effects aare multiplied by the number of Establishments of that type owned.</p>
+          <p>Players earn income based on the dice roll and the effects of the Establishments that they own that match the dice roll. If a player owns multiple copies of a single Establishment, the effects are multiplied by the number of Establishments of that type owned.</p>
           <h3>Building New Establishments and Completing Landmarks</h3>
           <p>To conclude a player's turn, he or she may pay to construct one single Establishment OR pay to finish construction on a single Landmark by paying the cost shown on the lower left-hand corner of the card.</p>
           <p>Once constructed, an Establishment is taken from the supply and added to the player's play area. When constructing a Landmark, the Landmark card is unlocked an the Landmark's effects are now active. Landmarks may be constructed in any order the player chooses.</p>
@@ -44,8 +44,8 @@ export class InstructionButton extends Component {
     let lgClose = () => this.setState({show: false})
     return (
       <ButtonToolbar>
-        <Button bsStyle="primary" onClick={() => this.setState({ show: true })}>
-          Instructions
+        <Button id="instructions" bsStyle="warning" onClick={() => this.setState({ show: true })}>
+          ?
         </Button>
         <InstructionModal show={this.state.show} onHide={lgClose} />
       </ButtonToolbar>
