@@ -14,10 +14,10 @@ class ChooseDiceNumModal extends Component {
   rollDice (diceNum){
     let newDiceNum;
     if (diceNum === 1) {
-      newDiceNum = Math.floor(Math.random() * (6) + 1);
+      newDiceNum = Math.ceil(Math.random() * (6));
     }
     if (diceNum === 2){
-      newDiceNum = Math.floor(Math.random() * (12) + 1);
+      newDiceNum = Math.ceil(Math.random() * (12));
     }
     return newDiceNum;
   }
