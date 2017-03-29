@@ -21,21 +21,25 @@ class WaitingForGame extends React.Component {
     }
   }
 
-  render() {
-    // need to check if user is owner, if so, render start game button
-    // else render 'waiting...'
+  render(){
     return (
-      <div>
-      {this.props.gameServer && (this.props.gameServer.owner == this.props.user.id) ?
-      <Button className="buffer provider-login-btn" bsStyle="danger" bsSize="small" onClick={this.redirectToGame}>Start Game
-      </Button> : null }
-      <h1>Please hold...</h1>
-      {this.props.gameServer ? this.props.gameServer.users && this.props.gameServer.users.map((element, index) => {
+      <div className="lobby-container">
+        <h1>Waiting for players to join</h1>
+        <div className="start-buttons">
+          <p id="game-link" className="game-link">{this.props.gameServer && 'localhost:1337/lobby/' + this.props.gameServer.gameLink}</p>
+          <p>Copy this link and send to your friends to play together!</p>
+          <ul className="game-players">
+            Friends that joined so far:
+            {this.props.gameServer ? this.props.gameServer.users && this.props.gameServer.users.map((element, index) => {
           return (
-            <h1 key={element.id}>{element.name} has joined the game</h1>
+            <li key={element.id}>{element.name} has joined the game</li>
           )
         }): null}
-      </div>
+          </ul>
+        {this.props.gameServer && (this.props.gameServer.owner == this.props.user.id) ?
+          <Button className="buffer provider-login-btn" bsStyle="info" bsSize="large" block onClick={this.redirectToGame}>Start Game</Button> : null }
+       </div>
+     </div>
     )
   }
 }
