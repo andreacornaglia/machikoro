@@ -12,11 +12,13 @@ export const updatePlayers = (game) => {
   console.log('GameLink: ', gameLink)
   const users = game.users;
   const players = ['playerOne', 'playerTwo', 'playerThree', 'playerFour'];
-  users.forEach((element, index) => {
-    getRef().child('players').child('playerOne').update({
-      name: element.name
-    })
-  })
+
+  for (let i = 0; i < users.length; i++){
+      getRef().child('players').child(players[i]).update({
+        name: users[i].name
+      })
+    }
+
   // Now delete players where name is null
   // Update turn order to only contain players who are playing
   // Redirect players to game
