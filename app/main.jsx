@@ -28,8 +28,13 @@ const setGame = () => {
 }
 
 const onEnterAddUser = (nextState) => {
-  let routeGameLink = nextState.params.gameLink
-  store.dispatch(getDBGame(routeGameLink))
+  //if user isn't logged in, redirect them to login
+  // if (!store.getState().auth){
+  //   browserHistory.push('/home')
+  // } else {
+      let routeGameLink = nextState.params.gameLink
+      store.dispatch(getDBGame(routeGameLink))
+  // }
 
 }
 
