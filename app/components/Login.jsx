@@ -12,7 +12,13 @@ export const Login = ({ login }) => (
       <div className="login-area">
       <Form className="form-group" horizontal onSubmit={evt => {
         evt.preventDefault()
-        login(evt.target.username.value, evt.target.password.value)
+        if (location.search) {
+          let gameLink = location.search.split('=')[1]
+          login(evt.target.username.value, evt.target.password.value, gameLink)
+        } else {
+          login(evt.target.username.value, evt.target.password.value)
+        }
+
       } }>
         <ButtonToolbar className="button-toolbar">
           <Button className="buffer provider-login-btn" bsStyle="danger" href="/api/auth/login/google" bsSize="small">Login with Google
@@ -26,7 +32,7 @@ export const Login = ({ login }) => (
           <label htmlFor="username">Email</label>
           <input className="form-control" type="email" name="username" placeholder="Email" />
         </div>
-        
+
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input className="form-control" type="password" name="password" placeholder="Password" />
@@ -39,7 +45,7 @@ export const Login = ({ login }) => (
         <Button type="submit" value="Login">
           Login
         </Button>
-        
+
         </Form>
         </div>
         </Col>

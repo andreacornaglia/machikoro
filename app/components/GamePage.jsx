@@ -6,8 +6,10 @@ import Opponent from './Opponent';
 import DiceView from '../components/DiceView';
 import ChooseDiceNumModal from './ChooseDiceNumModal';
 import GameStatusModal from './GameStatusModal';
+import InstructionButton from './Instructions'
 import { Col, Row, Tooltip } from 'react-bootstrap';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {calculateMoney} from '../firebaseFunctions';
 
 class GamePage extends Component {
 
@@ -37,9 +39,12 @@ constructor(){
     this.setState({statusModal: false});
   }
 
+  // This function checks to see if the phase has just changed from 'roll' to 'buy'. If it has, that means some player has just rolled and every player will call the calculateMoney function with their own userName and the game state to get their own change in money.
   componentWillReceiveProps(nextProps){
-    console.log('nextprops', nextProps)
-     if (this.props.game.phase === 'buy' && nextProps.game.phase === 'roll') {
+    if (this.props.game.phase === 'roll' && nextProps.game.phase === 'buy') {
+      calculateMoney(this.props.user.name, nextProps.game);
+    }
+    if (this.props.game.phase === 'buy' && nextProps.game.phase === 'roll') {
         this.showStatusModal()
      }
   }
@@ -87,7 +92,9 @@ constructor(){
           <Col sm={4}>
             <Opponent id='oponent-top' player={oponent[1]} avatar={'/images/avatar2.png'}/>
           </Col>
-          <Col sm={4}/>
+          <Col sm={4}>
+            <InstructionButton />
+          </Col>
         </div>
         <div className="row game-page-central">
           <Col sm={2}>

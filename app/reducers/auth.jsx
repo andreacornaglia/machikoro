@@ -22,12 +22,20 @@ export const signup = (name, email, password) =>
       .then((user) => browserHistory.push('/lobby'))
       .catch(() => dispatch(whoami()))
 
-export const login = (username, password) =>
+// add third parameter gameLink to check if we are redirecting user after they get a gameLink from another player
+export const login = (username, password, gameLink) =>
   dispatch =>
     axios.post('/api/auth/login/local',
       {username, password})
       .then(() => dispatch(whoami()))
-      .then(() => browserHistory.push('/lobby'))
+      .then(() => {
+        if (gameLink) {
+          browserHistory.push(`/lobby/${gameLink}`)
+        } else {
+          browserHistory.push('/lobby')
+        }
+
+      })
       .catch(() => dispatch(whoami()))
 
 export const logout = () =>

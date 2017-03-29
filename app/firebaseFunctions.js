@@ -26,23 +26,32 @@ export const updatePlayers = (game) => {
 
 export const updateDiceNum = (num) => {
   return getRef().update({
-    diceValue: num
+    diceValue: num,
+    phase: 'buy'
   })
 }
 
 //traverse cards array function and return money
-export const calculateMoney = (currentPlayer, gameState) => {
+export const calculateMoney = (currentName, gameState) => {
+  let currentPlayer;
+  for (var key in gameState.players ) {
+    if (gameState.players[key].name === currentName) {
+      currentPlayer = key;
+    }
+  }
+  console.log('currentPlayer in calculateMoney: ', currentPlayer);
   let currentPlayerInitMoney = gameState.players[currentPlayer].money
   let finalMoney = currentPlayerInitMoney
   console.log('dicevalue for calculate money is', gameState.diceValue)
   cardArray.forEach(card => {
     let money = card.cardFn(currentPlayer, gameState)
+    console.log('this is what money is: ', money)
     finalMoney += money.money
     console.log('getting this amount of $:', finalMoney)
   })
-  getRef().update({
-    phase: "buy"
-  })
+  // getRef().update({
+  //   phase: "buy"
+  // })
   getRef().child(`players/${currentPlayer}`).update({
     money : finalMoney
   })
