@@ -6,6 +6,12 @@ class GameStatusModal extends Component {
   constructor(){
     super()
   }
+  
+  componentDidMount() {
+    setTimeout(() => {
+        this.props.closeModal()
+    }, 3000);
+  }
 
   render() {
     let close = () => this.setState({show: false})
@@ -24,14 +30,11 @@ class GameStatusModal extends Component {
         bsSize="sm"
       >
         <Modal.Header>
-          <Modal.Title id="contained-modal-title"></Modal.Title>
+          <Modal.Title id="contained-modal-title">Next Player's Turn!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Next Player's Turn!<br /><br />{this.props.game.status}</p>
+          <p>{this.props.game.status}</p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button bsStyle="info" onClick={this.props.closeModal}>Ok</Button>
-        </Modal.Footer>
       </Modal>
     )
   }
