@@ -30,18 +30,31 @@ class SelfSummary extends Component {
   render() {
         let close = () => this.setState({show: false})
         let game = this.props.game;
-        //for now hardcoded, but eventually change it to work with whoAmI
-        let currentUser = game.players['playerOne']
+
+        let turn = this.props.game.turn
+        let players = this.props.game.players
+        let user = this.props.user.name
+
+        const playersObj = Object.keys(players)
+        let currentPlayer;
+        playersObj.forEach(player => {
+          if (players[player].name === user) {
+            currentPlayer = player
+          }
+        })
+
+        let currentUser = game.players[currentPlayer]
         let playerMoney = currentUser.money
         let playerUnlocked = currentUser.activatedCards
         let cardKeys = Object.keys(playerUnlocked);
+
         return (
             <div className="summaryContainer">
               <div className="row">
                 <img src='/images/avatar1.png'/>
                 <h3>{currentUser.name}
                   <span>${playerMoney}</span>
-                  {(this.props.game.turn === 'playerOne' && this.props.game.phase !== 'roll') ? <span>You rolled: {this.props.game.diceValue}
+                  {(this.props.game.turn === currentPlayer && this.props.game.phase !== 'roll') ? <span>You rolled: {this.props.game.diceValue}
                     <Button
                         id="end-turn-btn"
                         bsSize="xsmall"
@@ -52,7 +65,7 @@ class SelfSummary extends Component {
                           this.props.showStatus()
                         }}
                     >End Turn</Button></span>  : null}
-                  {(this.props.game.turn === 'playerOne' && this.props.game.phase === 'roll') ? <DiceView showModal={this.props.showModal}/> : null }
+                  {(this.props.game.turn === currentPlayer && this.props.game.phase === 'roll') ? <DiceView showModal={this.props.showModal}/> : null }
                 </h3>
               </div>
               <div className="unlockableSelf">
@@ -103,7 +116,8 @@ class SelfSummary extends Component {
 
 const mapStateToProps = state => {
   return {
-    game: state.game
+    game: state.game,
+    user: state.auth
   }
 }
 

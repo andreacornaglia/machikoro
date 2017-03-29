@@ -1,8 +1,9 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import {connect} from 'react-redux'
-import {updatePlayers} from '../firebaseFunctions'
+import {updatePlayers, updateGameStatus} from '../firebaseFunctions'
 import {browserHistory} from 'react-router'
+import {settingGame} from '../reducers/game'
 
 class WaitingForGame extends React.Component {
   constructor(props) {
@@ -13,12 +14,14 @@ class WaitingForGame extends React.Component {
   redirectToGame() {
     const game = this.props.gameServer;
     updatePlayers(game);
+    settingGame(game)
   }
 
   componentWillReceiveProps(nextProps){
     if (!nextProps.user){
       browserHistory.push('/home')
     }
+
   }
 
   render() {

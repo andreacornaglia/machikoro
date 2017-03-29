@@ -37,34 +37,49 @@ constructor(){
     this.setState({statusModal: false});
   }
 
-  oponentsOrder(){
-    const turnOrder = this.props.game.turnOrder;
-    const turnArr = Object.keys(turnOrder);
-    let oppArr = []
-    turnArr.forEach(element => {
-      oppArr.push(turnOrder[element])
-    })
-    console.log(oppArr)
-    //when firebase is updated, change 'playerOne' for user.name
-    const currentPlayer = 'playerOne';
-    //loop to find current turn position in array
-    const end = oppArr.length + 1
-    const idx = oppArr.indexOf(currentPlayer)
-    const result = oppArr.slice(idx+1, end).concat(oppArr.slice(0,idx))
+  // componentWillReceiveProps(nextProps){
+  //   console.log('nextprops', nextProps)
+  //   if (nextProps.game) {
+  //     this.oponentsOrder()
+  //   }
+  // }
 
-    console.log('oponents is:',result)
-    return result
+  oponentsOrder(){
+      let turnOrder = this.props.game.turnOrder;
+      const turnArr = Object.keys(turnOrder);
+      let oppArr = []
+      turnArr.forEach(element => {
+        oppArr.push(turnOrder[element])
+      })
+
+      let turn = this.props.game.turn
+      let players = this.props.game.players
+      let user = this.props.user.name
+      const playersObj = Object.keys(players)
+
+      let currentPlayer;
+      playersObj.forEach(player => {
+        if (players[player].name === user) {
+          currentPlayer = player
+        }
+      })
+
+      //loop to find current turn position in array
+      const end = oppArr.length + 1
+      const idx = oppArr.indexOf(currentPlayer)
+      const result = oppArr.slice(idx+1, end).concat(oppArr.slice(0,idx))
+      return result
   }
 
   render() {
-    console.log('props', this.props)
-    if (this.props.firebaseRef === null) {
+    // need to make sure game is also on state
+    if (this.props.firebaseRef === null || this.props.game === null) {
       return <h1>Loading...</h1>
     }
 
     //check who is this computer's player
     const oponent = this.oponentsOrder()
-    //check on the pla
+
     return (
       <div className="global-board">
         <div className="row row-top">
@@ -92,6 +107,7 @@ constructor(){
         {this.state.statusModal ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
       </div>
     )
+
   }
 }
 
@@ -100,6 +116,5 @@ export default connect(state => {
     firebaseRef: state.firebaseRef,
     game: state.game,
     user: state.auth
-    //find user here via oauth
   }
 })(GamePage)

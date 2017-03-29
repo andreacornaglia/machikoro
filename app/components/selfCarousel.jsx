@@ -8,11 +8,25 @@ class Carousel extends Component {
     super();
     this.checkUserCards = this.checkUserCards.bind(this);
   }
-  
+
   checkUserCards(){
     let game = this.props.game;
-    //check with oauth username, here harcoded, come and fix later
-    let currentUser = game.players['playerOne'];
+
+    let turn = this.props.game.turn
+    let players = this.props.game.players
+
+    let user = this.props.user.name
+
+    const playersObj = Object.keys(players)
+
+    let currentPlayer;
+    playersObj.forEach(player => {
+      if (players[player].name === user) {
+        currentPlayer = player
+      }
+    })
+
+    let currentUser = game.players[currentPlayer]
     let cards = currentUser.cards;
     let cardKeys = Object.keys(cards);
     let info = []
@@ -49,5 +63,5 @@ class Carousel extends Component {
 }
 
 export default connect(state => {
-  return {game: state.game}
+  return {game: state.game, user: state.auth}
 })(Carousel)
