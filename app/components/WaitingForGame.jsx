@@ -38,10 +38,8 @@ class WaitingForGame extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    // debugger;
     const gameLink = this.props.params.gameLink
     if (!nextProps.user){
-      // browserHistory.push('/home/')
       browserHistory.push(`/login?gameLink=${gameLink}`)
     }
   }
