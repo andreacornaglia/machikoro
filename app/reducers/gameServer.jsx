@@ -40,8 +40,8 @@ export const createGame = () => {
     axios.post('/api/lobby/')
       .then((game) => {
         const gameData = game.data
+        console.log('gameData on gameServer reducer is:', gameData)
         dispatch(createRef(gameData.gameLink));
-
         return gameData
       })
       .then((game) => {

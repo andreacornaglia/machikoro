@@ -10,6 +10,7 @@ export const WhoAmI = ({ user, game, logout, createGame}) => {
       <h1>Hi, {user && user.name}!</h1>
       <div className="start-buttons">
         <Button bsStyle="info" bsSize="large" block onClick={(evt) => {
+            console.log('creating game')
             createGame()
           }}>Create Game</Button>
         <Button href="/" bsSize="large" className="btn-link" block onClick={(evt) => {
