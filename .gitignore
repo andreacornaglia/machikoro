@@ -18,4 +18,5 @@ machikey.js
 # CSS
 *.css
 
-#OAuth
+# heroku
+nyuyoku/*

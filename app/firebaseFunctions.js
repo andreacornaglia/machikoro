@@ -80,18 +80,25 @@ export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, pla
   changeTurn(currentTurn, turnOrder)
 }
 
-export const unlockSpecialCard = (cardType, currentTurn, playerMoney, turnOrder) => {
-  let playersMoneyAvail = getRef().child('players').child(currentTurn)
-  playersMoneyAvail.update({
+export const unlockSpecialCard = (cardType, currentTurn, playerMoney, turnOrder, unlockedCount, currentTurnObj) => {
+  let player = getRef().child('players').child(currentTurn)
+  player.update({
     money: playerMoney
   })
 
   let activateCard = {}
   activateCard[cardType] = true
-  getRef().child('players').child(currentTurn).child('activatedCards').update(activateCard)
+  // getRef().child('players').child(currentTurn).child('activatedCards').update(activateCard)
+  player.child('activatedCards').update(activateCard)
+
+  let playerName = currentTurnObj.name
+  if (unlockedCount === 4){
+    getRef().update({
+      winner: playerName
+    })
+  }
 
   changeTurn(currentTurn, turnOrder)
-
 }
 
 export const changeTurn = (currentTurn, turnOrder) => {
