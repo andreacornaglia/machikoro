@@ -36,7 +36,8 @@ export const startingGame = game => ({
 })
 
 export const createGame = () => {
-  return dispatch =>
+  console.log('were on createGame')
+  return dispatch => {
     axios.post('/api/lobby/')
       .then((game) => {
         const gameData = game.data
@@ -49,6 +50,7 @@ export const createGame = () => {
         browserHistory.push(`/lobby/${game.gameLink}`)
       })
       .catch(console.error)
+  }
 }
 
 export const startGame = (gameLink, dispatch) => {
