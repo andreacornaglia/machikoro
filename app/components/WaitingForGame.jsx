@@ -39,10 +39,10 @@ class WaitingForGame extends React.Component {
 
   componentWillReceiveProps(nextProps){
     const gameLink = this.props.params.gameLink
-    const link = (process.env.IS_HEROKU === 'true') ? `https://nyuyoku.herokuapp.com/lobby/${gameLink}` : `localhost:1337/lobby/${gameLink}`
-    console.log('link in heroku is:', link)
+    this.link = (process.env.IS_HEROKU === 'true') ? `https://nyuyoku.herokuapp.com/lobby/${gameLink}` : `localhost:1337/lobby/${gameLink}`
+    console.log('link in heroku is:', this.link)
     if (!nextProps.user){
-      browserHistory.push(link)
+      browserHistory.push(this.link)
     }
   }
 
@@ -55,7 +55,7 @@ class WaitingForGame extends React.Component {
         <div className="start-buttons">
           {this.props.gameServer &&
             <p id="game-link" className="game-link">
-              {(process.env.IS_HEROKU === 'true') ? `https://nyuyoku.herokuapp.com/lobby/${gameLink}` : `localhost:1337/lobby/${gameLink}`}
+              {this.link}
             </p>
           }
           <p>Copy this link and send to your friends to play together!</p>
