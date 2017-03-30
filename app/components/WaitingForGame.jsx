@@ -51,8 +51,7 @@ class WaitingForGame extends React.Component {
   }
 
   render(){
-    {this.props.gameServer &&
-    const gameLink = this.props.gameServer.gameLink
+    const gameLink = this.props.gameServer ? this.props.gameServer.gameLink : null
     const path = 'https://nyuyoku.herokuapp.com/lobby/'
     return (
       <div className="lobby-container">
@@ -78,7 +77,7 @@ class WaitingForGame extends React.Component {
        </div>
      </div>
     )
-    }
+    
   }
 }
 
