@@ -45,18 +45,16 @@ api.get('/:gameLink', (req, res, next) => {
 })
 
 api.post('/', (req, res, next) => {
+  console.log('hitting the post route on api/lobby/')
   Game.create({
     status: 'created',
     owner: req.user.id
   })
-  // .then(game => {
-  //   return game.addUser(req.user.id)
-  // })
   .then(updatedGame => {
-    console.log(updatedGame)
+    console.log('updatedGame',updatedGame)
     res.send(updatedGame)
   })
-  // .catch(next)
+  .catch(next)
 })
 
 api.put('/:gameLink', (req, res, next) => {
