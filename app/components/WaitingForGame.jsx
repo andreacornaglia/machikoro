@@ -40,6 +40,7 @@ class WaitingForGame extends React.Component {
   componentWillReceiveProps(nextProps){
     const gameLink = this.props.params.gameLink
     const link = (process.env.IS_HEROKU === 'true') ? `https://nyuyoku.herokuapp.com/lobby/${gameLink}` : `localhost:1337/lobby/${gameLink}`
+    console.log('link in heroku is:', link)
     if (!nextProps.user){
       browserHistory.push(link)
     }
