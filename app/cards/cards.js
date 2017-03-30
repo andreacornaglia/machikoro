@@ -7,7 +7,7 @@ export const farmersMarket = {
   cardDescription: "Get 1 coin from the bank, on anyone's turn",
   imgURL: '/images/farmers-market.png',
   cardFn: function(currentPlayer, gameState){
-      if (gameState.diceValue === this.diceValue) {
+     if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[currentPlayer];
         const numCards = playerObj.cards.farmersMarket;
         const gainedAmount = numCards * 1;
@@ -269,44 +269,6 @@ export const businessCenter = {
     }
   }
 };
-  /* Alternative business center function, if you want to just take it all from one person, no matter whether they still have the most after you take the first five.
-  cardFn: function (currentPlayer, gameState){
-      if (gameState.diceValue === this.diceValue) {
-        // An object of the player who's turn it is.
-        const playerObj = gameState.players[gameState.turn];
-        // How much money the person who rolled should earn ideally.
-        let moneyRequested = playerObj.cards.businessCenter * 5;
-        // An array of all the players names
-        const playersArr = Object.keys(gameState.players);
-          //We want to check which opponent has the max amount of $
-          let maxMoney = 0;
-          let playerWMoney;
-          playersArr.forEach((player, index) => {
-            if(player !== gameState.turn){
-              if(gameState.players[player].money > maxMoney){
-                maxMoney = gameState.players[player].money;
-                playerWMoney = player;
-              }
-            }
-          });
-          // Check how much money the current player gets.
-          if(maxMoney <= moneyRequested){
-            moneyRequested = maxMoney;
-          }
-          console.log(playerWMoney);
-          if (currentPlayer === gameState.turn) {
-            return { money: moneyRequested };
-          } else if (currentPlayer === playerWMoney) {
-            return { money: -moneyRequested };
-          } else {
-            return { money: 0 };
-          }
-     } else {
-        return {money: 0};
-    }
-  }
-};
-*/
 
 export const stadium = {
   refName: 'stadium',
@@ -405,9 +367,11 @@ export const powerPlant = {
         const currentPlayerObj = gameState.players[currentPlayer];
         const gainedAmount = currentPlayerObj.cards.river * 3 * currentPlayerObj.cards.powerPlant;
         return { money: gainedAmount }
+      } else { 
+        return { money : 0 }
       }
     } else {
-      return {money: 0}
+      return { money: 0 }
     }
   }
 };
@@ -426,9 +390,11 @@ export const touristBus = {
         const currentPlayerObj = gameState.players[currentPlayer];
         const gainedAmount = (currentPlayerObj.cards.museum + currentPlayerObj.cards.broadway) * 3 * currentPlayerObj.cards.touristBus;
         return { money: gainedAmount }
+      } else {
+        return { money: 0}
       }
     } else {
-      return {money: 0}
+      return { money: 0 }
     }
   }
 };
@@ -571,6 +537,8 @@ export const restaurant = {
         const numWheat = currentPlayerObj.cards.farmersMarket + currentPlayerObj.cards.wineShop;
         const gainedAmount = numWheat * 2 * currentPlayerObj.cards.restaurant;
         return { money: gainedAmount }
+      } else {
+        return { money: 0}
       }
     } else {
       return {money: 0}
