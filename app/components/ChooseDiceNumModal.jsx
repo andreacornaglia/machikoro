@@ -38,8 +38,6 @@ class ChooseDiceNumModal extends Component {
     this.props.closeModal()
     let diceVal = this.rollDice(num)
     updateDiceNum(diceVal)
-    .then(()=>calculateMoney(currentPlayer, this.props.game))
-    .catch(console.error)
   }
 
   render() {
