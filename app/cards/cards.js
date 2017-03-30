@@ -129,7 +129,7 @@ export const bar = {
               break;
             }
             if (playersMoneyNeeded[key].needs > playersMoneyNeeded[key].gets) {
-              playersMoneyNeeded[key].gets += 1; 
+              playersMoneyNeeded[key].gets += 1;
               totalMoneyGiven -= 1;
               playerOnTurnMoney -= 1;
             }
@@ -162,7 +162,6 @@ export const foodStand = {
   cardDescription: "Get 3 coins from the bank, on your turn only",
   imgURL: '/images/food-stand.png',
   cardFn: function(currentPlayer, gameState){
-    console.log('in foodStand!');
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
         const currentPlayerObj = gameState.players[currentPlayer];
@@ -171,7 +170,6 @@ export const foodStand = {
         if(currentPlayerObj.activatedCards.shoppingMall){
           gainedAmount += numFoodStand
         }
-        console.log('gainedAmount: ', gainedAmount)
         return { money: gainedAmount }
       } else {
         return {money: 0}
@@ -367,7 +365,7 @@ export const powerPlant = {
         const currentPlayerObj = gameState.players[currentPlayer];
         const gainedAmount = currentPlayerObj.cards.river * 3 * currentPlayerObj.cards.powerPlant;
         return { money: gainedAmount }
-      } else { 
+      } else {
         return { money : 0 }
       }
     } else {

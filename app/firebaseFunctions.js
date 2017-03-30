@@ -1,7 +1,5 @@
 import store from './store';
 import {cardArray} from './cards/cards'
-import {machiObject} from './machiObjectTemplate'
-import {browserHistory} from 'react-router'
 
 const getRef = () => {
   return store.getState().firebaseRef
@@ -17,11 +15,6 @@ export const updatePlayers = (game) => {
         name: users[i].name
       })
     }
-
-  // Now delete players where name is null
-  // Update turn order to only contain players who are playing
-  // Redirect players to game
-  //browserHistory.push(`/game/${gameLink}`)
 }
 
 export const updateDiceNum = (num) => {
@@ -39,24 +32,18 @@ export const calculateMoney = (currentName, gameState) => {
       currentPlayer = key;
     }
   }
-  console.log('currentPlayer in calculateMoney: ', currentPlayer);
-  console.log('gameState.players: ', gameState.players)
+
   let currentPlayerInitMoney = gameState.players[currentPlayer].money
   let finalMoney = currentPlayerInitMoney
-  console.log('dicevalue for calculate money is', gameState.diceValue)
+
   cardArray.forEach(card => {
     let money = card.cardFn(currentPlayer, gameState)
-    console.log('this is what money is: ', money)
     finalMoney += money.money
-    console.log('getting this amount of $:', finalMoney)
   })
-  // getRef().update({
-  //   phase: "buy"
-  // })
+
   getRef().child(`players/${currentPlayer}`).update({
     money : finalMoney
   })
-  console.log('DONE!!!')
   return finalMoney;
 }
 
@@ -65,8 +52,6 @@ export const updateAfterCardPurchase = (cardType, cardQuantity, currentTurn, pla
   let updateCardQuantity = {}
   updateCardQuantity[cardType] = cardQuantity
   getRef().child('cards').update(updateCardQuantity)
-
-  console.log('cardtypefb', updateCardQuantity)
 
   let updatePlayerCardSupply = {}
   updatePlayerCardSupply[cardType] = playerCardSupply
@@ -112,7 +97,6 @@ export const changeTurn = (currentTurn, turnOrder) => {
     nextPlayer = turnOrder[turnArr[0]]
   }
 
-  console.log('new player is:', nextPlayer);
   //then update firebase with the new player turn
   getRef().update({
     phase: 'roll',

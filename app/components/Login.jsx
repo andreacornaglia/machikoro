@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Col, FormGroup, Checkbox, Button, ButtonToolbar, ControlLabel, FormControl} from "react-bootstrap"
+import {Form, Col, Checkbox, Button, ButtonToolbar} from "react-bootstrap"
 import {login} from '../reducers/auth'
 import {connect} from 'react-redux'
 
