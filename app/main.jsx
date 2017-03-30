@@ -28,9 +28,9 @@ const setGame = () => {
 }
 
 const onEnterAddUser = (nextState) => {
-      let routeGameLink = nextState.params.gameLink
-      store.dispatch(getDBGame(routeGameLink))
-
+  console.log('nextState is:', nextState.params)
+  let routeGameLink = nextState.params.gameLink
+  store.dispatch(getDBGame(routeGameLink))
 }
 
 const onGameEnter = (nextState) => {

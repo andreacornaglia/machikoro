@@ -51,6 +51,7 @@ class WaitingForGame extends React.Component {
   }
 
   render(){
+    {this.props.gameServer &&
     const gameLink = this.props.gameServer.gameLink
     const path = 'https://nyuyoku.herokuapp.com/lobby/'
     return (
@@ -77,6 +78,7 @@ class WaitingForGame extends React.Component {
        </div>
      </div>
     )
+    }
   }
 }
 
