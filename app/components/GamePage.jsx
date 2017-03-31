@@ -8,6 +8,7 @@ import InstructionButton from './Instructions'
 import { Col } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {calculateMoney} from '../firebaseFunctions';
+import WinModal from './WinModal'
 
 class GamePage extends Component {
 
@@ -111,7 +112,10 @@ constructor(){
         </div>
         {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeDiceModal} /> : null}
 
-        {this.state.statusModal ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
+        {this.state.statusModal && !this.props.game.winner ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
+
+        {this.props.game.winner ? <WinModal /> : null}
+
       </div>
     )
 
