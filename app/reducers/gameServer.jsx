@@ -36,12 +36,15 @@ export const startingGame = game => ({
 })
 
 export const createGame = () => {
-  return dispatch =>
+  console.log('were on createGame')
+  return dispatch => {
+    console.log('were on createGame dispatch')
+    console.log('dispatch is', dispatch)
     axios.post('/api/lobby/')
       .then((game) => {
         const gameData = game.data
+        console.log('gameData on gameServer reducer is:', gameData)
         dispatch(createRef(gameData.gameLink));
-
         return gameData
       })
       .then((game) => {
@@ -49,6 +52,7 @@ export const createGame = () => {
         browserHistory.push(`/lobby/${game.gameLink}`)
       })
       .catch(console.error)
+  }
 }
 
 export const startGame = (gameLink, dispatch) => {

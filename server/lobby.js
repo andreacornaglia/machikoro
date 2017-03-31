@@ -44,6 +44,7 @@ api.get('/:gameLink', (req, res, next) => {
 })
 
 api.post('/', (req, res, next) => {
+  console.log('hitting the post route on api/lobby/')
   Game.create({
     status: 'created',
     owner: req.user.id

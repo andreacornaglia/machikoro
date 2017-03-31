@@ -19,12 +19,6 @@ import AppContainer from './containers/AppContainer'
 
 const firebaseRef = store.getState().firebaseRef;
 
-// const setGame = () => {
-//   firebaseRef.on('value', snap => {
-//     store.dispatch(settingGame(snap.val()))
-//   })
-// }
-
 const onEnterAddUser = (nextState) => {
   let routeGameLink = nextState.params.gameLink
   store.dispatch(getDBGame(routeGameLink))
