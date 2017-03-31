@@ -10,7 +10,7 @@ const reducer = (state=null, action) => {
 
     case 'CREATE_NEW_GAME':
       return action.game
-      
+
     case 'START_GAME':
       return action.game
     }
@@ -56,11 +56,7 @@ export const createGame = () => {
 }
 
 export const startGame = (gameLink, dispatch) => {
-  console.log('here on startGame')
-  //when we don't add the dispatch, axios request works
-  //but with dispatch, it doesnt ... why?
   return dispatch => {
-    console.log('here on startGame on dispatch')
     axios.put(`/api/lobby/${gameLink}`)
       .then(res => res.data)
       .then(game => {

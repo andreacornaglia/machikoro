@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 import {connect} from 'react-redux'
 
 class GameStatusModal extends Component {
-  constructor(){
-    super()
-  }
-  
   componentDidMount() {
     setTimeout(() => {
         this.props.closeModal()
@@ -18,9 +14,7 @@ class GameStatusModal extends Component {
     let game = this.props.game;
     let turn = game.turn;
     let turnUser = game.players[turn].name;
-    
-    console.log("STATUS", this.props.status)
-    console.log('in game status, game is:',this.props.game)
+
     return (
       <Modal
         show={true}

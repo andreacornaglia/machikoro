@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import {connect} from 'react-redux'
-import {updatePlayers, updateGameStatus} from '../firebaseFunctions'
+import {updatePlayers} from '../firebaseFunctions'
 import {browserHistory} from 'react-router'
 import {settingGame} from '../reducers/game'
 import {startGame, retrieveUsers} from '../reducers/gameServer'
@@ -22,7 +22,7 @@ class WaitingForGame extends React.Component {
      if(this.props.gameServer.status === 'started') {
        browserHistory.push(`/game/${gameLink}`)
      }
-   } ,1000)
+   }, 1000)
   }
 
   componentWillUnmount(){

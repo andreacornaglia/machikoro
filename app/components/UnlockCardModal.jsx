@@ -21,14 +21,21 @@ class UnlockCardModal extends Component {
 
     let playerMoney = currentTurnObj.money
 
-    console.log('onUnlockableCardClick on:', element)
-
     if (playerMoney >= unlockableCardCost) {
-      console.log('gotin', playerMoney)
-      console.log('cardtype', cardType)
       playerMoney -= unlockableCardCost
       currentTurnObj.activatedCards[cardType] = true
-      unlockSpecialCard(cardType, currentTurn, playerMoney, turnOrder)
+
+      let unlockedCardsObj = currentTurnObj.activatedCards
+      let unlockedCardsArr = Object.keys(unlockedCardsObj)
+      let unlockedCount = 0;
+
+      unlockedCardsArr.forEach(card => {
+        if (unlockedCardsObj[card] === true){
+          unlockedCount++
+        }
+      })
+
+      unlockSpecialCard(cardType, currentTurn, playerMoney, turnOrder, unlockedCount, currentTurnObj)
       changeGameStatus(`${currentTurnObj.name} unlocked a ${element.displayName} card`)
     }
   }

@@ -2,14 +2,12 @@
 import React from 'react'
 import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
 import {render} from 'react-dom'
-import {connect, Provider} from 'react-redux'
+import {Provider} from 'react-redux'
 
 import store from './store'
-// import Login from './components/Login'
-// import {WhoAmI} from './components/WhoAmI'
-import {settingGame, fetchGame, addUserToGame} from './reducers/game'
+// import {settingGame} from './reducers/game'
 import {getDBGame} from './reducers/gameServer'
-import {connectToGame, createRef} from './reducers/firebase';
+import {connectToGame} from './reducers/firebase';
 import axios from 'axios';
 
 import GamePage from './components/GamePage'
@@ -21,14 +19,7 @@ import AppContainer from './containers/AppContainer'
 
 const firebaseRef = store.getState().firebaseRef;
 
-const setGame = () => {
-  firebaseRef.on('value', snap => {
-    store.dispatch(settingGame(snap.val()))
-  })
-}
-
 const onEnterAddUser = (nextState) => {
-  console.log('nextState is:', nextState.params)
   let routeGameLink = nextState.params.gameLink
   store.dispatch(getDBGame(routeGameLink))
 }

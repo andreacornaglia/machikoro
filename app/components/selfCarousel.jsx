@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-//import Slider from 'react-slick'
 import {cardArray} from '../cards/cards'
 
 class Carousel extends Component {

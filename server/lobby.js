@@ -12,7 +12,6 @@ api.get('/:gameLink', (req, res, next) => {
     .then(game => {
       return game.getUsers()
         .then(users => {
-          console.log('users', users)
           // users is an array of objects
           // use array.SOME - go through every element that returns true/false
           const UserAlreadyInGame = () => {
@@ -32,7 +31,7 @@ api.get('/:gameLink', (req, res, next) => {
                     }
                   })
                   .then((updatedGame) => res.send(updatedGame))
-                
+
               })
               .catch(next)
           } else {
@@ -51,7 +50,6 @@ api.post('/', (req, res, next) => {
     owner: req.user.id
   })
   .then(updatedGame => {
-    console.log('updatedGame',updatedGame)
     res.send(updatedGame)
   })
   .catch(next)
@@ -73,6 +71,6 @@ api.put('/:gameLink', (req, res, next) => {
       }
     })
   ))
-  .then((requeryGame) => res.send(requeryGame))  
+  .then((requeryGame) => res.send(requeryGame))
   .catch(console.error)
 })
