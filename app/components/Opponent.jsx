@@ -1,23 +1,8 @@
 import React, { Component } from 'react';
-import {cardArray, unlockableArray} from '../cards/cards.js';
+import {unlockableArray} from '../cards/cards.js';
 import {connect} from 'react-redux'
 
 class Opponent extends Component{
-  constructor (){
-    super()
-    // this.handleOnClick = this.handleOnClick.bind(this)
-  }
-
-  // handleOnClick(){
-  //   const shown = document.getElementById('opp-extension').style.display
-  //   const extension = document.getElementById('opp-extension');
-  //   if (shown === 'none'){
-  //     extension.style.display = 'inline-block';
-  //   } else {
-  //     extension.style.display = 'none';
-  //   }
-  // }
-
   render(){
 
     const player = this.props.game.players[this.props.player];
@@ -27,7 +12,7 @@ class Opponent extends Component{
     const playerTurn = this.props.game.players[turn];
     const classNametoDiv = (player.name === playerTurn.name) ? 'highlight' : '';
     //the player.name is not the same as turn
-    // console.log(player.name, turn)
+
     return (
       <div id="opponent" onClick ={this.handleOnClick}>
         <div id="opp-summary" className={classNametoDiv}>

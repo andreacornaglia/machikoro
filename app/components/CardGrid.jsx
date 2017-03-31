@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CardModal from './CardModal'
-import { Col, Row, Tooltip, Modal, Button } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import {cardArray} from '../cards/cards.js';
 import {connect} from 'react-redux'
 
@@ -27,8 +27,6 @@ class CardGrid extends Component {
         currentPlayer = player
       }
     })
-
-    // console.log('playerOrder', playerOrder)
 
     if(turn !== currentPlayer){
       this.setState({insufficientFunds: true})

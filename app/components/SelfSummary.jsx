@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {unlockableArray} from '../cards/cards.js';
-import { Tooltip, Col, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import UnlockCardModal from './UnlockCardModal';
 import DiceView from '../components/DiceView';
@@ -93,7 +93,6 @@ class SelfSummary extends Component {
                 return (
                   <div className="unlockCards card-cont modal-container" key={index}
                     onClick={(evt) => {
-                      console.log('ELEMENT', element)
                       evt.preventDefault()
                       this.setState({
                         show: true,
