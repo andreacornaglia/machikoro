@@ -1,4 +1,4 @@
-import {login, logout} from '../reducers/auth'
+import {logout} from '../reducers/auth'
 import {connect} from 'react-redux'
 import React, {Component} from 'react'
 import {Button} from 'react-bootstrap'
@@ -6,9 +6,6 @@ import {browserHistory} from 'react-router'
 import WhoAmI from './WhoAmI'
 
 class Lobby extends Component {
-  constructor(){
-    super()
-  }
 
   render(){
     return(
@@ -34,12 +31,7 @@ class Lobby extends Component {
     )
   }
 }
-// <nav>
-//   {this.props.user ?
-//     <WhoAmI
-//     onClick={this.props.logout}
-//     /> : <Login /> }
-// </nav>
+
 
 export default connect(
   ({ auth }) => ({ user: auth }),

@@ -21,11 +21,7 @@ class UnlockCardModal extends Component {
 
     let playerMoney = currentTurnObj.money
 
-    console.log('onUnlockableCardClick on:', element)
-
     if (playerMoney >= unlockableCardCost) {
-      console.log('gotin', playerMoney)
-      console.log('cardtype', cardType)
       playerMoney -= unlockableCardCost
       currentTurnObj.activatedCards[cardType] = true
 
