@@ -40,7 +40,8 @@ class CardGrid extends Component {
             const turn = this.props.game.turn
             const turnPlayer = this.props.game.players[turn]
             const turnPlayerMoney = turnPlayer.money
-            if(turnPlayerMoney < element.cost){
+            const cardQuantity = this.props.game.cards[element.refName]
+            if(turnPlayerMoney < element.cost || cardQuantity === 0){
               this.setState({insufficientFunds: true})
             } else{
                this.setState({insufficientFunds: false})
