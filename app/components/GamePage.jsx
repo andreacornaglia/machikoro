@@ -85,39 +85,115 @@ constructor(){
     //check who is this computer's player
     const oponent = this.oponentsOrder()
 
-    return (
-      <div className="global-board">
-        <div className="row row-top">
-          <Col sm={4}/>
-          <Col sm={4}>
-            <Opponent id='oponent-top' player={oponent[1]} avatar={'/images/avatar2.png'}/>
-          </Col>
-          <Col sm={4}>
-            <InstructionButton />
-          </Col>
-        </div>
-        <div className="row game-page-central">
-          <Col sm={2}>
-            <Opponent id='oponent-left' player={oponent[2]} avatar={'/images/avatar3.png'}/>
-          </Col>
-          <Col sm={8}>
-            <CardGrid id="center"/>
-          </Col>
-          <Col sm={2}>
-            <Opponent id='oponent-right' player={oponent[0]} avatar={'/images/avatar4.png'}/>
-          </Col>
-        </div>
-        <div className="row game-part-opponent">
-          <SelfDashboard showModal={this.showDiceModal}/>
-        </div>
-        {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeDiceModal} /> : null}
+    const players = this.props.game.players
+    const numPlayers = Object.keys(players).length
 
-        {this.state.statusModal && !this.props.game.winner ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
+    if (numPlayers === 2){
+      return (
+        <div className="global-board">
+          <div className="row row-top">
+            <Col sm={4}/>
+            <Col sm={4}>
+              <Opponent id='oponent-top' player={oponent[0]} avatar={'/images/avatar2.png'}/>
+            </Col>
+            <Col sm={4}>
+              <InstructionButton />
+            </Col>
+          </div>
+          <div className="row game-page-central">
+            <Col sm={2} />
+            <Col sm={8}>
+              <CardGrid id="center"/>
+            </Col>
+            <Col sm={2}/>
+          </div>
+          <div className="row game-part-opponent">
+            <SelfDashboard showModal={this.showDiceModal}/>
+          </div>
+          {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeDiceModal} /> : null}
 
-        {this.props.game.winner ? <WinModal /> : null}
+          {this.state.statusModal && !this.props.game.winner ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
 
-      </div>
-    )
+          {this.props.game.winner ? <WinModal /> : null}
+
+        </div>
+      )
+    }
+
+
+    if (numPlayers === 3){
+      return (
+        <div className="global-board">
+          <div className="row row-top">
+            <Col sm={4}/>
+            <Col sm={4}/>
+            <Col sm={4}>
+              <InstructionButton />
+            </Col>
+          </div>
+          <div className="row game-page-central">
+            <Col sm={2}>
+              <Opponent id='oponent-left' player={oponent[1]} avatar={'/images/avatar3.png'}/>
+            </Col>
+            <Col sm={8}>
+              <CardGrid id="center"/>
+            </Col>
+            <Col sm={2}>
+              <Opponent id='oponent-right' player={oponent[0]} avatar={'/images/avatar4.png'}/>
+            </Col>
+          </div>
+          <div className="row game-part-opponent">
+            <SelfDashboard showModal={this.showDiceModal}/>
+          </div>
+          {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeDiceModal} /> : null}
+
+          {this.state.statusModal && !this.props.game.winner ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
+
+          {this.props.game.winner ? <WinModal /> : null}
+
+        </div>
+      )
+    }
+
+
+
+    if (numPlayers === 4){
+      return (
+        <div className="global-board">
+          <div className="row row-top">
+            <Col sm={4}/>
+            <Col sm={4}>
+              <Opponent id='oponent-top' player={oponent[1]} avatar={'/images/avatar2.png'}/>
+            </Col>
+            <Col sm={4}>
+              <InstructionButton />
+            </Col>
+          </div>
+          <div className="row game-page-central">
+            <Col sm={2}>
+              <Opponent id='oponent-left' player={oponent[2]} avatar={'/images/avatar3.png'}/>
+            </Col>
+            <Col sm={8}>
+              <CardGrid id="center"/>
+            </Col>
+            <Col sm={2}>
+              <Opponent id='oponent-right' player={oponent[0]} avatar={'/images/avatar4.png'}/>
+            </Col>
+          </div>
+          <div className="row game-part-opponent">
+            <SelfDashboard showModal={this.showDiceModal}/>
+          </div>
+          {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeDiceModal} /> : null}
+
+          {this.state.statusModal && !this.props.game.winner ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
+
+          {this.props.game.winner ? <WinModal /> : null}
+
+        </div>
+      )
+    }
+
+
 
   }
 }
