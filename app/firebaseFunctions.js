@@ -16,6 +16,8 @@ export const updatePlayers = (game) => {
     })
   }
 
+  // COME BACK HERE to change once we implement computer players
+  // where we add computer users
   if (users.length === 2){
     getRef().child('players').child(players[2]).remove()
     getRef().child('players').child(players[3]).remove()
