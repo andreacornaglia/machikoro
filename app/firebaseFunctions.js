@@ -11,10 +11,25 @@ export const updatePlayers = (game) => {
   const players = ['playerOne', 'playerTwo', 'playerThree', 'playerFour'];
 
   for (let i = 0; i < users.length; i++){
-      getRef().child('players').child(players[i]).update({
-        name: users[i].name
-      })
-    }
+    getRef().child('players').child(players[i]).update({
+      name: users[i].name
+    })
+  }
+
+  // COME BACK HERE to change once we implement computer players
+  // where we add computer users
+  if (users.length === 2){
+    getRef().child('players').child(players[2]).remove()
+    getRef().child('players').child(players[3]).remove()
+    getRef().child('turnOrder').child('turn3').remove()
+    getRef().child('turnOrder').child('turn4').remove()
+  }
+
+  if (users.length === 3){
+    getRef().child('players').child(players[3]).remove()
+    getRef().child('turnOrder').child('turn4').remove()
+  }
+
 }
 
 export const updateDiceNum = (num) => {
