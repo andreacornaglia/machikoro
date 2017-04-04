@@ -97,18 +97,13 @@ body{
   margin: 0 auto;
   padding: 20px;
   width: 70%;
-  height: 15vh;
+  height: 20vh;
+  box-sizing: border-box;
   float: left;
   vertical-align: middle;
   display: inline-block;
-  div{
-    float: left;
-    width: 15vh;
-    margin-right: 15px;
-    img{
-      width: 100%;
-    }
-  }
+  overflow: auto;
+  white-space: nowrap;
 }
 
 
@@ -522,3 +517,35 @@ body{
   font-weight: bold;
   background-color: #ccc;
 }
+
+#visible-carousel{
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  div{
+    display: inline-block;
+    margin-right: 15px;
+    img{
+      width: 100%;
+    }
+  }
+}
+
+.frame::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.frame::-webkit-scrollbar:horizontal {
+    height: 11px;
+}
+
+.frame::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white; /* should match background, can't be transparent */
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.frame::-webkit-scrollbar-track { 
+    background-color: #fff; 
+    border-radius: 8px; 
+} 

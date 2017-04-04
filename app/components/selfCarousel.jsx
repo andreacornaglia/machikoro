@@ -48,14 +48,16 @@ class Carousel extends Component {
   render(){
     return (
       <div className="carousel-container">
-        {this.checkUserCards().map((card, index) => {
-          return(
-            <div key={index}>
-              <img className="carousel-img" src={card.imgURL}/>
-              <p>x {card.amount}</p>
-            </div>
-          )
-        })}
+        <div id="visible-carousel">
+          {this.checkUserCards().map((card, index) => {
+            return(
+              <div key={index}>
+                <img className="carousel-img" src={card.imgURL}/>
+                <p>x {card.amount}</p>
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }
