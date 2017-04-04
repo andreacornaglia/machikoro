@@ -1,5 +1,5 @@
 const reducer = (state=null, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'SET_GAME':
       return action.game
   }

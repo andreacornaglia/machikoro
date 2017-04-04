@@ -40,40 +40,39 @@ constructor(){
 
   // This function checks to see if the phase has just changed from 'roll' to 'buy'. If it has, that means some player has just rolled and every player will call the calculateMoney function with their own userName and the game state to get their own change in money.
   componentWillReceiveProps(nextProps){
-
     if (this.props.game.phase === 'roll' && nextProps.game.phase === 'buy') {
       calculateMoney(this.props.user.name, nextProps.game);
     }
     if (this.props.game.phase === 'buy' && nextProps.game.phase === 'roll') {
         this.showStatusModal()
-     }
+    }
   }
 
   oponentsOrder(){
-      let turnOrder = this.props.game.turnOrder;
-      const turnArr = Object.keys(turnOrder);
-      let oppArr = []
-      turnArr.forEach(element => {
-        oppArr.push(turnOrder[element])
-      })
+    let turnOrder = this.props.game.turnOrder;
+    const turnArr = Object.keys(turnOrder);
+    let oppArr = []
+    turnArr.forEach(element => {
+      oppArr.push(turnOrder[element])
+    })
 
-      let turn = this.props.game.turn
-      let players = this.props.game.players
-      let user = this.props.user.name
-      const playersObj = Object.keys(players)
+    let turn = this.props.game.turn
+    let players = this.props.game.players
+    let user = this.props.user.name
+    const playersObj = Object.keys(players)
 
-      let currentPlayer;
-      playersObj.forEach(player => {
-        if (players[player].name === user) {
-          currentPlayer = player
-        }
-      })
+    let currentPlayer;
+    playersObj.forEach(player => {
+      if (players[player].name === user) {
+        currentPlayer = player
+      }
+    })
 
-      //loop to find current turn position in array
-      const end = oppArr.length + 1
-      const idx = oppArr.indexOf(currentPlayer)
-      const result = oppArr.slice(idx+1, end).concat(oppArr.slice(0,idx))
-      return result
+    //loop to find current turn position in array
+    const end = oppArr.length + 1
+    const idx = oppArr.indexOf(currentPlayer)
+    const result = oppArr.slice(idx+1, end).concat(oppArr.slice(0, idx))
+    return result
   }
 
   render() {
@@ -92,9 +91,9 @@ constructor(){
       return (
         <div className="global-board">
           <div className="row row-top">
-            <Col sm={4}/>
+            <Col sm={4} />
             <Col sm={4}>
-              <Opponent id='oponent-top' player={oponent[0]} avatar={'/images/avatar2.png'}/>
+              <Opponent id='oponent-top' player={oponent[0]} avatar={'/images/avatar2.png'} />
             </Col>
             <Col sm={4}>
               <InstructionButton />
@@ -103,19 +102,16 @@ constructor(){
           <div className="row game-page-central">
             <Col sm={2} />
             <Col sm={8}>
-              <CardGrid id="center"/>
+              <CardGrid id="center" />
             </Col>
             <Col sm={2}/>
           </div>
           <div className="row game-part-opponent">
-            <SelfDashboard showModal={this.showDiceModal}/>
+            <SelfDashboard showModal={this.showDiceModal} />
           </div>
           {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeDiceModal} /> : null}
-
           {this.state.statusModal && !this.props.game.winner ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
-
           {this.props.game.winner ? <WinModal /> : null}
-
         </div>
       )
     }
@@ -125,30 +121,28 @@ constructor(){
       return (
         <div className="global-board">
           <div className="row row-top">
-            <Col sm={4}/>
-            <Col sm={4}/>
+            <Col sm={4} />
+            <Col sm={4} />
             <Col sm={4}>
               <InstructionButton />
             </Col>
           </div>
           <div className="row game-page-central">
             <Col sm={2}>
-              <Opponent id='oponent-left' player={oponent[1]} avatar={'/images/avatar3.png'}/>
+              <Opponent id='oponent-left' player={oponent[1]} avatar={'/images/avatar3.png'} />
             </Col>
             <Col sm={8}>
-              <CardGrid id="center"/>
+              <CardGrid id="center" />
             </Col>
             <Col sm={2}>
-              <Opponent id='oponent-right' player={oponent[0]} avatar={'/images/avatar4.png'}/>
+              <Opponent id='oponent-right' player={oponent[0]} avatar={'/images/avatar4.png'} />
             </Col>
           </div>
           <div className="row game-part-opponent">
-            <SelfDashboard showModal={this.showDiceModal}/>
+            <SelfDashboard showModal={this.showDiceModal} />
           </div>
           {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeDiceModal} /> : null}
-
           {this.state.statusModal && !this.props.game.winner ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
-
           {this.props.game.winner ? <WinModal /> : null}
 
         </div>
@@ -161,9 +155,9 @@ constructor(){
       return (
         <div className="global-board">
           <div className="row row-top">
-            <Col sm={4}/>
+            <Col sm={4} />
             <Col sm={4}>
-              <Opponent id='oponent-top' player={oponent[1]} avatar={'/images/avatar2.png'}/>
+              <Opponent id='oponent-top' player={oponent[1]} avatar={'/images/avatar2.png'} />
             </Col>
             <Col sm={4}>
               <InstructionButton />
@@ -171,30 +165,24 @@ constructor(){
           </div>
           <div className="row game-page-central">
             <Col sm={2}>
-              <Opponent id='oponent-left' player={oponent[2]} avatar={'/images/avatar3.png'}/>
+              <Opponent id='oponent-left' player={oponent[2]} avatar={'/images/avatar3.png'} />
             </Col>
             <Col sm={8}>
-              <CardGrid id="center"/>
+              <CardGrid id="center" />
             </Col>
             <Col sm={2}>
-              <Opponent id='oponent-right' player={oponent[0]} avatar={'/images/avatar4.png'}/>
+              <Opponent id='oponent-right' player={oponent[0]} avatar={'/images/avatar4.png'} />
             </Col>
           </div>
           <div className="row game-part-opponent">
-            <SelfDashboard showModal={this.showDiceModal}/>
+            <SelfDashboard showModal={this.showDiceModal} />
           </div>
           {this.state.diceModal ? <ChooseDiceNumModal closeModal={this.closeDiceModal} /> : null}
-
           {this.state.statusModal && !this.props.game.winner ? <GameStatusModal closeModal= {this.closeStatusModal} /> : null}
-
           {this.props.game.winner ? <WinModal /> : null}
-
         </div>
       )
     }
-
-
-
   }
 }
 

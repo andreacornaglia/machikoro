@@ -34,7 +34,6 @@ export const login = (username, password, gameLink) =>
         } else {
           browserHistory.push('/lobby')
         }
-
       })
       .catch(() => dispatch(whoami()))
 

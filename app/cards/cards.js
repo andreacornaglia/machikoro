@@ -52,7 +52,7 @@ export const bakery = {
         const currentPlayerObj = gameState.players[currentPlayer];
         const numBakery = currentPlayerObj.cards.bakery;
         let gainedAmount = numBakery
-        if(currentPlayerObj.activatedCards.shoppingMall){
+        if (currentPlayerObj.activatedCards.shoppingMall){
           gainedAmount += numBakery
         }
         return { money: gainedAmount }
