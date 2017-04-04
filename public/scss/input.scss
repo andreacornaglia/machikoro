@@ -111,50 +111,6 @@ body{
   }
 }
 
-
-
-
-// .center .slick-center h1 {
-//   color: white;
-//   opacity: 1;
-//   transform: scale(1.08);
-// }
-// .center h1{
-//   color: black;
-//   opacity: 0.8;
-//   transition: all 300ms ease;
-// }
-
-// .center .slick-prev:before, .center .slick-next:before {
-//   color: #2962FF;
-// }
-//
-// div .content-container .slick-slide .slick-active .slick-center {
-//   background-color: rgba(255,255,255,.8);
-//   width: 100%;
-//   margin-left: 10px;
-//   margin-right: 10px;
-// }
-//
-// .slide-content {
-//   margin-top: 10px;
-//   display: block;
-//   text-align: center;
-//   background-image: url("./images/coney-island.png");
-//   width: 90%;
-//   height: 20vh;
-//   background-size: cover;
-// }
-//
-// .slick-prev{
-//   left:0 !important;
-//   z-index: 10;
-// }
-// .slick-next{
-//   right: 0 !important;
-// }
-
-
 // SUMMARY COMPONENT
 .summaryContainer {
   width: 30%;
@@ -382,6 +338,10 @@ body{
 
 .btn-login{
   background-color: #85CFC2;
+}
+
+.btn-guest-login{
+  background-color: #5b7dde;
 }
 
 .login-area{

@@ -124,16 +124,24 @@ auth.get('/whoami', (req, res) => {
   res.send(req.user)
 })
 
-// auth.get('/guestLogin', guestAuth, (req, res) => {
-//   res.send(req.user)
-// })
-//
-// function guestAuth(req, res, next){
-//   if (req.user) return next()
-//   var user = new User({name: 'guest'+Math.random().toString() });
-//   user.save();
-//   req.logIn(user, next);
-// }
+auth.get('/guestLogin', guestAuth, (req, res) => {
+  res.send(req.user)
+})
+
+function guestAuth(req, res, next){
+  if (req.user) return next()
+  User.create({
+    name: 'guest'+(Math.random().toString()),
+    email: `guest+${(Math.random().toString())}@gmail.com`
+  })
+  .then((user) => {
+    req.logIn(user, function (err) {
+      if (err) return next(err);
+      res.json(user);
+    })
+  })
+  .catch(next)
+}
 
 // POST requests for local login:
 auth.post('/login/local', passport.authenticate('local', { successRedirect: '/' }))
@@ -148,7 +156,6 @@ auth.get('/login/:strategy', (req, res, next) => {
     })(req, res, next)
   }
 )
-
 
 auth.post('/logout', (req, res, next) => {
   req.logout()

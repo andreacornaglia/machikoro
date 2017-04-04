@@ -20,9 +20,9 @@ class Lobby extends Component {
                   browserHistory.push('/login')
                 }
               }>Login</Button>
-            <Button className="btn-login" bsStyle="info" bsSize="large" block onClick={(e) => {
+            <Button className="btn-guest-login" bsStyle="info" bsSize="large" block onClick={(e) => {
                   e.preventDefault()
-                  guestLogin()
+                  this.props.guestLogin()
                 }
               }>Guest Login</Button>
             <Button className="btn-link" bsSize="large" block onClick={(e) => {
@@ -42,8 +42,7 @@ export default connect(
   ({ auth }) => ({ user: auth }),
   (dispatch) => {
     return {
-      guestLogin: (e) => {
-        e.preventDefault()
+      guestLogin: () => {
         dispatch(guestLogin());
       },
       logout: (e) => {
