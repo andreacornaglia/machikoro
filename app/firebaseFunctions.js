@@ -6,6 +6,8 @@ const getRef = () => {
 }
 
 export const updatePlayers = (game) => {
+  //add variable compPlay true or false
+  const compPlayers = true;
   const gameLink = game.gameLink
   const users = game.users;
   const players = ['playerOne', 'playerTwo', 'playerThree', 'playerFour'];
@@ -18,16 +20,37 @@ export const updatePlayers = (game) => {
 
   // COME BACK HERE to change once we implement computer players
   // where we add computer users
-  if (users.length === 2){
-    getRef().child('players').child(players[2]).remove()
-    getRef().child('players').child(players[3]).remove()
-    getRef().child('turnOrder').child('turn3').remove()
-    getRef().child('turnOrder').child('turn4').remove()
-  }
+  if(compPlayers){
+    if (users.length === 1){
+      getRef().child('players').child(players[1]).update({ name: 'COMP1' })
+      getRef().child('players').child(players[2]).update({ name: 'COMP2' })
+      getRef().child('players').child(players[3]).update({ name: 'COMP3' })
+    }
+    if (users.length === 2){
+      getRef().child('players').child(players[2]).update({ name: 'COMP1' })
+      getRef().child('players').child(players[3]).update({ name: 'COMP2' })
+    } 
 
-  if (users.length === 3){
-    getRef().child('players').child(players[3]).remove()
-    getRef().child('turnOrder').child('turn4').remove()
+    if (users.length === 3){
+      getRef().child('players').child(players[2]).update({ name: 'COMP1' })
+    }
+  } else {
+    if (users.length === 1){
+      getRef().child('players').child(players[1]).update({ name: 'COMP1' })
+      getRef().child('players').child(players[2]).update({ name: 'COMP2' })
+      getRef().child('players').child(players[3]).update({ name: 'COMP3' })
+    }
+    if (users.length === 2){
+      getRef().child('players').child(players[2]).remove()
+      getRef().child('players').child(players[3]).remove()
+      getRef().child('turnOrder').child('turn3').remove()
+      getRef().child('turnOrder').child('turn4').remove()
+    } 
+
+    if (users.length === 3){
+      getRef().child('players').child(players[3]).remove()
+      getRef().child('turnOrder').child('turn4').remove()
+    }
   }
 
 }

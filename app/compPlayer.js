@@ -1,21 +1,3 @@
-//change turn - if player is comp, run this fn:
-
-//1. roll the dice
-   //decide if diceNum is 1 or 2
-   checkIfSubwayUnlocked() //if true, roll 1 or 2 dice randomly, else roll just 1
-   //then pass one 
-   rollDice(diceNum) 
-   
-//2. do one of 3 things:
-  //if you have money:
-      //. buy a card 80% possibility
-        //randomly according to how much money you have
-        
-      //. unlock a card 20% possibility
-        //randomly according to how much money you have
-  //if you don't have any money:
-     //. pass:
-     
 //using functions from other places
 import {cardArray, unlockableArray} from './cards/cards';
 import {unlockSpecialCard, updateAfterCardPurchase, changeTurn, changeGameStatus} from './firebaseFunctions'
@@ -67,10 +49,10 @@ function buyUnlockOrPass(){
       })
       //see how to make sure I only buy one
       const length = unlockwithInfo.length || 0;
-      let card;
+      let cardType;
       if(length > 0){
         const idx = Math.floor(Math.random()*length) - 1;
-        card = unlockwithInfo[idx];
+        cardType = unlockwithInfo[idx].refName;
       }
       unlockSpecialCard(cardType, currentTurn, playerMoney, turnOrder, unlockedCount, currentTurnObj)
     }
