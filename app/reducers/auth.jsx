@@ -34,9 +34,15 @@ export const login = (username, password, gameLink) =>
         } else {
           browserHistory.push('/lobby')
         }
-
       })
       .catch(() => dispatch(whoami()))
+
+
+// export const guestLogin = () =>
+//   dispatch =>
+//     axios.get('/api/auth/guestLogin')
+//       .then(() => browserHistory.push('/lobby'))
+//       .catch(() => dispatch(whoami()))
 
 export const logout = () =>
   dispatch =>

@@ -1,4 +1,4 @@
-import {logout} from '../reducers/auth'
+import {logout, guestLogin} from '../reducers/auth'
 import {connect} from 'react-redux'
 import React, {Component} from 'react'
 import {Button} from 'react-bootstrap'
@@ -20,6 +20,11 @@ class Lobby extends Component {
                   browserHistory.push('/login')
                 }
               }>Login</Button>
+            <Button className="btn-login" bsStyle="info" bsSize="large" block onClick={(e) => {
+                  e.preventDefault()
+                  guestLogin()
+                }
+              }>Guest Login</Button>
             <Button className="btn-link" bsSize="large" block onClick={(e) => {
                   e.preventDefault()
                   browserHistory.push('/signup')
@@ -37,6 +42,10 @@ export default connect(
   ({ auth }) => ({ user: auth }),
   (dispatch) => {
     return {
+      guestLogin: (e) => {
+        e.preventDefault()
+        dispatch(guestLogin());
+      },
       logout: (e) => {
         e.preventDefault()
         dispatch(logout());

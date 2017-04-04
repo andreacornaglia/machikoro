@@ -124,6 +124,17 @@ auth.get('/whoami', (req, res) => {
   res.send(req.user)
 })
 
+// auth.get('/guestLogin', guestAuth, (req, res) => {
+//   res.send(req.user)
+// })
+//
+// function guestAuth(req, res, next){
+//   if (req.user) return next()
+//   var user = new User({name: 'guest'+Math.random().toString() });
+//   user.save();
+//   req.logIn(user, next);
+// }
+
 // POST requests for local login:
 auth.post('/login/local', passport.authenticate('local', { successRedirect: '/' }))
 
