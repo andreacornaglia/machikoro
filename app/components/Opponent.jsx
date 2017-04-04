@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 
 class Opponent extends Component{
   render(){
-
     const player = this.props.game.players[this.props.player];
     let unlockCards = player.activatedCards;
     let cardKeys = Object.keys(unlockCards);
@@ -16,7 +15,7 @@ class Opponent extends Component{
     return (
       <div id="opponent" onClick ={this.handleOnClick}>
         <div id="opp-summary" className={classNametoDiv}>
-          <div id="avatar"><img src={this.props.avatar}/></div>
+          <div id="avatar"><img src={this.props.avatar} /></div>
           <div className="opp-details">
             <p className="opp-name">{player.name}</p>
             {player.name === playerTurn.name && this.props.game.phase === "roll"? <p className="opp-turn">Rolling...</p> : null}
@@ -30,17 +29,17 @@ class Opponent extends Component{
             {cardKeys.map((card, index) => {
               var classFordiv;
               let imgURL;
-              if(!unlockCards[card]){
+              if (!unlockCards[card]){
                 classFordiv = 'card-opp locked'
               } else {
                 classFordiv = 'card-opp'
               }
               unlockableArray.forEach(element => {
-                if(element.refName === card){
-                    imgURL = element.imgURL
-                  }
+                if (element.refName === card){
+                  imgURL = element.imgURL
+                }
               })
-              return(<img key={index} src={imgURL} className={classFordiv}/>)
+              return (<img key={index} src={imgURL} className={classFordiv} />)
             })}
           </div>
         </div>
