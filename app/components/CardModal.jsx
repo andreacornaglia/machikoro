@@ -18,14 +18,14 @@ class CardModal extends Component{
     let cardCost = element.cost;
     let cardType = element.refName;
     let cardQuantity = game.cards[element.refName];
-
     let playerMoney = currentTurnObj.money
     let playerCardSupply = currentTurnObj.cards[element.refName]
-      playerMoney -= cardCost
-      cardQuantity--
-      playerCardSupply++
-      updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply, turnOrder)
-      changeGameStatus(`${currentTurnObj.name} bought a ${element.displayName} card`)
+
+    playerMoney -= cardCost
+    cardQuantity--
+    playerCardSupply++
+    updateAfterCardPurchase(cardType, cardQuantity, currentTurn, playerMoney, playerCardSupply, turnOrder)
+    changeGameStatus(`${currentTurnObj.name} bought a ${element.displayName} card`)
   }
 
   render() {

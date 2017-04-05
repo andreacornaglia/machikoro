@@ -6,7 +6,6 @@ import {browserHistory} from 'react-router'
 import {settingGame} from '../reducers/game'
 import {startGame, retrieveUsers} from '../reducers/gameServer'
 
-
 class WaitingForGame extends React.Component {
   constructor(props) {
     super(props);
@@ -16,10 +15,10 @@ class WaitingForGame extends React.Component {
 
   componentDidMount(){
   //update users in game state every 2 seconds to see who joined the game
-   this.interval  = setInterval( () => {
+   this.interval  = setInterval(() => {
      const gameLink = this.props.gameServer.gameLink;
      this.props.retrieveUsers(gameLink)
-     if(this.props.gameServer.status === 'started') {
+     if (this.props.gameServer.status === 'started') {
        browserHistory.push(`/game/${gameLink}`)
      }
    }, 1000)
@@ -39,13 +38,10 @@ class WaitingForGame extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('is heroku is:',process.env.IS_HEROKU)
     const gameLink = this.props.params.gameLink
-    console.log('link in heroku is:', this.state.link)
     if (!nextProps.user){
-      console.log('in browserHistory.push', this.state.link)
       const link = (location.hostname === 'nyuyoku.herokuapp.com') ?
-              `https://nyuyoku.herokuapp.com/lobby/${gameLink}` : `localhost:1337/lobby/${gameLink}`
+        `https://nyuyoku.herokuapp.com/lobby/${gameLink}` : `localhost:1337/lobby/${gameLink}`
       browserHistory.push(link)
     }
   }
@@ -69,15 +65,14 @@ class WaitingForGame extends React.Component {
             {this.props.gameServer ? this.props.gameServer.users && this.props.gameServer.users.map((element, index) => {
           return (
             <li key={element.id}>{element.name} has joined the game</li>
-          )
-        }): null}
+          )}) : null}
           </ul>
         {this.props.gameServer && (this.props.gameServer.owner == this.props.user.id) ?
           <Button className="buffer provider-login-btn" bsStyle="info" bsSize="large" block onClick={this.redirectToGame}>Start Game</Button> : null }
-       </div>
-     </div>
+        </div>
+      </div>
     )
-    
+
   }
 }
 
