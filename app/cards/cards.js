@@ -6,6 +6,7 @@ export const farmersMarket = {
   industry: 'wheat',
   cardDescription: "Get 1 coin from the bank, on anyone's turn",
   imgURL: '/images/farmers-market.png',
+  hoverURL:'/images/farmers-market-overlay.png',
   cardFn: function(currentPlayer, gameState){
      if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[currentPlayer];
@@ -26,6 +27,7 @@ export const river = {
   industry: 'cow',
   cardDescription: "Get 1 coin from the bank on anyone's turn",
   imgURL: '/images/river.png',
+  hoverURL:'/images/river-overlay.png',
   cardFn: function(currentPlayer, gameState){
       if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[currentPlayer];
@@ -46,6 +48,7 @@ export const bakery = {
   industry: 'building',
   cardDescription: "Get 1 coin from the bank, on your turn only",
   imgURL: '/images/bakery.png',
+  hoverURL:'/images/bakery-overlay.png',
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
@@ -73,6 +76,7 @@ export const bar = {
   industry: 'mug',
   cardDescription: "Get 1 coin from the player who rolled the dice",
   imgURL: '/images/bar.png',
+  hoverURL:'/images/bar-overlay.png',
   cardFn: function(currentPlayer, gameState) {
     // change below to this.diceValue
     if (this.diceValue === gameState.diceValue) {
@@ -161,6 +165,7 @@ export const foodStand = {
   industry: 'building',
   cardDescription: "Get 3 coins from the bank, on your turn only",
   imgURL: '/images/food-stand.png',
+  hoverURL:'/images/food-stand-overlay.png',
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
@@ -188,6 +193,7 @@ export const museum = {
   industry: 'gear',
   cardDescription: "Get 1 coin from the bank, on anyone's turn",
   imgURL: '/images/museum.png',
+  hoverURL:'/images/museum-overlay.png',
   cardFn: function(currentPlayer, gameState){
       if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[currentPlayer];
@@ -208,6 +214,7 @@ export const businessCenter = {
   industry: 'antenna',
   cardDescription: "Get 5 coins from the player that has the most money, on your turn only",
   imgURL: '/images/wtc.png',
+  hoverURL:'/images/wtc-overlay.png',
   // The function I wrote that determines who has the most separately for each business card the player who's rolling has (ensures they get the most possible coins, for example if the person who rolled has two business center cards and the other people have 5 and 6 coins, the player who rolled will get 10 coins (5 from each person) instead of just 6 from one person).
   cardFn: function (currentPlayer, gameState) {
     if (gameState.diceValue === this.diceValue) {
@@ -276,6 +283,7 @@ export const stadium = {
   industry: 'antenna',
   cardDescription: "Get 2 coins from all players, on your turn only",
   imgURL: '/images/stadium.png',
+  hoverURL:'/images/stadium-overlay.png',
   cardFn: function (currentPlayer, gameState){
       if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[gameState.turn];
@@ -317,6 +325,7 @@ export const comedyClub = {
   industry: 'antenna',
   cardDescription: "Take 3 coins from all players, on your turn only",
   imgURL: '/images/comedy-club.png',
+  hoverURL:'/images/comedy-club-overlay.png',
   //placeholder fn, update in the future
   cardFn: function (currentPlayer, gameState){
       if (gameState.diceValue === this.diceValue) {
@@ -359,6 +368,7 @@ export const powerPlant = {
   industry: 'factory',
   cardDescription: "Get 3 coins from the bank for each [cow icon] establishment that you own, on your turn only",
   imgURL: '/images/power-plant.png',
+  hoverURL:'/images/power-plant-overlay.png',
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
@@ -382,6 +392,7 @@ export const touristBus = {
   industry: 'factory',
   cardDescription: "Get 3 coins from the bank for each [gear icon] establishment that you own. On your turn only",
   imgURL: '/images/tour-bus.png',
+  hoverURL:'/images/tour-bus-overlay.png',
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
@@ -405,6 +416,7 @@ export const broadway = {
   industry: 'gear',
   cardDescription: "Get 5 coins from the bank, on anyone's turn",
   imgURL: '/images/broadway.png',
+  hoverURL:'/images/broadway-overlay.png',
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       const currentPlayerObj = gameState.players[currentPlayer];
@@ -425,6 +437,7 @@ export const bodega = {
   industry: 'mug',
   cardDescription: "Get 2 coins from the player who rolled the dice",
   imgURL: '/images/bodega.png',
+  hoverURL:'/images/bodega-overlay.png',
   cardFn: function(currentPlayer, gameState) {
     // change below to this.diceValue
     if (this.diceValue === gameState.diceValue) {
@@ -508,6 +521,7 @@ export const wineShop = {
   industry: 'wheat',
   cardDescription: "Get 3 coins from the bank,on anyone's turn",
   imgURL: '/images/wine-shop.png',
+  hoverURL:'/images/wine-shop-overlay.png',
   cardFn: function(currentPlayer, gameState){
     if (gameState.diceValue === this.diceValue) {
         const playerObj = gameState.players[currentPlayer];
@@ -528,6 +542,7 @@ export const restaurant = {
   industry: 'fruit',
   cardDescription: "Get 2 coins from the bank for each [wheat icon] establishment that you own. On your turn only",
   imgURL: '/images/restaurant.png',
+  hoverURL:'/images/restaurant-overlay.png',
   cardFn: function(currentPlayer, gameState){
     if (this.diceValue === gameState.diceValue) {
       if (gameState.turn === currentPlayer) {
@@ -554,28 +569,32 @@ export const radioTower = {
   displayName: 'Radio Tower',
   cost: 22,
   cardDescription: 'Once every turn you can choose to re-roll your dice',
-  imgURL: '/images/radio-tower.png'
+  imgURL: '/images/radio-tower.png',
+  hoverURL:'/images/radio-tower-overlay.png'
 };
 export const coneyIsland = {
   refName: 'coneyIsland',
   displayName: 'Coney Island',
   cost: 16,
   cardDescription: 'If you roll doubles, take another turn after this one',
-  imgURL: '/images/coney-island.png'
+  imgURL: '/images/coney-island.png',
+  hoverURL:'/images/coney-island-overlay.png'
 };
 export const shoppingMall = {
   refName: 'shoppingMall',
   displayName: 'Shopping Mall',
   cost: 10,
   cardDescription: 'Each of your ☕ and 🏢 establishments earn +1 coin',
-  imgURL: '/images/shopping-mall.png'
+  imgURL: '/images/shopping-mall.png',
+  hoverURL:'/images/shopping-mall-overlay.png'
 };
 export const subwayStation = {
   refName: 'subwayStation',
   displayName: 'Subway Station',
   cost: 4,
   cardDescription: 'You may roll 1 or 2 dice',
-  imgURL: '/images/subway.png'
+  imgURL: '/images/subway.png',
+  hoverURL:'/images/subway-overlay.png'
 };
 
 export const unlockableArray = [radioTower, shoppingMall, coneyIsland, subwayStation]
