@@ -45,7 +45,7 @@ render (
         <Route path="/login" component={Login} />
         <Route path="/lobby" component={HomePage} />
         <Route path="/game/:gameLink" component={GamePage} onEnter={onGameEnter} />
-        <Route path="/lobby/:gameLink" component={WaitingForGame} onEnter={onEnterAddUser}/>
+        <Route path="/lobby/:gameLink" component={WaitingForGame} onEnter={onEnterAddUser} />
       </Route>
     </Router>
   </Provider>,

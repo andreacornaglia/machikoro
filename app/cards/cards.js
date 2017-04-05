@@ -55,7 +55,7 @@ export const bakery = {
         const currentPlayerObj = gameState.players[currentPlayer];
         const numBakery = currentPlayerObj.cards.bakery;
         let gainedAmount = numBakery
-        if(currentPlayerObj.activatedCards.shoppingMall){
+        if (currentPlayerObj.activatedCards.shoppingMall){
           gainedAmount += numBakery
         }
         return { money: gainedAmount }
@@ -366,7 +366,7 @@ export const powerPlant = {
   diceValue: 7,
   cost: 5,
   industry: 'factory',
-  cardDescription: "Get 3 coins from the bank for each [cow icon] establishment that you own, on your turn only",
+  cardDescription: "Get 3 coins from the bank for each 🐄 establishment that you own, on your turn only",
   imgURL: '/images/power-plant.png',
   hoverURL:'/images/power-plant-overlay.png',
   cardFn: function(currentPlayer, gameState){
@@ -390,7 +390,7 @@ export const touristBus = {
   diceValue: 8,
   cost: 3,
   industry: 'factory',
-  cardDescription: "Get 3 coins from the bank for each [gear icon] establishment that you own. On your turn only",
+  cardDescription: "Get 3 coins from the bank for each ⚙ establishment that you own. On your turn only",
   imgURL: '/images/tour-bus.png',
   hoverURL:'/images/tour-bus-overlay.png',
   cardFn: function(currentPlayer, gameState){
@@ -540,7 +540,7 @@ export const restaurant = {
   diceValue: 12,
   cost: 2,
   industry: 'fruit',
-  cardDescription: "Get 2 coins from the bank for each [wheat icon] establishment that you own. On your turn only",
+  cardDescription: "Get 2 coins from the bank for each 🌾 establishment that you own. On your turn only",
   imgURL: '/images/restaurant.png',
   hoverURL:'/images/restaurant-overlay.png',
   cardFn: function(currentPlayer, gameState){

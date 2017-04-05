@@ -5,21 +5,27 @@ import {createGame} from '../reducers/gameServer'
 import {connect} from 'react-redux'
 
 export const WhoAmI = ({ user, game, logout, createGame}) => {
-  return(
-  <div className="lobby-container">
+  return (
+    <div className="lobby-container">
       <h1>Hi, {user && user.name}!</h1>
       <div className="start-buttons">
         <Button bsStyle="info" bsSize="large" block onClick={(evt) => {
-            console.log('creating game')
             createGame()
           }}>Create Game</Button>
-        <Button href="/" bsSize="large" className="btn-link" block onClick={(evt) => {
+        <Button
+          href="/"
+          bsSize="large"
+          className="btn-link"
+          block
+          onClick={(evt) => {
             evt.preventDefault()
             logout()
-          }}>Logout</Button>
+          }}>Logout
+        </Button>
+      </div>
     </div>
-  </div>
-)}
+  )
+}
 
 
 export default connect (

@@ -28,11 +28,11 @@ class CardGrid extends Component {
       }
     })
 
-    if(turn !== currentPlayer){
+    if (turn !== currentPlayer){
       this.setState({insufficientFunds: true})
     } else {
         //they are on buy phase
-        if(this.props.game.phase !== 'buy'){
+        if (this.props.game.phase !== 'buy'){
           this.setState({insufficientFunds: true})
         } else {
             //they have enough money - if so, all conditions are met
@@ -41,12 +41,12 @@ class CardGrid extends Component {
             const turnPlayer = this.props.game.players[turn]
             const turnPlayerMoney = turnPlayer.money
             const cardQuantity = this.props.game.cards[element.refName]
-            if(turnPlayerMoney < element.cost || cardQuantity === 0){
+            if (turnPlayerMoney < element.cost || cardQuantity === 0){
               this.setState({insufficientFunds: true})
-            } else{
+            } else {
                this.setState({insufficientFunds: false})
             }
-         }
+          }
       }
   }
 

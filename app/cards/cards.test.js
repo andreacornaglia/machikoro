@@ -87,13 +87,13 @@ describe('Card functions', () => {
     });
 
     });
-  
+
     describe('Bodega', () => {
 
         it('has a function', () => {
             expect(cardFunctions.bodega.cardFn).to.be.a('function');
         });
-        
+
         const game = {
           diceValue: 10,
           turn: 'playerTwo',
@@ -106,36 +106,36 @@ describe('Card functions', () => {
           players: {
             playerOne: {
               cards: {
-                bodega: 1 
+                bodega: 1
               },
-              activatedCards:{
+              activatedCards: {
                 shoppingMall: false
               },
               money: 20
             },
             playerTwo: {
               cards: {
-                bodega: 2 
+                bodega: 2
               },
-              activatedCards:{
+              activatedCards: {
                 shoppingMall: false
               },
               money: 5
             },
             playerThree: {
               cards: {
-                bodega: 1 
+                bodega: 1
               },
-              activatedCards:{
+              activatedCards: {
                 shoppingMall: false
               },
               money: 5
             },
             playerFour: {
               cards: {
-                bodega: 1 
+                bodega: 1
               },
-              activatedCards:{
+              activatedCards: {
                 shoppingMall: true
               },
               money: 5
@@ -147,7 +147,7 @@ describe('Card functions', () => {
             const gainedAmount = cardFunctions.bodega.cardFn('playerTwo', game);
             expect(gainedAmount.money).to.be.equal(-5);
         });
-        
+
         it('should return { money: 2 } when other player rolls 9-10 and current player has bodega cards', () => {
             const gainedAmount = cardFunctions.bodega.cardFn('playerFour', game);
             expect(gainedAmount.money).to.be.equal(2);
@@ -166,32 +166,32 @@ describe('Card functions', () => {
                 turn: 'playerTwo',
                 players: {
                     playerOne: {
-                    cards: {
-                        bodega: 1 
-                    },
-                    activatedCards:{
-                        shoppingMall: false
-                    },
-                    money: 0
+                        cards: {
+                            bodega: 1
+                        },
+                        activatedCards: {
+                            shoppingMall: false
+                        },
+                        money: 0
                     },
                     playerTwo: {
-                    cards: {
-                        bodega: 2,
-                        businessCenter: 2
-                    },
-                    activatedCards:{
-                        shoppingMall: false
-                    },
-                    money: 5
+                        cards: {
+                            bodega: 2,
+                            businessCenter: 2
+                        },
+                        activatedCards:{
+                            shoppingMall: false
+                        },
+                        money: 5
                     },
                     playerThree: {
-                    cards: {
-                        bodega: 1 
-                    },
-                    activatedCards:{
-                        shoppingMall: false
-                    },
-                    money: 0
+                        cards: {
+                            bodega: 1
+                        },
+                        activatedCards:{
+                            shoppingMall: false
+                        },
+                        money: 0
                     }
                 }
             };
@@ -206,32 +206,32 @@ describe('Card functions', () => {
                 turn: 'playerTwo',
                 players: {
                     playerOne: {
-                    cards: {
-                        bodega: 1 
-                    },
-                    activatedCards:{
-                        shoppingMall: false
-                    },
-                    money: 6
+                        cards: {
+                            bodega: 1
+                        },
+                        activatedCards:{
+                            shoppingMall: false
+                        },
+                        money: 6
                     },
                     playerTwo: {
-                    cards: {
-                        bodega: 2,
-                        businessCenter: 2
-                    },
-                    activatedCards:{
-                        shoppingMall: false
-                    },
-                    money: 5
+                        cards: {
+                            bodega: 2,
+                            businessCenter: 2
+                        },
+                        activatedCards:{
+                            shoppingMall: false
+                        },
+                        money: 5
                     },
                     playerThree: {
-                    cards: {
-                        bodega: 1 
-                    },
-                    activatedCards:{
-                        shoppingMall: false
-                    },
-                    money: 5
+                        cards: {
+                            bodega: 1
+                        },
+                        activatedCards:{
+                            shoppingMall: false
+                        },
+                        money: 5
                     }
                 }
             };
@@ -246,32 +246,32 @@ describe('Card functions', () => {
                 turn: 'playerTwo',
                 players: {
                     playerOne: {
-                    cards: {
-                        bodega: 1 
-                    },
-                    activatedCards:{
-                        shoppingMall: false
-                    },
-                    money: 6
+                        cards: {
+                            bodega: 1
+                        },
+                        activatedCards:{
+                            shoppingMall: false
+                        },
+                        money: 6
                     },
                     playerTwo: {
-                    cards: {
-                        bodega: 2,
-                        businessCenter: 2
-                    },
-                    activatedCards:{
-                        shoppingMall: false
-                    },
-                    money: 5
+                        cards: {
+                            bodega: 2,
+                            businessCenter: 2
+                        },
+                        activatedCards:{
+                            shoppingMall: false
+                        },
+                        money: 5
                     },
                     playerThree: {
-                    cards: {
-                        bodega: 1 
-                    },
-                    activatedCards:{
-                        shoppingMall: false
-                    },
-                    money: 5
+                        cards: {
+                            bodega: 1
+                        },
+                        activatedCards:{
+                            shoppingMall: false
+                        },
+                        money: 5
                     }
                 }
             };
@@ -288,7 +288,7 @@ describe('Calculate money', () => {
    it('is a function', () => {
         expect(calculateMoney).to.be.an('function');
     });
-    
+
      const game = {
           diceValue: 1,
           turn: 'playerOne',
@@ -301,7 +301,7 @@ describe('Calculate money', () => {
           players: {
             playerOne: {
               cards: {
-                farmersMarket: 1 
+                farmersMarket: 1
               },
               activatedCards:{
                 shoppingMall: false
@@ -310,7 +310,7 @@ describe('Calculate money', () => {
             },
             playerTwo: {
               cards: {
-                farmersMarket: 1 
+                farmersMarket: 1
               },
               activatedCards:{
                 shoppingMall: false
@@ -319,7 +319,7 @@ describe('Calculate money', () => {
             },
             playerThree: {
               cards: {
-                bodega: 1 
+                bodega: 1
               },
               activatedCards:{
                 shoppingMall: false
@@ -328,7 +328,7 @@ describe('Calculate money', () => {
             },
             playerFour: {
               cards: {
-                bodega: 1 
+                bodega: 1
               },
               activatedCards:{
                 shoppingMall: true
@@ -343,6 +343,6 @@ describe('Calculate money', () => {
         const result = calculateMoney('playerOne', game)
         expect(result).to.be.equal(21);
     });
-  
+
   })
 })

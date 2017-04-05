@@ -80,16 +80,13 @@ body {
   margin: 0 auto;
   padding: 20px;
   width: 70%;
-  height: 15vh;
+  height: 20vh;
+  box-sizing: border-box;
   float: left;
   vertical-align: middle;
-  display: inline-block; }
-  .carousel-container div {
-    float: left;
-    width: 15vh;
-    margin-right: 15px; }
-    .carousel-container div img {
-      width: 100%; }
+  display: inline-block;
+  overflow: auto;
+  white-space: nowrap; }
 
 .card:hover .card-overlay {
   opacity: 1; }
@@ -257,6 +254,8 @@ body {
   background-image: url("./images/intro.png");
   background-size: cover;
   background-repeat: no-repeat; }
+  .lobby-container a:hover {
+    text-decoration: none; }
   .lobby-container h1 {
     text-align: center;
     color: white;
@@ -277,6 +276,9 @@ body {
 
 .btn-login {
   background-color: #85CFC2; }
+
+.btn-guest-login {
+  background-color: #5b7dde !important; }
 
 .login-area {
   margin: 0 auto;
@@ -381,3 +383,13 @@ body {
   text-align: center;
   font-weight: bold;
   background-color: #ccc; }
+
+#visible-carousel {
+  width: 100px;
+  height: 100px;
+  display: inline-block; }
+  #visible-carousel div {
+    display: inline-block;
+    margin-right: 15px; }
+    #visible-carousel div img {
+      width: 100%; }

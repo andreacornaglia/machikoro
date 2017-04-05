@@ -11,7 +11,6 @@ class UnlockCardModal extends Component {
   }
 
   handleClick(element){
-
     let game = this.props.game
     let currentTurn = game.turn;
     let currentTurnObj = game.players[currentTurn]
@@ -57,7 +56,7 @@ class UnlockCardModal extends Component {
         <Modal.Body>
           <div>
             <p><strong>Cost: </strong>{element.cost}</p>
-            <img src={element.imgURL}/>
+            <img src={element.imgURL} />
             <p className="modal-card-desc">{element.cardDescription}</p>
           </div>
         </Modal.Body>
