@@ -22,6 +22,9 @@ body {
     margin-left: 4.166666667%; }
   .game-grid .card {
     width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
     margin-bottom: 10px; }
 
 .game-grid .card:hover, .summaryContainer .card:hover {
@@ -84,6 +87,19 @@ body {
   display: inline-block;
   overflow: auto;
   white-space: nowrap; }
+
+.card:hover .card-overlay {
+  opacity: 1; }
+
+.card-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0; }
+
+.card-image {
+  width: 100%;
+  height: 100%; }
 
 .summaryContainer {
   width: 30%;

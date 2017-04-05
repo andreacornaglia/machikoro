@@ -75,7 +75,10 @@ class CardGrid extends Component {
               this.disableButton(element)
             }}>
               {this.state.showCardInfo ? <CardModal close={close.bind(this)} element={element} /> : null}
-              <img src={element.imgURL} className="card" />
+              <div className="card">
+                <img src={element.hoverURL} className="card-overlay"/>
+                <img src={element.imgURL} className="card-image" />
+              </div>
             </Col>
           )
         })}

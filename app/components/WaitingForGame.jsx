@@ -55,8 +55,7 @@ class WaitingForGame extends React.Component {
         <div className="start-buttons">
           {this.props.gameServer &&
             <p id="game-link" className="game-link">
-              {(location.hostname === 'nyuyoku.herokuapp.com') ?
-              `https://nyuyoku.herokuapp.com/lobby/${gameLink}` : `localhost:1337/lobby/${gameLink}`}
+              {(location.hostname === 'nyuyoku.herokuapp.com') ? `https://nyuyoku.herokuapp.com/lobby/${gameLink}` : `localhost:1337/lobby/${gameLink}`}
             </p>
           }
           <p>Copy this link and send to your friends to play together!</p>
@@ -67,12 +66,11 @@ class WaitingForGame extends React.Component {
             <li key={element.id}>{element.name} has joined the game</li>
           )}) : null}
           </ul>
-        {this.props.gameServer && (this.props.gameServer.owner == this.props.user.id) ?
+          {this.props.gameServer && (this.props.gameServer.owner == this.props.user.id) ?
           <Button className="buffer provider-login-btn" bsStyle="info" bsSize="large" block onClick={this.redirectToGame}>Start Game</Button> : null }
         </div>
       </div>
     )
-
   }
 }
 
