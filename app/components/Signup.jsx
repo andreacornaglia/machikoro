@@ -14,7 +14,6 @@ export const Signup = ({ signup }) => (
         evt.preventDefault()
         signup(evt.target.name.value, evt.target.email.value, evt.target.password.value)
       } }>
-
       <ButtonToolbar className="button-toolbar">
         <Button className="buffer provider-login-btn" bsStyle="danger" href="/api/auth/login/google" bsSize="small">Sign Up with Google
         </Button>

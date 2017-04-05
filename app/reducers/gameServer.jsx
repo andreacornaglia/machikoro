@@ -36,14 +36,10 @@ export const startingGame = game => ({
 })
 
 export const createGame = () => {
-  console.log('were on createGame')
   return dispatch => {
-    console.log('were on createGame dispatch')
-    console.log('dispatch is', dispatch)
     axios.post('/api/lobby/')
       .then((game) => {
         const gameData = game.data
-        console.log('gameData on gameServer reducer is:', gameData)
         dispatch(createRef(gameData.gameLink));
         return gameData
       })
@@ -69,12 +65,12 @@ export const startGame = (gameLink, dispatch) => {
 export const getDBGame = (gameLink) => {
   return dispatch => {
     axios.get(`/api/lobby/${gameLink}`)
-    .then(res => res.data)
-    .then(game => {
-      dispatch(connectToGame(game.gameLink))
-      dispatch(receivingDBGame(game))
-    })
-    .catch(console.error)
+      .then(res => res.data)
+      .then(game => {
+        dispatch(connectToGame(game.gameLink))
+        dispatch(receivingDBGame(game))
+      })
+      .catch(console.error)
   }
 }
 
@@ -82,11 +78,11 @@ export const getDBGame = (gameLink) => {
 export const retrieveUsers = (gameLink) => {
   return dispatch => {
     axios.get(`/api/lobby/${gameLink}`)
-    .then(res => res.data)
-    .then(game => {
-      dispatch(receivingDBGame(game))
-    })
-    .catch(console.error)
+      .then(res => res.data)
+      .then(game => {
+        dispatch(receivingDBGame(game))
+      })
+      .catch(console.error)
   }
 }
 

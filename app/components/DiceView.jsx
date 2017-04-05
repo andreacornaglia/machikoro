@@ -44,8 +44,8 @@ class DiceView extends Component {
       let players = this.props.game.players
       let user = this.props.user.name
       const playersObj = Object.keys(players)
-
       let currentPlayer;
+
       playersObj.forEach(player => {
         if (players[player].name === user) {
           currentPlayer = player
