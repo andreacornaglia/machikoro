@@ -131,7 +131,7 @@ auth.get('/guestLogin', guestAuth, (req, res) => {
 function guestAuth(req, res, next){
   if (req.user) return next()
   User.create({
-    name: 'guest'+(Math.random().toString()),
+    name: 'guest',
     email: `guest+${(Math.random().toString())}@gmail.com`
   })
   .then((user) => {
