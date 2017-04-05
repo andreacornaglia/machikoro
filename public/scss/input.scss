@@ -347,6 +347,9 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
 
+  a:hover {
+    text-decoration: none;
+  }
   h1{
     text-align: center;
     color: white;

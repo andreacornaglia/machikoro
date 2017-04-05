@@ -13,7 +13,7 @@ class Lobby extends Component {
       {this.props.user ? <WhoAmI
         onClick={this.props.logout}
       /> : <div className="lobby-container">
-        <h1>Welcome to Nyūyōku</h1>
+        <a href="http://nyuyoku.herokuapp.com/"><h1>Welcome to Nyūyōku</h1></a>
           <div className="start-buttons">
             <Button className="btn-login" bsStyle="info" bsSize="large" block onClick={(e) => {
                   e.preventDefault()
