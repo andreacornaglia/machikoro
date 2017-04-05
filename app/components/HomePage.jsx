@@ -9,10 +9,10 @@ class Lobby extends Component {
   render(){
     return (
       <nav>
-        {this.props.user ? <WhoAmI
-          onClick={this.props.logout}
-        /> : <div className="lobby-container">
-        <h1>Welcome to Nyūyōku</h1>
+      {this.props.user ? <WhoAmI
+        onClick={this.props.logout}
+      /> : <div className="lobby-container">
+        <a href="http://nyuyoku.herokuapp.com/"><h1>Welcome to Nyūyōku</h1></a>
           <div className="start-buttons">
             <Button className="btn-login"
                     bsStyle="info"

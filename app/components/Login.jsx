@@ -6,8 +6,8 @@ import {connect} from 'react-redux'
 
 export const Login = ({ login }) => (
   <div className="lobby-container">
-    <h1>Welcome to Nyūyōku</h1>
-    <Col sm={3} />
+    <a href="http://nyuyoku.herokuapp.com/"><h1>Welcome to Nyūyōku</h1></a>
+    <Col sm={3}/>
     <Col sm={6}>
       <div className="login-area">
       <Form className="form-group" horizontal onSubmit={evt => {
