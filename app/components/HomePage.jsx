@@ -14,20 +14,37 @@ class Lobby extends Component {
         /> : <div className="lobby-container">
         <h1>Welcome to Nyūyōku</h1>
           <div className="start-buttons">
-            <Button className="btn-login" bsStyle="info" bsSize="large" block onClick={(e) => {
-                  e.preventDefault()
-                  browserHistory.push('/login')
-                }
-              }>Login</Button>
-            <Button className="btn-guest-login" bsStyle="info" bsSize="large" block onClick={(e) => {
-                  e.preventDefault()
-                  this.props.guestLogin()
-                }
-              }>Guest Login</Button>
-            <Button className="btn-link" bsSize="large" block onClick={(e) => {
-                  e.preventDefault()
-                  browserHistory.push('/signup')
-                }}>Create an account</Button>
+            <Button className="btn-login"
+                    bsStyle="info"
+                    bsSize="large"
+                    block
+                    onClick={(e) => {
+                      e.preventDefault()
+                      browserHistory.push('/login')
+                    }}
+            >Login
+            </Button>
+            <Button className="btn-guest-login"
+                    bsStyle="info"
+                    bsSize="large"
+                    block
+                    onClick={(e) => {
+                      e.preventDefault()
+                      this.props.guestLogin()
+                    }}
+            >
+            Guest Login
+            </Button>
+            <Button className="btn-link"
+                    bsSize="large"
+                    block
+                    onClick={(e) => {
+                      e.preventDefault()
+                      browserHistory.push('/signup')
+                    }}
+          >
+          Create an account
+          </Button>
           </div>
       </div>
       }
