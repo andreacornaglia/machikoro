@@ -6,8 +6,6 @@ const getRef = () => {
 }
 
 export const updatePlayers = (game) => {
-  //add variable compPlay true or false
-  const compPlayers = true;
   const gameLink = game.gameLink
   const users = game.users;
   const players = ['playerOne', 'playerTwo', 'playerThree', 'playerFour'];
@@ -17,42 +15,18 @@ export const updatePlayers = (game) => {
       name: users[i].name
     })
   }
-
   // COME BACK HERE to change once we implement computer players
   // where we add computer users
-  if(compPlayers){
-    if (users.length === 1){
-      getRef().child('players').child(players[1]).update({ name: 'COMP1' })
-      getRef().child('players').child(players[2]).update({ name: 'COMP2' })
-      getRef().child('players').child(players[3]).update({ name: 'COMP3' })
-    }
-    if (users.length === 2){
-      getRef().child('players').child(players[2]).update({ name: 'COMP1' })
-      getRef().child('players').child(players[3]).update({ name: 'COMP2' })
-    } 
-
-    if (users.length === 3){
-      getRef().child('players').child(players[2]).update({ name: 'COMP1' })
-    }
-  } else {
-    if (users.length === 1){
-      getRef().child('players').child(players[1]).update({ name: 'COMP1' })
-      getRef().child('players').child(players[2]).update({ name: 'COMP2' })
-      getRef().child('players').child(players[3]).update({ name: 'COMP3' })
-    }
-    if (users.length === 2){
-      getRef().child('players').child(players[2]).remove()
-      getRef().child('players').child(players[3]).remove()
-      getRef().child('turnOrder').child('turn3').remove()
-      getRef().child('turnOrder').child('turn4').remove()
-    } 
-
-    if (users.length === 3){
-      getRef().child('players').child(players[3]).remove()
-      getRef().child('turnOrder').child('turn4').remove()
-    }
+  if (users.length === 2){
+    getRef().child('players').child(players[2]).remove()
+    getRef().child('players').child(players[3]).remove()
+    getRef().child('turnOrder').child('turn3').remove()
+    getRef().child('turnOrder').child('turn4').remove()
   }
-
+  if (users.length === 3){
+    getRef().child('players').child(players[3]).remove()
+    getRef().child('turnOrder').child('turn4').remove()
+  }
 }
 
 export const updateDiceNum = (num) => {
@@ -130,13 +104,13 @@ export const changeTurn = (currentTurn, turnOrder) => {
   let playerOnTurnIndex;
   let nextPlayer;
   //loop to find current turn position in array
-  for(let i = 0; i < turnArr.length - 1; i++){
-    if(currentTurn === turnOrder[turnArr[i]]){
+  for (let i = 0; i < turnArr.length - 1; i++){
+    if (currentTurn === turnOrder[turnArr[i]]){
         playerOnTurnIndex = i
-     }
+    }
   }
   //if position less than 3, we add 1, else go back to 0
-  if(playerOnTurnIndex < turnArr.length - 1){
+  if (playerOnTurnIndex < turnArr.length - 1){
     nextPlayer = turnOrder[turnArr[playerOnTurnIndex+1]]
   } else {
     nextPlayer = turnOrder[turnArr[0]]

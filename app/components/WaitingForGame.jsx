@@ -71,9 +71,6 @@ class WaitingForGame extends React.Component {
           )
         }): null}
           </ul>
-          <div class="checkbox">
-            <label><input type="checkbox" value=""/>Add computer players</label>
-          </div>
           {this.props.gameServer && (this.props.gameServer.owner == this.props.user.id) ?
           <Button className="buffer provider-login-btn" bsStyle="info" bsSize="large" block onClick={this.redirectToGame}>Start Game</Button> : null }
        </div>
